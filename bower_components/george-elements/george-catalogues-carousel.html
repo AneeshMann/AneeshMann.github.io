@@ -1,0 +1,63 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<!--  jQuery 1.7+  -->
+<script src="/jquery-2.1.1.min.js"></script>
+
+<!-- Include js plugin -->
+<script src="/owl-carousel/owl.carousel.js"></script>
+
+<polymer-element name="george-catalogues-carousel">
+
+  <template>
+    <style>
+      #owl .item{
+        background: #a1def8;
+        display: block;
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-align: center;
+        width: 170px;
+        height: 225px;
+        margin: 0 auto;
+      }
+      #owl .item img{
+        width:100%;
+      }
+      paper-fab.owl-prev{
+        background: #FFEB3B;
+        color: black;
+        position:absolute;
+        left:1%;
+        bottom:50%;
+      }
+      paper-fab.owl-next{
+        background: #FFEB3B;
+        color: black;
+        position:absolute;
+        right:1%;
+        bottom:50%;
+      }
+    </style>
+
+    <link rel="stylesheet" href="/owl-carousel/owl.carousel.css">
+
+    <!-- Default Theme -->
+    <link rel="stylesheet" href="/owl-carousel/owl.theme.css">
+
+    <div id="owl" class="owl-carousel owl-theme"></div>
+  </template>
+
+  <script>
+    Polymer({
+      domReady: function() {
+        $(this.$.owl).owlCarousel({
+          jsonPath : "/catalogues.json",
+          navigation: true,
+          pagination: false
+        });
+      }
+    });
+  </script>
+</polymer-element>

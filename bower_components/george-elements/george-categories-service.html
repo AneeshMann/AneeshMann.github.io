@@ -1,0 +1,24 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="george-categories-service" attributes="categories">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax" auto url="/bower_components/george-elements/categories.json" on-core-response="{{categoriesLoaded}}" handleAs="json"> </core-ajax>
+  </template>
+  <script>
+    Polymer('george-categories-service', {
+      created: function() {
+        this.categories = [];
+      },
+      categoriesLoaded: function() {
+        // Make a copy of the loaded data
+        this.categories = this.$.ajax.response.slice(0);
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,24 @@
+{
+  "name": "asda-george-app-hci",
+  "version": "0.0.0",
+  "authors": [
+    "Innovare"
+  ],
+  "description": "A new shopping experience for Asda George utilising new web development tools and cutting edge design",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.2",
+    "core-elements": "Polymer/core-elements#~0.5.2",
+    "paper-elements": "Polymer/paper-elements#~0.5.2",
+    "app-router": "~2.3.2",
+    "voice-elements": "~0.1.3",
+  }
+}

@@ -1,0 +1,142 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="/bower_components/core-selection/core-selection.html">
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="george-profile-selection">
+  <core-signals on-core-signal-basket="{{profileSignal}}"></core-signals>
+  <template>
+    <style>
+      #availableProfiles {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .profileImage {
+        margin-right: 5px;
+      }
+
+      .selectedProfile {
+        background-color:
+      }
+
+      polyfill-next-selector {
+        content: ':host > .selected';
+      }
+
+      .selected {
+        background-color: #3F51B5;
+        color: white;
+      }
+
+      .profile {
+        padding: 5px;
+        display: block;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+      }
+    </style>
+
+    <content>
+      <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
+      <paper-icon-button id="selectedProfile"
+        src="{{selectedProfileInfo.image}}" on-click="{{openProfileSelection}}">
+      </paper-icon-button>
+      <paper-dialog id="profile_selection" heading="Profile Selection" transition="core-transition-center">
+        <ul on-tap="{{itemTapAction}}" id="availableProfiles">
+          <template repeat="{{profiles as profile}}">
+            <li id="profile_{{profile.id}}" profileId="{{profile.id}}" layout horizontal center class="profile {{profile.id === selectedProfile ? 'selected' : ''}}">
+              <img profileId="{{profile.id}}" class="profileImage" src="{{profile.image}}" width="65px" />
+              <h3 profileId="{{profile.id}}">{{profile.name}} ({{profile.relation}})</h3>
+            </li>
+          </template>
+        </ul>
+        <core-selection id="selection" multi="false" on-core-select="{{selectAction}}"></core-selection>
+      </paper-dialog>
+    </content>
+  </template>
+
+  <script>
+    Polymer("george-profile-selection", {
+      ready: function() {
+      },
+
+      itemTapAction: function(e, detail, sender) {
+        this.$.selection.select(e.target);
+      },
+
+      selectAction: function(e, detail, sender) {
+        var profileId = detail.item.attributes.profileid.value;
+        this.setProfile(profileId);
+        var selectedItem = this.shadowRoot.querySelector('#profile_' + profileId);
+        selectedItem.classList.toggle('selected', detail.isSelected);
+      },
+
+      selectedProfile: 1,
+
+      selectedProfileInfo: {
+        "id": "-1"
+      },
+
+      getProfileById: function(id) {
+        for (var i = 0; i < this.profiles.length; i++) {
+          if (this.profiles[i].id == id) {
+            return this.profiles[i];
+          }
+        }
+        return this.getDefaultProfile();
+      },
+
+      setProfile: function(id) {
+        this.selectedProfile = id;
+        this.selectedProfileInfo = this.getProfileById(id);
+        document.cookie = "profile=" + id;
+      },
+
+      getDefaultProfile: function() {
+        for (var i = 0; i < this.profiles.length; i++) {
+          if (this.profiles[i].default == true) {
+            return this.profiles[i];
+          }
+        }
+        return {};
+      },
+
+      getSelectedProfile: function() {
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf("profile=") != -1) {
+            return c.substring(8, c.length);
+          }
+        }
+        return -1;
+      },
+
+      jsonLoaded: function() {
+        this.profiles = this.$.ajax.response.slice(0);
+        this.selectedProfile = this.getSelectedProfile();
+        if (this.selectedProfile == -1) {
+          this.selectedProfileInfo = this.getProfileById(this.selectedProfile);
+          this.selectedProfile = this.selectedProfileInfo.id;
+        } else {
+          this.selectedProfileInfo = this.getProfileById(this.selectedProfile);
+        }
+      },
+
+      openProfileSelection: function() {
+        this.$.profile_selection.toggle();
+      },
+    });
+  </script>
+</polymer-element>

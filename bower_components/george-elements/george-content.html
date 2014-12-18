@@ -1,0 +1,19 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/app-router/app-router.html">
+
+<polymer-element name="george-content">
+  <template>
+    <app-router id="router">
+      <app-route path="/:category" import="/bower_components/george-elements/george-category-page.html"></app-route>
+      <app-route path="/productresultsgrid/:query" import="/bower_components/george-elements/george-product-results-grid.html"></app-route>
+    </app-router>
+  </template>
+
+  <script>
+    Polymer({
+      ready: function() {
+        this.$.router.go("/0");
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,14 @@
+{
+  "owl" : [
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/today.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/winter.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/women/jeans.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/women/dresses.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/women/knitwear.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/women/footwear.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/boys/coat.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/boys/nightwear.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/boys/halloween.png'/></h1></paper-shadow></span>"},
+      {"item" : "<span class='item'><paper-shadow z='1'><h1><img src='/images/catalogues/boys/footwear.png'/></h1></paper-shadow></span>"}
+  ]
+}

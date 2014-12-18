@@ -1,0 +1,50 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/george-elements/george-categories-service.html">
+<link rel="import" href="/bower_components/george-elements/george-catalogues-carousel.html">
+
+<polymer-element name="george-category-page" attributes="category">
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+      }
+
+      .content {
+        margin-top: 20px;
+        max-width: 100%;
+      }
+
+      .topImage {
+        max-width: 100%;
+      }
+
+      h2 {
+        font-weight: 500;
+        padding-left: 27px;
+      }
+    </style>
+
+    <george-categories-service categories="{{categories}}"></george-categories-service>
+
+    <img src="{{categories[category].topImage}}" class="topImage"/>
+    <h2>{{categories[category].cataloguesHeading}}</h2>
+    <george-catalogues-carousel></george-catalogues-carousel>
+    <template repeat="{{content in categories[category].content}}">
+      <img src="{{content}}" class="content"/><br>
+    </template>
+
+  </template>
+
+  <script>
+    Polymer({
+      domReady: function() {
+        var url = window.location + "";
+        var pageId = url.charAt(url.length - 1);
+        this.fire('core-signal', {name: "category", data: pageId});
+      }
+    });
+  </script>
+</polymer-element>

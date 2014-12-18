@@ -1,0 +1,108 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/george-elements/george-product-service.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<polymer-element name="george-content-product" attribute="product_details">
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+      }
+      .add {
+        background: yellow;
+      }
+
+      .content {
+        margin-top: 20px;
+        max-width: 100%;
+      }
+      .images{
+          width:80%
+      }
+
+      .boxImage {
+        width: 99%;
+        float:left;
+      }
+
+      .smallboxImage {
+        width: 33%;
+        float:left;
+      }
+
+      h2 {
+        font-weight: 500;
+        padding-left: 27px;
+      }
+      .rightinputs{
+        align-text:center;
+      }
+      .rightboxinputs{
+        float:right;
+        width:20%;
+      }
+      .center_input{
+        margin-right:auto;
+        margin-left:auto;
+      }
+      .description{
+        width:100%;
+        margin-right:auto;
+        margin-left:auto;
+      }
+    </style>
+
+    <george-product-service product_page="{{product_page}}"></george-product-service>
+    <core-signals on-core-signal-category="{{productSignal}}"></core-signals>
+    <section>
+      <div>
+        <div class="images">
+          <img src="{{product_page[product_details].boxImage}}" class="boxImage"/>
+          <template repeat="{{altimages in product_page[product_details].altimages}}">
+            <img src="{{altimages}}" class="smallboxImage"/>
+          </template>
+        </div>
+        <div class="rightboxinputs">
+          <div class="center_input">
+            <h2 id="{{product_page[product_details].title}}" class="rightinputs">{{product[product].title}}</h2>
+            <h4>Size:
+              <paper-dropdown-menu valueattr="label" label="Sizes" class="rightinputs">
+                <template repeat="{{sizes in product_page[product_details].sizes}}">
+                  <paper-item label="{{sizes}}"></paper-item>
+                </template>
+              </paper-dropdown-menu>
+            </h4>
+            <h4>Quantity:
+              <paper-dropdown-menu valueattr="label" label="Quantity" class="rightinputs">
+                <template repeat="{{stock in product_page[product_details].stock}}">
+                  <paper-item label="{{stock}}"></paper-item>
+                </template>
+              </paper-dropdown-menu>
+            </h4>
+            <paper-button class="add">Add to Basket</paper-button>
+          </div>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{product_page[product_details].description}}<p>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    Polymer({
+      ready: function() {
+        this.product_details = 0;
+      },
+
+      productSignal: function(e, detail, sender) {
+        this.product_details = detail ;
+      }
+    });
+  </script>
+</polymer-element>

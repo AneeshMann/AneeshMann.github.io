@@ -1,0 +1,169 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/core-icons/core-icons.html">
+<link rel="import" href="/bower_components/voice-elements/dist/voice-recognition.html">
+
+<polymer-element name="george-g-button" extends="paper-fab">
+  <template>
+
+    <style>
+      :host {
+        background: #FFEB3B;
+        z-index: 1;
+        top: 30px;
+        transition:all 0.2s;
+        -webkit-transition:all 0.2s;
+        -moz-transition:all 0.2s;
+      }
+
+      a {
+        color: #000;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .show {
+        display: block;
+      }
+
+      :host(.expand) {
+        border-radius:1%;
+        transition:all 0.2s;
+        -webkit-transition:all 0.2s;
+        -moz-transition:all 0.2s;
+        width: 641px;
+        height: 300px;
+        top: 130px;
+      }
+
+        @media (max-width: 860px) {
+          :host(.expand) {
+            width: 540px;
+            height: 360px;
+          }
+        }
+
+        @media (max-width: 750px) {
+          paper-input {
+            width: 80%;
+          }
+        }
+
+        @media (max-width: 720px) {
+          :host(.expand) {
+            width: 340px;
+            height: 440px;
+          }
+        }
+
+      .categoryButton {
+        width: 140px;
+        height: 80px;
+        float: left;
+      }
+
+      paper-input {
+        width: 89%;
+      }
+
+      #start_button {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        float: left;
+        background-color: transparent;
+      }
+
+    .alignTextInMiddle {
+      display: table;
+      height: 50px;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    </style>
+  <content>
+    <div id="container">
+      <img src="/images/g-logo.png" />
+      <div id="content" class="{{showOrHide}}">
+        <paper-input id="georgeSearch" on-change="{{analyseSearch}}" label="Search"></paper-input>
+        <paper-button style="min-width:10px;"><core-icon icon="search" style="color:black;"></core-icon></paper-button>
+        <voice-recognition id="georgeRecognition"></voice-recognition>
+        <section>
+          <paper-button class="categoryButton" on-click="{{askGeorge}}"><div class="alignTextInMiddle"><span>Ask George</span></div></paper-button>
+          <a href="/#/1"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Home & Garden</span></div></paper-button></a>
+          <a href="/#/2"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Women</span></div></paper-button></a>
+          <a href="/#/3"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Men</span></div></paper-button></a>
+        </section>
+        <section>
+          <a href="/#/4"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Boys</span></div></paper-button></a>
+          <a href="/#/5"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Girls</span></div></paper-button></a>
+          <a href="/#/6"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>Baby</span></div></paper-button></a>
+          <a href="/#/7"><paper-button class="categoryButton"><div class="alignTextInMiddle"><span>School</span></div></paper-button></a>
+        </section>
+      </div>
+    </content>
+  </template>
+
+  <script>
+    Polymer("george-g-button", {
+      ready: function() {
+        this.showOrHide = "hide";
+
+        this.addEventListener('click', this.showContent);
+        this.addEventListener('blur', this.hideContent);
+
+        CoreStyle.g.paperInput.focusedColor = 'black';
+      },
+
+      showContent: function() {
+        this.className = "expand";
+        this.showOrHide = "show";
+      },
+
+      hideContent: function() {
+        this.className = "";
+        this.showOrHide = "hide";
+      },
+
+      askGeorge: function() {
+        var that = this;
+        that.clearResult = true;
+        var recog = this.$.georgeRecognition;
+        var search = this.$.georgeSearch;
+        recog.start();
+        recog.addEventListener('onresult', function(event) {
+          if (that.clearResult) {
+            search.inputValue = '';
+            that.clearResult = false;
+          }
+          that.showContent();
+          search.value = event.detail.result;
+          that.analyseSearch();
+        });
+        recog.addEventListener('result', function(event) {
+          that.clearResult = true;
+        });
+      },
+
+      analyseSearch: function() {
+        var searchInput = this.$.georgeSearch;
+        var searchTerm = searchInput.value;
+        console.log(searchTerm);
+        // Hard code for demo
+        if (searchTerm.indexOf("red") > -1 && searchTerm.indexOf("dresses") > -1) {
+          document.location.href = "/#/productresultsgrid/red+dresses";
+        }
+      }
+    });
+  </script>
+</polymer-element>

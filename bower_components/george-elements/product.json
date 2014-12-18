@@ -1,0 +1,15 @@
+[
+    {
+        "id": "womenblackjeans",
+        "title": "Skinny Jeans",
+        "sizes": ["XS","S","M","L"],
+        "stock": ["23"],
+        "description": "Invest in a stunning new staple this season with these cool skinny jeans. Whether you're heading out with friends or seeing family, these versatile jeans are to be your go-to for an instant fashion fix.",
+        "boxImage": "/images/men/men-christmas-jumpers.png",
+        "altimages": [
+            "/images/boys/boys-girls-promo.png",
+            "/images/home-garden/home-garden-decorations.png",
+            "/images/men/men-winter-coats.png"
+        ]
+    }
+]

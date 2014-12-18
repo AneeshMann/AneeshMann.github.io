@@ -1,0 +1,61 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="/bower_components/core-icons/core-icons.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/george-elements/george-categories-service.html">
+<link rel="import" href="/bower_components/george-elements/george-g-button.html">
+<link rel="import" href="/bower_components/george-elements/george-basket.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog-transition.html">
+<link rel="import" href="/bower_components/george-elements/george-profile-selection.html">
+<link rel="import" href="/bower_components/paper-shadow/paper-shadow.html">
+
+<polymer-element name="george-appbar">
+  <template>
+
+    <style>
+      core-toolbar {
+        background-color: #000000;
+        color: #ffffff
+      }
+
+      a {
+        color: #fff;
+      }
+    </style>
+
+    <george-categories-service categories="{{categories}}"></george-categories-service>
+    <core-signals on-core-signal-category="{{categorySignal}}"></core-signals>
+
+    <core-toolbar>
+      <a href="/#/0"><paper-icon-button icon="home"></paper-icon-button></a>
+      <george-g-button id="gbutton" style="color: black" noink></george-g-button>
+      <span flex>{{categories[category].title}}</span>
+      <paper-icon-button id="shoppingbasketicon"
+        icon="shopping-basket" on-click="{{toggle}}">
+      </paper-icon-button>
+      <paper-dialog id="basket_content" transition="core-transition-center">
+        <george-basket id="basket_holder"></george-basket>
+      </paper-dialog>
+      <george-profile-selection></george-profile-selection>
+    </core-toolbar>
+
+  </template>
+
+  <script>
+    Polymer('george-appbar', {
+      categorySignal: function(e, detail, sender) {
+        this.category = detail ;
+      },
+
+      // openProfileSelection: function() {
+      //   this.$.profile_selection.toggle();
+      // },
+
+      toggle: function() {
+        this.$.basket_content.toggle();
+      }
+    });
+  </script>
+</polymer-element>

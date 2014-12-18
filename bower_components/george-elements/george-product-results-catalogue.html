@@ -1,0 +1,25 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/george-elements/george-products-service.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+
+<polymer-element name="george-product-results-catalogue">
+  <template>
+
+    <style>
+    </style>
+    <george-products-service products="{{products}}">
+    </george-products-service>
+    <span>test</span>
+
+    <template repeat="{{product in products}}">
+      <img src="{{product}}" /><br>
+    </template>
+
+
+  </template>
+
+  <script>
+    Polymer({
+    });
+  </script>
+</polymer-element>

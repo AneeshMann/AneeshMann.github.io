@@ -1,0 +1,96 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/core-icons/av-icons.html">
+
+
+<polymer-element name="george-basket">
+  <template>
+
+    <style>
+        .product-name{
+          font-size:0.8em;
+        }
+        .basket_image{
+          height: 50px;
+        }
+    </style>
+
+    <core-signals on-core-signal-basket="{{basketSignal}}"></core-signals>
+
+    <content>
+      <section>
+        <template  id="basket_item" repeat="{{basket as product}}">
+          <div class='item_span'>
+            <img class='basket_image' src='{{product.image}}'>
+            <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
+            <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
+          </div>
+        </template>
+      </section>
+    </content>
+  </template>
+
+  <script>
+    Polymer("george-basket", {
+
+      basket : [],
+      items : 1,
+
+      ready: function(){
+        var basket_name = 'george_basket=';
+        if(this.basket.length == 0){
+          var test = document.cookie.split(';');
+          for(var i=0; i < test.length;i++){
+            var cookie_search = test[i];
+            if(cookie_search.indexOf(basket_name) != -1){
+              basket_broken = (cookie_search.substring(basket_name.length+2, cookie_search.length-1)).split('},');
+              if(basket_broken != ''){
+                for( var j = 0; j < basket_broken.length;j++){
+                  if(j+1 == basket_broken.length){
+                    var data = JSON.parse(basket_broken[j]);
+                  } else {
+                    var data = JSON.parse(basket_broken[j]+'}');
+                  }
+                  data.id = this.items;
+                  this.basket.push(data);
+                  this.items++;
+                }
+              }
+            }
+          }
+        }
+      },
+
+      updateBasket: function(e, detail, sender) {
+        var product_id = e.target.templateInstance.model.product;
+        for(var i = 0; i< this.basket.length; i++){
+          if(product_id.id == this.basket[i].id){
+            this.basket.splice(i,1);
+          }
+        }
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      },
+
+      basketSignal: function(e, detail, sender) {
+        product_basket = {
+          id: this.items,
+          product: detail.product,
+          price: detail.price,
+          image: detail.image,
+          size: detail.sizes,
+          quantity: detail.quantity
+        };
+        //console.log(detail);
+        this.items++;
+        this.basket.push(product_basket);
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      }
+    });
+  </script>
+</polymer-element>

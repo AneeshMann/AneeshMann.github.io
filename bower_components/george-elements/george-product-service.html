@@ -1,0 +1,24 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="george-product-service" attributes="product_page">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax" auto url="/bower_components/george-elements/product.json" on-core-response="{{productLoaded}}" handleAs="json"> </core-ajax>
+  </template>
+  <script>
+    Polymer('george-product-service', {
+      created: function() {
+        this.product_page = [];
+      },
+      productLoaded: function() {
+        // Make a copy of the loaded data
+        this.product_page = this.$.ajax.response.slice(0);
+      }
+    });
+  </script>
+</polymer-element>

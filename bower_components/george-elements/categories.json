@@ -1,0 +1,87 @@
+[
+    {
+        "id": "home",
+        "title": "Home",
+        "cataloguesHeading": "Your Catalogues",
+        "topImage": "/images/men/men-christmas-jumpers.png",
+        "content": [
+            "/images/boys/boys-girls-promo.png",
+            "/images/home-garden/home-garden-decorations.png",
+            "/images/men/men-winter-coats.png"
+        ]
+    },
+    {
+        "id": "homeGarden",
+        "title": "Home & Garden",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/home-garden/home-garden-furniture.png",
+        "content": [
+            "/images/home-garden/home-garden-decorations.png",
+            "/images/home-garden/home-garden-kitchen.png",
+            "/images/home-garden/home-garden-living-room.png"
+        ]
+    },
+    {
+        "id": "women",
+        "title": "Women",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/women/women-christmas-jumpers.png",
+        "content": [
+          "/images/women/women-discover-trends.png",
+          "/images/women/women-dresses.png",
+          "/images/women/women-winter-coats.png"
+        ]
+    },
+    {
+        "id": "men",
+        "title": "Men",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/men/men-christmas-jumpers.png",
+        "content": [
+            "/images/men/men-suit.png",
+            "/images/men/men-winter-coats.png"
+        ]
+    },
+    {
+        "id": "boys",
+        "title": "Boys",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/boys/boys-christmas-jumpers.png",
+        "content": [
+            "/images/boys/boys-footwear.png",
+            "/images/boys/boys-perfect-gifts.png",
+            "/images/boys/boys-toys.png"
+        ]
+    },
+    {
+        "id": "girls",
+        "title": "Girls",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/girls/girls-perfect-gifts.png",
+        "content": [
+            "/images/girls/girls-christmas-jumpers.png",
+            "/images/girls/girls-nightwear.png",
+            "/images/girls/girls-dresses.png"
+        ]
+    },
+
+    {
+        "id": "baby",
+        "title": "Baby",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/baby/baby-first-christmas.png",
+        "content": [
+            "/images/baby/baby-clothes.png"
+        ]
+    },
+    {
+        "id": "school",
+        "title": "School",
+        "cataloguesHeading": "Catalogues For",
+        "topImage": "/images/school/school-hero.png",
+        "content": [
+            "/images/school/school-stationary.png",
+            "/images/school/school-bags.png"
+        ]
+    }
+]
