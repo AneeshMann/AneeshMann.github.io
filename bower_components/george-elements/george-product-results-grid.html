@@ -1,5 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/webcomponentsjs/webcomponentsjs.html">
 <link rel="import" href="/bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="/bower_components/core-animated-pages/transitions/hero-transition.html">
 <link rel="import" href="/bower_components/core-animated-pages/transitions/cross-fade.html">
@@ -10,6 +11,7 @@
 <link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="/bower_components/core-menu/core-menu.html">
+<link rel="import" href="/bower_components/core-collapse/core-collapse.html">
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
@@ -190,21 +192,22 @@
                 <div class="card-price">{{selectedProduct.price}}</div>
                 <div class="inputs">
                   Size:
-                  <paper-dropdown-menu id="clothesSize" valueattr="label" label="Select a Size" class="input">
-                    <paper-dropdown layered>
-                      <core-menu>
-                        <template repeat="{{size in sizes}}">
-                          <paper-item label="{{size}}"></paper-item>
+                  <paper-dropdown-menu id="clothesSize" label="Select a Size">
+                    <paper-dropdown class="dropdown">
+                      <core-menu class="menu">
+                        <template repeat="{{sizes}}">
+                          <paper-item>{{}}</paper-item>
                         </template>
                       </core-menu>
                     </paper-dropdown>
                   </paper-dropdown-menu>
+
                   Quantity:
-                  <paper-dropdown-menu valueattr="label" label="Select Quantity" id="clothesQuantity">
-                    <paper-dropdown layered>
-                      <core-menu>
-                        <template repeat="{{quantity in quantities}}">
-                          <paper-item label="{{quantity}}"></paper-item>
+                  <paper-dropdown-menu id="clothesQuantity" label="Select Quantity">
+                    <paper-dropdown class="dropdown">
+                      <core-menu class="menu">
+                        <template repeat="{{quantities}}">
+                          <paper-item>{{}}</paper-item>
                         </template>
                       </core-menu>
                     </paper-dropdown>
