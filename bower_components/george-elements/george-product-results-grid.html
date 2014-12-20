@@ -339,9 +339,12 @@
       selectedProduct: null,
 
       created: function(){
+        var url = window.location + "";
+        var searchTerm = url.substring(url.indexOf("grid/") + 5);
+
          this.filteredItems = this.items;
          console.log(this.query);
-         var regex = new RegExp('sporty', 'i');
+         var regex = new RegExp(searchTerm, 'i');
          this.filteredItems = this.items.filter(function(d, idx, array) {
            return regex.test(d.product);
          });
