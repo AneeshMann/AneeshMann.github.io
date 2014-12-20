@@ -30,6 +30,7 @@
             <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
           </div>
         </template>
+        <paper-button on-click="{{basketToCheckout}}">Proceed To Checkout</paper-button>
       </section>
     </content>
   </template>
@@ -90,6 +91,16 @@
         this.basket.push(product_basket);
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      },
+
+      basketDeleteSignal: function(e, detail, sender) {
+        this.basket = detail;
+      },
+
+      basketToCheckout: function(e, detail, sender) {
+        var checkoutData = this.basket;
+        document.location.href = "/#/basketcheckout/";
+        this.fire('core-signal', {name:"checkout", data:checkoutData});
       }
     });
   </script>

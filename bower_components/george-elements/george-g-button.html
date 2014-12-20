@@ -158,10 +158,10 @@
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
         var searchTerm = searchInput.value;
-        console.log(searchTerm);
+        //console.log(searchTerm);
         // Hard code for demo
         if (searchTerm.indexOf("red") > -1 && searchTerm.indexOf("dresses") > -1) {
-          document.location.href = "/#/productresultsgrid/red+dresses";
+          document.location.href = "/#/productresultsgrid/red%20dresses";
         }
       }
     });

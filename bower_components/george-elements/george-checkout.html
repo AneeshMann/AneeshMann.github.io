@@ -1,0 +1,68 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-signals/core-signals.html">
+<link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../core-animated-pages/transitions/hero-transition.html">
+<link rel="import" href="../core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../core-animated-pages/transitions/slide-from-left.html">
+<link rel="import" href="../core-animated-pages/transitions/slide-down.html">
+<link rel="import" href="../core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../core-animated-pages/transitions/tile-cascade.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../font-roboto/roboto.html">
+
+
+
+  <polymer-element name="george-checkout">
+  <template>
+    <core-signals on-core-signal-checkout="{{checkoutSignal}}"></core-signals>
+    <style>
+      .product-name{
+        font-size:1.4em;
+      }
+      .checkout_image{
+        height: 100px;
+      }
+    </style>
+    <template  id="checkout_item" repeat="{{basket as product}}">
+      <div class='item_span' align="center">
+        <img class='checkout_image' src='{{product.image}}'>
+        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
+        <paper-icon-button icon=delete on-click="{{updateCheckout}}"></paper-icon-button>
+      </div>
+    </template>
+
+  </template>
+  <script>
+
+    Polymer('george-checkout', {
+
+      basket: [],
+      items : 1,
+
+      ready: function(){
+      },
+
+      updateCheckout: function(e, detail, sender) {
+        var product_id = e.target.templateInstance.model.product;
+        for(var i = 0; i< this.basket.length; i++){
+          if(product_id.id == this.basket[i].id){
+            this.basket.splice(i,1);
+          }
+        }
+        var newBasket = this.basket;
+        this.fire('core-signal', {name:"basket-delete", data:newBasket});
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      },
+
+      checkoutSignal: function(e, detail, sender) {
+        console.log(detail);
+        this.basket = detail;
+      }
+
+    });
+
+  </script>
+  </polymer-element>

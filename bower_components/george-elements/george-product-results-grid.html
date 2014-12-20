@@ -15,7 +15,7 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
 
-  <polymer-element name="george-product-results-grid">
+  <polymer-element name="george-product-results-grid" attributes="query">
   <template>
 
     <style>
@@ -159,8 +159,7 @@
 
         <div class="chip-container" hero-p on-tap="{{transition}}">
 
-          <template repeat="{{items as item}}">
-
+          <template repeat="{{filteredItems as item}}">
             <div class="chip" hero-id="{{item.product}}-{{item.clothing}}" hero?="{{selectedProduct === item }}">
               <div class="chip-top" hero-id="{{item.product}}-{{item.clothing}}-art" hero?="{{selectedProduct === item}}">
                 <img class="chip-image" src="{{item.image}}"/>
@@ -338,6 +337,15 @@
       quantities: ['1', '2', '3', '4', '5'],
 
       selectedProduct: null,
+
+      created: function(){
+         this.filteredItems = this.items;
+         console.log(this.query);
+         var regex = new RegExp('sporty', 'i');
+         this.filteredItems = this.items.filter(function(d, idx, array) {
+           return regex.test(d.product);
+         });
+      },
 
       transition: function(e) {
         if (this.page === 0 && e.target.templateInstance.model.item) {
