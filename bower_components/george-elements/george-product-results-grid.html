@@ -15,6 +15,7 @@
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
+<link href="../core-collapse/core-collapse.html" rel="import">
 
   <polymer-element name="george-product-results-grid" attributes="query">
   <template>
@@ -188,25 +189,25 @@
                 <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" on-tap={{forward}}></paper-fab>
                 <div class="card-product-title">{{selectedProduct.product}}</div>
                 <div class="card-clothing">{{selectedProduct.clothing}}</div>
-                <div class="card-price">{{selectedProduct.price}}</div>
+                <div class="card-price">£{{selectedProduct.price}}</div>
                 <div class="inputs">
                   Size:
-                  <paper-dropdown-menu id="clothesSize" label="Select a Size">
+                  <paper-dropdown-menu label="Select a Size">
                     <paper-dropdown class="dropdown">
-                      <core-menu class="menu">
+                      <core-menu id="clothesSize" class="menu">
                         <template repeat="{{sizes}}">
-                          <paper-item>{{}}</paper-item>
+                          <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
                     </paper-dropdown>
                   </paper-dropdown-menu>
 
                   Quantity:
-                  <paper-dropdown-menu id="clothesQuantity" label="Select Quantity">
+                  <paper-dropdown-menu label="Select Quantity">
                     <paper-dropdown class="dropdown">
-                      <core-menu class="menu">
+                      <core-menu id="clothesQuantity" class="menu">
                         <template repeat="{{quantities}}">
-                          <paper-item>{{}}</paper-item>
+                          <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
                     </paper-dropdown>
@@ -236,7 +237,7 @@
         {
           product: 'Sporty Gingham Dress',
           clothing: 'Girls',
-          price: '£4',
+          price: 4,
           color: '#f4db33',
           image:'/images/women/red1.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -246,7 +247,7 @@
         {
           product: 'Girls School 2 Pack Gingham Dress',
           clothing: 'Girls',
-          price: '£6',
+          price: 6,
           color: '#972ff8',
           image:'/images/women/red2.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -256,7 +257,7 @@
         {
           product: 'Floral Dress',
           clothing: 'Women',
-          price: '£3.50',
+          price: 3.50,
           color: '#7dd6fe',
           image:'/images/women/red3.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -266,7 +267,7 @@
         {
           product: 'Bardot Dress',
           clothing: 'Women',
-          price: '£10',
+          price: 10,
           color: '#dc3c84',
           image:'/images/women/red4.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -276,7 +277,7 @@
         {
           product: 'Check Dress',
           clothing: 'Women',
-          price: '£8',
+          price: 8,
           color: '#f4db33',
           image:'/images/women/red5.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -286,7 +287,7 @@
         {
           product: 'Patterned Maternity Dress',
           clothing: 'Women',
-          price: '£12',
+          price: 12,
           color: '#972ff8',
           image:'/images/women/red6.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -296,7 +297,7 @@
         {
           product: 'Spotty Fit and Flare Dress',
           clothing: 'Women',
-          price: '£14',
+          price: 14,
           color: '#7dd6fe',
           image:'/images/women/red7.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -306,7 +307,7 @@
         {
           product: 'Waterfall Party Dress',
           clothing: 'Women',
-          price: '£12',
+          price: 12,
           color: '#f4db33',
           image:'/images/women/red8.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -316,7 +317,7 @@
         {
           product: 'Spot Bow Party Dress',
           clothing: 'Women',
-          price: '£10',
+          price: 10,
           color: '#972ff8',
           image:'/images/women/red9.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -326,7 +327,7 @@
         {
           product: 'Dropped Waist Crepe Dress',
           clothing: 'Women',
-          price: '£14',
+          price: 14,
           color: '#dc3c84',
           image:'/images/women/red10.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -344,7 +345,6 @@
         var searchTerm = url.substring(url.indexOf("grid/") + 5);
 
          this.filteredItems = this.items;
-         console.log(this.query);
          var regex = new RegExp(searchTerm, 'i');
          this.filteredItems = this.items.filter(function(d, idx, array) {
            return regex.test(d.product);
@@ -390,10 +390,11 @@
           product: item.product,
           price: item.price,
           image: item.image,
-          sizes: this.$.clothesSize.selected,
-          quantity: this.$.clothesQuantity.selected
+          sizes: this.sizes[this.$.clothesSize.selected],
+          quantity: this.quantities[this.$.clothesQuantity.selected],
+          unique: Math.random()
         };
-        this.fire('core-signal', {name:"basket", data:itemComplete});
+        this.fire('core-signal', {name:"basket-add", data:itemComplete});
       }
 
     });

@@ -19,14 +19,17 @@
         }
     </style>
 
-    <core-signals on-core-signal-basket="{{basketSignal}}"></core-signals>
+    <core-signals on-core-signal-basket-add="{{basketAddSignal}}"></core-signals>
+    <core-signals on-core-signal-basket-delete="{{basketDeleteSignal}}"></core-signals>
+    <core-signals on-core-signal-basket-alter="{{basketAlterSignal}}"></core-signals>
 
     <content>
       <section>
+        <div id="sub_total">Sub-Total : £ {{sub_total}}<div>
         <template  id="basket_item" repeat="{{basket as product}}">
           <div class='item_span'>
             <img class='basket_image' src='{{product.image}}'>
-            <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
+            <p class='product-name'><b>{{product.product}}</b> Price: £ {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
             <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
           </div>
         </template>
@@ -39,7 +42,9 @@
     Polymer("george-basket", {
 
       basket : [],
+      sub_total: 0,
       items : 1,
+      unique : -1,
 
       ready: function(){
         var basket_name = 'george_basket=';
@@ -57,6 +62,7 @@
                     var data = JSON.parse(basket_broken[j]+'}');
                   }
                   data.id = this.items;
+                  this.sub_total = this.sub_total + data.price * data.quantity;
                   this.basket.push(data);
                   this.items++;
                 }
@@ -70,6 +76,7 @@
         var product_id = e.target.templateInstance.model.product;
         for(var i = 0; i< this.basket.length; i++){
           if(product_id.id == this.basket[i].id){
+            this.sub_total = this.sub_total - this.basket[i].price * this.basket[i].quantity;
             this.basket.splice(i,1);
           }
         }
@@ -77,24 +84,33 @@
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
       },
 
-      basketSignal: function(e, detail, sender) {
-        product_basket = {
-          id: this.items,
-          product: detail.product,
-          price: detail.price,
-          image: detail.image,
-          size: detail.sizes,
-          quantity: detail.quantity
-        };
-        //console.log(detail);
-        this.items++;
-        this.basket.push(product_basket);
-        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
-        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      basketAddSignal: function(e, detail, sender) {
+        if(this.unique != detail.unique){
+          product_basket = {
+            id: this.items,
+            product: detail.product,
+            price: detail.price,
+            image: detail.image,
+            size: detail.sizes,
+            quantity: detail.quantity
+          };
+          //console.log(detail);
+          this.items++;
+          this.sub_total = this.sub_total + product_basket.price * product_basket.quantity;
+          this.basket.push(product_basket);
+          document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+          document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+          this.unique = detail.unique;
+        }
       },
 
       basketDeleteSignal: function(e, detail, sender) {
         this.basket = detail;
+      },
+
+      basketAlterSignal: function(e, detail, sender) {
+        this.basket = detail;
+        console.log("altering");
       },
 
       basketToCheckout: function(e, detail, sender) {
