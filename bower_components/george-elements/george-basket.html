@@ -20,8 +20,7 @@
     </style>
 
     <core-signals on-core-signal-basket-add="{{basketAddSignal}}"></core-signals>
-    <core-signals on-core-signal-basket-delete="{{basketDeleteSignal}}"></core-signals>
-    <core-signals on-core-signal-basket-alter="{{basketAlterSignal}}"></core-signals>
+    <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
 
     <content>
       <section>
@@ -62,7 +61,6 @@
                     var data = JSON.parse(basket_broken[j]+'}');
                   }
                   data.id = this.items;
-                  this.sub_total = this.sub_total + data.price * data.quantity;
                   this.basket.push(data);
                   this.items++;
                 }
@@ -72,18 +70,25 @@
         }
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        this.sub_total = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+        }
       },
 
       updateBasket: function(e, detail, sender) {
         var product_id = e.target.templateInstance.model.product;
         for(var i = 0; i< this.basket.length; i++){
           if(product_id.id == this.basket[i].id){
-            this.sub_total = this.sub_total - this.basket[i].price * this.basket[i].quantity;
             this.basket.splice(i,1);
           }
         }
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        this.sub_total = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+        }
       },
 
       basketAddSignal: function(e, detail, sender) {
@@ -103,16 +108,19 @@
           document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
           document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
           this.unique = detail.unique;
+          this.sub_total = 0;
+          for(var i = 0; i< this.basket.length; i++){
+            this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+          }
         }
       },
 
-      basketDeleteSignal: function(e, detail, sender) {
+      basketAlter: function(e, detail, sender) {
         this.basket = detail;
-      },
-
-      basketAlterSignal: function(e, detail, sender) {
-        this.basket = detail;
-        console.log("altering");
+        this.sub_total = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+        }
       },
 
       basketToCheckout: function(e, detail, sender) {
