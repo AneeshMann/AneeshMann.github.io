@@ -195,7 +195,7 @@
                   <paper-dropdown-menu label="Select a Size">
                     <paper-dropdown class="dropdown">
                       <core-menu id="clothesSize" class="menu">
-                        <template repeat="{{sizes}}">
+                        <template repeat="{{selectedProduct.sizes}}">
                           <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
@@ -206,7 +206,7 @@
                   <paper-dropdown-menu label="Select Quantity">
                     <paper-dropdown class="dropdown">
                       <core-menu id="clothesQuantity" class="menu">
-                        <template repeat="{{quantities}}">
+                        <template repeat="{{selectedProduct.quantities}}">
                           <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
@@ -238,6 +238,7 @@
           product: 'Sporty Gingham Dress',
           clothing: 'Girls',
           price: 4,
+          sizes: ['6', '8', '10', '12', '14', '16'],
           color: '#f4db33',
           image:'/images/women/red1.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -248,6 +249,8 @@
           product: 'Girls School 2 Pack Gingham Dress',
           clothing: 'Girls',
           price: 6,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#972ff8',
           image:'/images/women/red2.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -258,6 +261,8 @@
           product: 'Floral Dress',
           clothing: 'Women',
           price: 3.50,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#7dd6fe',
           image:'/images/women/red3.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -268,6 +273,8 @@
           product: 'Bardot Dress',
           clothing: 'Women',
           price: 10,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#dc3c84',
           image:'/images/women/red4.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -278,6 +285,8 @@
           product: 'Check Dress',
           clothing: 'Women',
           price: 8,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#f4db33',
           image:'/images/women/red5.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -288,6 +297,8 @@
           product: 'Patterned Maternity Dress',
           clothing: 'Women',
           price: 12,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#972ff8',
           image:'/images/women/red6.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -298,6 +309,8 @@
           product: 'Spotty Fit and Flare Dress',
           clothing: 'Women',
           price: 14,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#7dd6fe',
           image:'/images/women/red7.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -308,6 +321,8 @@
           product: 'Waterfall Party Dress',
           clothing: 'Women',
           price: 12,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#f4db33',
           image:'/images/women/red8.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -318,6 +333,8 @@
           product: 'Spot Bow Party Dress',
           clothing: 'Women',
           price: 10,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#972ff8',
           image:'/images/women/red9.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -328,6 +345,8 @@
           product: 'Dropped Waist Crepe Dress',
           clothing: 'Women',
           price: 14,
+          sizes: ['6', '8', '10', '12', '14', '16'],
+          quantities: ['1', '2', '3', '4', '5'],
           color: '#dc3c84',
           image:'/images/women/red10.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -335,8 +354,6 @@
           productcode:  'Product Code: 4774864'
         }
       ],
-      sizes: ['6', '8', '10', '12', '14', '16'],
-      quantities: ['1', '2', '3', '4', '5'],
 
       selectedProduct: null,
 
@@ -390,8 +407,8 @@
           product: item.product,
           price: item.price,
           image: item.image,
-          sizes: this.sizes[this.$.clothesSize.selected],
-          quantity: this.quantities[this.$.clothesQuantity.selected],
+          sizes: item.sizes[this.$.clothesSize.selected],
+          quantity: item.quantities[this.$.clothesQuantity.selected],
           unique: Math.random()
         };
         this.fire('core-signal', {name:"basket-add", data:itemComplete});
