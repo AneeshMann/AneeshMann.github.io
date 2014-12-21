@@ -70,6 +70,8 @@
             }
           }
         }
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
       },
 
       updateBasket: function(e, detail, sender) {
@@ -116,7 +118,7 @@
       basketToCheckout: function(e, detail, sender) {
         var checkoutData = this.basket;
         document.location.href = "/#/basketcheckout/";
-        this.fire('core-signal', {name:"checkout", data:checkoutData});
+        this.asyncFire('core-signal', {name:"checkout", data:checkoutData});
       }
     });
   </script>

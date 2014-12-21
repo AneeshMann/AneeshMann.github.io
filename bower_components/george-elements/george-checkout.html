@@ -1,3 +1,4 @@
+<link rel="import" href="/bower_components/web-animations-js/web-animations.html">
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-signals/core-signals.html">
 <link rel="import" href="../core-animated-pages/core-animated-pages.html">
@@ -8,9 +9,14 @@
 <link rel="import" href="../core-animated-pages/transitions/slide-up.html">
 <link rel="import" href="../core-animated-pages/transitions/tile-cascade.html">
 <link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../core-menu/core-menu.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../font-roboto/roboto.html">
+
+
 
   <polymer-element name="george-checkout">
   <template>
@@ -26,7 +32,16 @@
     <template  id="checkout_item" repeat="{{basket as product}}">
       <div class='item_span' align="center">
         <img class='checkout_image' src='{{product.image}}'>
-        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
+        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}
+        <paper-dropdown-menu id="clothesQuantity" selected="{{product.quantity}}" on-core-select={{alterOrder}} valueattr="value">
+          <paper-dropdown class="dropdown">
+            <core-menu class="menu">
+              <template repeat="{{quantity in  quantities}}">
+                <paper-item>{{quantity}}</paper-item>
+              </template>
+            </core-menu>
+          </paper-dropdown>
+        </paper-dropdown-menu></p>
         <paper-icon-button icon=delete on-click="{{updateCheckout}}"></paper-icon-button>
       </div>
     </template>
@@ -37,9 +52,67 @@
     Polymer('george-checkout', {
 
       basket: [],
+      quantities: ['1', '2', '3', '4', '5'],
+      deliveryOptions: [{
+        option:'Free Click and Collect',
+        cost:0
+      },{
+        option:'Free Home Delivery',
+        cost:0
+      },{
+        option:'Free Delivery When You Spend £45 Or More',
+        cost:0
+      },{
+        option:'Standard Home Delivery',
+        cost:2.95
+      },{
+        option:'Next Day Home Delivery',
+        cost:4.50
+      },{
+        option:'Named Day Home Delivery',
+        cost:4.50
+      },{
+        option:'Named Day With Time Slot Delivery',
+        cost:5.95
+      },{
+        option:'Standard Large Item Delivery',
+        cost:8.95
+      },{
+        option:'Collect+',
+        cost:4.50
+      },{
+        option:'International Delivery',
+        cost:5
+      }],
       items : 1,
+      sub_total_price: 0,
+      sub_total_items: 0,
+      sub_total_orders: 0,
 
       ready: function(){
+        var basket_name = 'george_basket=';
+        if(this.basket.length == 0){
+          var test = document.cookie.split(';');
+          for(var i=0; i < test.length;i++){
+            var cookie_search = test[i];
+            if(cookie_search.indexOf(basket_name) != -1){
+              basket_broken = (cookie_search.substring(basket_name.length+1, cookie_search.length-1)).split('},');
+              if(basket_broken != ''){
+                for( var j = 0; j < basket_broken.length;j++){
+                  if(j+1 == basket_broken.length){
+                    var data = JSON.parse(basket_broken[j]);
+                  } else {
+                    var data = JSON.parse(basket_broken[j]+'}');
+                  }
+                  data.id = this.items;
+                  this.sub_total = this.sub_total + data.price * data.quantity;
+                  this.basket.push(data);
+                  this.items++;
+                }
+              }
+            }
+          }
+        }
       },
 
       updateCheckout: function(e, detail, sender) {
@@ -55,9 +128,27 @@
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
       },
 
+      alterOrder: function(e, detail, sender) {
+        var product_id = e.target.templateInstance.model.product;
+        for(var i = 0; i< this.basket.length; i++){
+          if(product_id.id == this.basket[i].id){
+            this.basket.quantity = sender.selected;
+          }
+        }
+        var newBasket = this.basket;
+        this.fire('core-signal', {name:"basket-alter", data:newBasket});
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+      },
+
       checkoutSignal: function(e, detail, sender) {
-        console.log(detail);
+        //console.log(detail);
         this.basket = detail;
+        for(var i = 0; i< this.basket.length; i++){
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
       }
 
     });
