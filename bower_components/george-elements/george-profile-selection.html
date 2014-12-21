@@ -75,7 +75,7 @@
       selectAction: function(e, detail, sender) {
         var profileId = detail.item.attributes.profileid.value;
         this.setProfile(profileId);
-        var selectedItem = this.shadowRoot.querySelector('#profile_' + profileId);
+        var selectedItem = this.$.availableProfiles.querySelector('#profile_' + profileId);
         selectedItem.classList.toggle('selected', detail.isSelected);
       },
 
