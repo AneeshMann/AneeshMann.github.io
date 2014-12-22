@@ -1,4 +1,3 @@
-<link rel="import" href="/bower_components/web-animations-js/web-animations.html">
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-signals/core-signals.html">
 <link rel="import" href="../core-animated-pages/core-animated-pages.html">
@@ -29,23 +28,24 @@
         height: 100px;
       }
     </style>
+    <div id="checkout_summary" align="center"> Sub-Total: £{{sub_total_price}} Items Ordered: {{sub_total_items}} Orders: {{sub_total_orders}} </div>
     <template  id="checkout_item" repeat="{{basket as product}}">
       <div class='item_span' align="center">
         <img class='checkout_image' src='{{product.image}}'>
-        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}
-        <paper-dropdown-menu id="clothesQuantity" selected="{{product.quantity}}" on-core-select={{alterOrder}} valueattr="value">
-          <paper-dropdown class="dropdown">
-            <core-menu class="menu">
-              <template repeat="{{quantity in  quantities}}">
-                <paper-item>{{quantity}}</paper-item>
-              </template>
-            </core-menu>
-          </paper-dropdown>
-        </paper-dropdown-menu></p>
+        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: <paper-icon-button icon="add" on-click="{{alterOrderAdd}}"></paper-icon-button>{{product.quantity}}<paper-icon-button icon="remove" on-click="{{alterOrderSubtract}}"></paper-icon-button></p>
         <paper-icon-button icon=delete on-click="{{updateCheckout}}"></paper-icon-button>
       </div>
     </template>
-
+    <div id="deliveryOptList" align="center">Delivery Method :
+      <paper-dropdown-menu label="Select a Delivery Method">
+        <paper-dropdown class="dropdown">
+          <core-menu id="deliveryMethod" class="menu" on-core-select="{{deliverMethodChange}}">
+            <template repeat="{{deliveryOptions}}">
+              <paper-item value="{{cost}}">{{option}}</paper-item>
+            </template>
+          </core-menu>
+        </paper-dropdown>
+      </paper-dropdown-menu> Total Price: £{{total_price}}</div>
   </template>
   <script>
 
@@ -88,6 +88,7 @@
       sub_total_price: 0,
       sub_total_items: 0,
       sub_total_orders: 0,
+      total_price: 0,
 
       ready: function(){
         var basket_name = 'george_basket=';
@@ -113,6 +114,19 @@
             }
           }
         }
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
       updateCheckout: function(e, detail, sender) {
@@ -126,28 +140,106 @@
         this.fire('core-signal', {name:"basket-delete", data:newBasket});
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
-      alterOrder: function(e, detail, sender) {
+      alterOrderAdd: function(e, detail, sender) {
         var product_id = e.target.templateInstance.model.product;
         for(var i = 0; i< this.basket.length; i++){
           if(product_id.id == this.basket[i].id){
-            this.basket.quantity = sender.selected;
+            this.basket[i].quantity = this.basket[i].quantity+1;
           }
         }
         var newBasket = this.basket;
         this.fire('core-signal', {name:"basket-alter", data:newBasket});
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
+
+      alterOrderSubtract: function(e, detail, sender) {
+        var product_id = e.target.templateInstance.model.product;
+        for(var i = 0; i< this.basket.length; i++){
+          if(product_id.id == this.basket[i].id){
+            this.basket[i].quantity = this.basket[i].quantity-1;
+          }
+        }
+        var newBasket = this.basket;
+        this.fire('core-signal', {name:"basket-alter", data:newBasket});
+        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
+        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
+      },
+
 
       checkoutSignal: function(e, detail, sender) {
         //console.log(detail);
         this.basket = detail;
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
         for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
           this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
+      },
+
+      deliverMethodChange: function(e, detail, sender) {
+        //console.log(detail);
+        this.sub_total_price = 0;
+        this.sub_total_items = 0;
+        this.sub_total_orders = 0;
+        this.total_price = 0;
+        for(var i = 0; i< this.basket.length; i++){
+          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
+          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
+          this.sub_total_orders++;
+        }
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
         }
       }
 
