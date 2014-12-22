@@ -24,6 +24,7 @@
 
     <content>
       <section>
+        <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-cart" aria-label="Empty basket" role="img"></core-icon>Basket is empty</div>
         <div id="sub_total">Sub-Total : £ {{sub_total}}<div>
         <template  id="basket_item" repeat="{{basket as product}}">
           <div class='item_span'>
