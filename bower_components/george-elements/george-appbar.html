@@ -32,13 +32,12 @@
       <a href="/#/0"><paper-icon-button icon="home"></paper-icon-button></a>
       <george-g-button id="gbutton" style="color: black" noink></george-g-button>
       <span flex>{{categories[category].title}}</span>
-      <paper-icon-button id="shoppingbasketicon"
-        icon="shopping-basket" on-click="{{toggle}}">
+      <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{toggle}}">
       </paper-icon-button>
       <paper-dialog id="basket_content" transition="core-transition-center">
         <george-basket id="basket_holder"></george-basket>
       </paper-dialog>
-      <george-profile-selection></george-profile-selection>
+      <george-profile-selection id="profileSelectionElement"></george-profile-selection>
     </core-toolbar>
 
   </template>
@@ -46,12 +45,8 @@
   <script>
     Polymer('george-appbar', {
       categorySignal: function(e, detail, sender) {
-        this.category = detail ;
+        this.category = detail;
       },
-
-      // openProfileSelection: function() {
-      //   this.$.profile_selection.toggle();
-      // },
 
       toggle: function() {
         this.$.basket_content.toggle();
