@@ -124,7 +124,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
       updateCheckout: function(e, detail, sender) {
@@ -148,8 +150,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        console.log(this.$.deliveryMethod.selected);
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
       alterOrderAdd: function(e, detail, sender) {
@@ -173,7 +176,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
       alterOrderSubtract: function(e, detail, sender) {
@@ -197,7 +202,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
 
@@ -214,7 +221,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       },
 
       deliverMethodChange: function(e, detail, sender) {
@@ -229,7 +238,9 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(this.$.deliveryMethod.selected != null){
+          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        }
       }
 
     });
