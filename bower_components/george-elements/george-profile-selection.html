@@ -4,6 +4,7 @@
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="/bower_components/core-selection/core-selection.html">
 <link rel="import" href="/bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="/bower_components/core-ajax/core-ajax.html">
 
 <polymer-element name="george-profile-selection">
@@ -49,7 +50,7 @@
       <paper-icon-button id="selectedProfile"
         src="{{selectedProfileInfo.image}}" on-click="{{openProfileSelection}}">
       </paper-icon-button>
-      <paper-dialog id="profile_selection" heading="Profile Selection" transition="core-transition-center">
+      <paper-action-dialog id="profile_selection" heading="Profile Selection" transition="core-transition-center">
         <ul on-tap="{{itemTapAction}}" id="availableProfiles">
           <template repeat="{{profiles as profile}}">
             <li id="profile_{{profile.id}}" profileId="{{profile.id}}" layout horizontal center class="profile {{profile.id === selectedProfile ? 'selected' : ''}}">
@@ -59,7 +60,8 @@
           </template>
         </ul>
         <core-selection id="selection" multi="false" on-core-select="{{selectAction}}"></core-selection>
-      </paper-dialog>
+        <paper-button dismissive>Close</paper-button>
+      </paper-action-dialog>
     </content>
   </template>
 
