@@ -20,8 +20,8 @@
         "name": "Aneesh",
         "default": false,
         "image": "/images/profile-aneesh.png",
-        "relation": "Dad",
-        "gender": "m",
+        "relation": "Mum",
+        "gender": "f",
         "sizes": {
           "tees": "s",
           "shirts": "s",

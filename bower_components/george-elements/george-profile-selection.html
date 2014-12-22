@@ -100,6 +100,8 @@
         this.selectedProfile = id;
         this.selectedProfileInfo = this.getProfileById(id);
         document.cookie = "profile=" + id;
+        document.cookie = "profileData=" + JSON.stringify(this.selectedProfileInfo);
+        console.log("set profile id and profile data");
       },
 
       getDefaultProfile: function() {

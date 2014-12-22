@@ -92,6 +92,7 @@
 
     </style>
   <content>
+    <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
     <div id="container">
       <img src="/images/g-logo.png" />
       <div id="content" class="{{showOrHide}}">
@@ -125,6 +126,216 @@
         CoreStyle.g.paperInput.focusedColor = 'black';
       },
 
+      profileRelations: [
+        {
+          "profileKey": "son",
+          "keywords": [
+            "son"
+          ]
+        },
+        {
+          "profileKey": "daughter",
+          "keywords": [
+            "daughter"
+          ]
+        },
+        {
+          "profileKey": "mum",
+          "keywords": [
+            "mother", "mum"
+          ]
+        },
+        {
+          "profileKey": "dad",
+          "keywords": [
+            "father", "dad"
+          ]
+        },
+        {
+          "profileKey": "brother",
+          "keywords": [
+            "bro", "brother"
+          ],
+        },
+        {
+          "profileKey": "sister",
+          "keywords": [
+            "sis", "sister"
+          ]
+        },
+      ],
+
+      colours: [
+        "red", "green", "blue", "yellow", "pink",
+        "purple", "orange", "violet", "navy",
+        "white", "black", "grey"
+      ],
+
+      clothesKeywords: [
+        {
+          "clothesKey": "tee",
+          "keywords": [
+            "tee", "t-shirt", "tshirt", "tshirts", "t-shirts", "tees"
+          ]
+        },
+        {
+          "clothesKey": "jeans",
+          "keywords": [
+            "jeans", "jeggings", "jean", "jegging"
+          ]
+        },
+        {
+          "clothesKey": "dress",
+          "keywords": [
+            "dress", "dresses"
+          ]
+        }
+      ],
+
+      sizes: [
+        {
+          "key": "m",
+          "keywords": [
+            "medium", "m"
+          ]
+        }
+      ],
+
+      nonSearchTerms: [
+        "and", "for", "with", "my", "your",
+        "me", "clothes", "or"
+      ],
+
+      matchingRelations: [],
+      matchingClothes: [],
+      matchingColours: [],
+      matchedWords: [],
+      matchingProfiles: [],
+
+      analyseSearch: function() {
+        var searchInput = this.$.georgeSearch;
+        var searchTerm = searchInput.value.replace("/", "");
+        var words = searchTerm.split(" ");
+        this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
+        this.matchedWords = []; this.matchingProfiles = [];
+
+        for (var i = 0; i < words.length; i++) {
+          this.analyseWord(words[i]);
+        }
+
+        this.performSearch(searchTerm);
+      },
+
+      performSearch: function(term) {
+        term = this.stripMatchingWords(term);
+        for (var i = 0; i < this.matchingRelations.length; i++) {
+          for (var j = 0; j < this.profiles.length; j++) {
+            if (this.profiles[j].relation.toLowerCase() == this.matchingRelations[i].toLowerCase()) {
+              this.matchingProfiles.push(this.profiles[j].id);
+            }
+          }
+        }
+
+        if (this.matchingProfiles.length == 0) {
+          var selectedProfile = this.getSelectedProfileData();
+          this.matchingProfiles.push(selectedProfile.id);
+        }
+
+        document.location.href = "/#/productresultsgrid/" + term + "\\" + this.matchingColours.join() + "\\" + this.matchingProfiles.join() + "\\" + this.matchingClothes.join();
+      },
+
+      stripMatchingWords: function(term) {
+        var parsedTerm = term;
+        for (var i = 0; i < this.matchedWords.length; i++) {
+          parsedTerm = parsedTerm.replace(this.matchedWords[i], "");
+          parsedTerm = parsedTerm.replace("  ", " ");
+        }
+
+        for (var i = 0; i < this.nonSearchTerms.length; i++) {
+          parsedTerm = parsedTerm.replace(this.nonSearchTerms[i], "");
+          parsedTerm = parsedTerm.replace("  ", " ");
+        }
+        return parsedTerm;
+      },
+
+      analyseWord: function(word) {
+        var profileKey = this.isProfileKeyword(word);
+        if (profileKey != "") {
+          this.matchingRelations.push(profileKey);
+          this.matchedWords.push(word);
+        }
+
+        var clothesKey = this.isClothesKeyword(word);
+        if (clothesKey != "") {
+          this.matchingClothes.push(clothesKey);
+          this.matchedWords.push(word);
+        }
+
+        for (var i = 0; i < this.colours.length; i++) {
+          if (word.toLowerCase() == this.colours[i].toLowerCase()) {
+            this.matchingColours.push(word);
+            this.matchedWords.push(word);
+          }
+        }
+
+        for (var i = 0; i < this.profiles.length; i++) {
+          if (this.profiles[i].name.toLowerCase() == word.toLowerCase()) {
+            this.matchingProfiles.push(this.profiles[i].id);
+            this.matchedWords.push(word);
+          }
+        }
+      },
+
+      getSelectedProfileData: function() {
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf("profileData=") != -1) {
+            return JSON.parse(c.substring(12, c.length));
+          }
+        }
+        return {
+          "id": "1"
+        };
+      },
+
+      isClothesKeyword: function(word) {
+        var clothes = this.clothesKeywords;
+        for (var i = 0; i < clothes.length; i++) {
+          var keywords = clothes[i].keywords;
+          for (var j = 0; j < keywords.length; j++) {
+            if (keywords[j] == word.toLowerCase()) {
+              return clothes[i].clothesKey;
+            }
+          }
+        }
+        return "";
+      },
+
+      isProfileKeyword: function(word) {
+        var relations = this.profileRelations;
+        for (var i = 0; i < relations.length; i++) {
+          var keywords = relations[i].keywords;
+          for (var j = 0; j < keywords.length; j++) {
+            if (keywords[j] == word.toLowerCase()) {
+              return relations[i].profileKey;
+            }
+          }
+        }
+        return "";
+      },
+
+      isProfileName: function(word) {
+        // TODO: Get the profiles out and check them
+      },
+
+      jsonLoaded: function() {
+        this.profiles = this.$.ajax.response.slice(0);
+      },
+
       showContent: function() {
         this.className = "expand";
         this.showOrHide = "show";
@@ -154,16 +365,6 @@
           that.clearResult = true;
         });
       },
-
-      analyseSearch: function() {
-        var searchInput = this.$.georgeSearch;
-        var searchTerm = searchInput.value;
-        //console.log(searchTerm);
-        // Hard code for demo
-        //if (searchTerm.indexOf("red") > -1 && searchTerm.indexOf("dresses") > -1) {
-          document.location.href = "/#/productresultsgrid/" + searchTerm;
-        //}
-      }
     });
   </script>
 </polymer-element>
