@@ -579,6 +579,7 @@
 
       },
 
+      // Get the selected profile data from the cookie
       getSelectedProfileData: function() {
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
@@ -620,35 +621,58 @@
         }
       },
 
-      jsonLoaded: function() {
-        this.profiles = this.$.ajax.response.slice(0);
+      // Get a parameter from the url
+      getUrlParam: function(key) {
         var url = window.location + "";
-        var searchString = url.substring(url.indexOf("grid/") + 5);
-        var searchTerm = searchString.split("\\")[0];
-        var searchFilters = searchString.split("\\");
-        var clothesFilters = (searchFilters[3] === "") ? [] : searchFilters[3].split(",");
-        var colourFilters = (searchFilters[1] === "") ? [] : searchFilters[1].split(",");
-        var profileFilters = (searchFilters[2] === "") ? [] : searchFilters[2].split(",");
+        var parameterString = url.substring(url.indexOf("?") + 1);
+        var parameters = parameterString.split("&");
+        for (var i = 0; i < parameters.length; i++) {
+          if (parameters[i].split("=")[0].toLowerCase() == key && parameters[i].split("=").length > 1) {
+            return parameters[i].split("=")[1];
+          }
+        }
+        return "";
+      },
+
+      jsonLoaded: function() {
+        // Store the profile information in the this.profiles variable
+        this.profiles = this.$.ajax.response.slice(0);
+
+        // Get the search term and parameters to filter by from the url
+        var types = this.getUrlParam("types");
+        var colours = this.getUrlParam("colours");
+        var profiles = this.getUrlParam("profiles");
+        var searchTerm = this.getUrlParam("search");
+        var clothesFilters = (types === "") ? [] : types.split(",");
+        var colourFilters = (colours === "") ? [] : colours.split(",");
+        var profileFilters = (profiles === "") ? [] : profiles.split(",");
+
+        // Get the currently selected profile from the cookies
         var selectedProfile = this.getSelectedProfileData();
 
+        // Filter down the products
         this.filteredItems = this.items;
         var that = this;
         this.filteredItems = this.items.filter(function(d, idx, array) {
           var matchesClothes = (clothesFilters.length == 0) ? true : false;
           var matchesColour = (colourFilters.length == 0) ? true : false;
           var matchesProfiles = (profileFilters.length == 0) ? true : false;
+
+          // Does it match at least one of the clothes types detected
           for (var i = 0; i < clothesFilters.length; i++) {
             if (d.type == clothesFilters[i]) {
               matchesClothes = true;
             }
           }
 
+          // Does it match at least one of the colours detected
           for (var i = 0; i < colourFilters.length; i++) {
             if (d.color == colourFilters[i]) {
               matchesColour = true;
             }
           }
 
+          // Does it match the profile being used for this search (male/female, no sizes yet)
           for (var i = 0; i < profileFilters.length; i++) {
             var profile = { "id":"-1"};
             for (var j = 0; j < that.profiles.length; j++) {
@@ -663,9 +687,12 @@
             }
           }
 
+          // Now filter by the rest of the search terms in the title and the description
           var wordMatches = 0; var totalWords = 0;
           var searchTerms = searchTerm.split(" ");
-          for (var i = 0; i < searchTerms.length && searchTerms[i] != " "; i++) {
+          console.log(searchTerm);
+          for (var i = 0; i < searchTerms.length && searchTerms[i] != ""; i++) {
+            console.log(searchTerms[i]);
             var regex = new RegExp(searchTerms[i], 'i');
             if (regex.test(d.product) || regex.test(d.description)) {
               wordMatches++;
@@ -673,7 +700,9 @@
             totalWords++;
           }
 
-          return matchesClothes && matchesColour && matchesProfiles && ((wordMatches/totalWords)*100 > 50);
+
+          // Check to see if matches all filters and at least 50% of the search terms matched
+          return matchesClothes && matchesColour && matchesProfiles && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
       },
 

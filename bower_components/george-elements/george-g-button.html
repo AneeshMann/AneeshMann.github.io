@@ -203,7 +203,8 @@
 
       nonSearchTerms: [
         "and", "for", "with", "my", "your",
-        "me", "clothes", "or"
+        "me", "clothes", "or", "buy", "i", "want", "to",
+        "view", "see"
       ],
 
       matchingRelations: [],
@@ -215,36 +216,56 @@
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
         var searchTerm = searchInput.value.replace("/", "");
+
+        // Split the search string into individual words
         var words = searchTerm.split(" ");
+
+        // Reset all the arrays
         this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
         this.matchedWords = []; this.matchingProfiles = [];
 
+        // Loop through each word in the search string and analyse it
         for (var i = 0; i < words.length; i++) {
           this.analyseWord(words[i]);
         }
 
+        // Now that we've analysed the search string, perform the search with the available data
         this.performSearch(searchTerm);
       },
 
       performSearch: function(term) {
+        // Any words we recognise and know what they mean, strip them out of the search string
         term = this.stripMatchingWords(term);
+
+        // For each word we detected as a relation, look through the profiles and see if they have a profile added for that relation
         for (var i = 0; i < this.matchingRelations.length; i++) {
           for (var j = 0; j < this.profiles.length; j++) {
             if (this.profiles[j].relation.toLowerCase() == this.matchingRelations[i].toLowerCase()) {
+              // Add the matching profile id to the global array
               this.matchingProfiles.push(this.profiles[j].id);
             }
           }
         }
 
+        // If we found no profile specific data in the search, use the currently selected profile for searching
         if (this.matchingProfiles.length == 0) {
           var selectedProfile = this.getSelectedProfileData();
           this.matchingProfiles.push(selectedProfile.id);
         }
 
-        document.location.href = "/#/productresultsgrid/" + term + "\\" + this.matchingColours.join() + "\\" + this.matchingProfiles.join() + "\\" + this.matchingClothes.join();
+        // Check to make sure the search term isn't just whitespace, if so don't pass it to the search
+        var regex = new RegExp("^\\s*$", 'i');
+        var termParam = "";
+        if (!regex.test(term)) {
+          termParam = "search=" + term;
+        }
+
+        // Take us to the results
+        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + "&profiles=" + this.matchingProfiles.join() + "&types=" + this.matchingClothes.join();
       },
 
       stripMatchingWords: function(term) {
+        // Replace all matching words
         var parsedTerm = term;
         for (var i = 0; i < this.matchedWords.length; i++) {
           parsedTerm = parsedTerm.replace(this.matchedWords[i], "");
@@ -259,18 +280,21 @@
       },
 
       analyseWord: function(word) {
+        // Check to see if the word is a recognised relation keyword
         var profileKey = this.isProfileKeyword(word);
         if (profileKey != "") {
           this.matchingRelations.push(profileKey);
           this.matchedWords.push(word);
         }
 
+        // Check to see if the word is a recognised clothes type keyword
         var clothesKey = this.isClothesKeyword(word);
         if (clothesKey != "") {
           this.matchingClothes.push(clothesKey);
           this.matchedWords.push(word);
         }
 
+        // Check to see if the word is a recognised colour
         for (var i = 0; i < this.colours.length; i++) {
           if (word.toLowerCase() == this.colours[i].toLowerCase()) {
             this.matchingColours.push(word);
@@ -278,6 +302,7 @@
           }
         }
 
+        // Check to see if the word is a name of a profile
         for (var i = 0; i < this.profiles.length; i++) {
           if (this.profiles[i].name.toLowerCase() == word.toLowerCase()) {
             this.matchingProfiles.push(this.profiles[i].id);
@@ -286,6 +311,7 @@
         }
       },
 
+      // Get the selected profile from the cookies
       getSelectedProfileData: function() {
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
@@ -302,6 +328,8 @@
         };
       },
 
+      // TODO: this function can be generalised and reused if we use "key" instead of "clothesKey"
+      // Check if a clothes type keyword
       isClothesKeyword: function(word) {
         var clothes = this.clothesKeywords;
         for (var i = 0; i < clothes.length; i++) {
@@ -315,6 +343,7 @@
         return "";
       },
 
+      // Check if a relation keyword
       isProfileKeyword: function(word) {
         var relations = this.profileRelations;
         for (var i = 0; i < relations.length; i++) {
@@ -326,10 +355,6 @@
           }
         }
         return "";
-      },
-
-      isProfileName: function(word) {
-        // TODO: Get the profiles out and check them
       },
 
       jsonLoaded: function() {
@@ -353,6 +378,7 @@
         var search = this.$.georgeSearch;
         recog.start();
         recog.addEventListener('onresult', function(event) {
+          // Clear current search if moved onto new detection with voice recognition
           if (that.clearResult) {
             search.inputValue = '';
             that.clearResult = false;
