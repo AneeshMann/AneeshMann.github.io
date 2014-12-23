@@ -26,16 +26,18 @@
       <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
       </paper-icon-button>
       <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-center">
-        <div id="sub_total">Sub-Total : £ {{sub_total}}  <paper-icon-button icon='clear' dismissive> </paper-icon-button><div>
         <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-cart" aria-label="Empty basket" role="img"></core-icon>Basket is empty</div>
-        <template  id="basket_item" repeat="{{basket as product}}">
-          <div class='item_span'>
-            <img class='basket-image' src='{{product.image}}' height='50px'>
-            <p class='product-name'><b>{{product.product}}</b> Price: £ {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
-            <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
-          </div>
-        </template>
-        <paper-button on-click="{{basketToCheckout}}">Proceed To Checkout</paper-button>
+        <div id="basket_contents" style="display: {{basket.length === 0 ? 'none' : 'block'}}">
+          <template id="basket_item" repeat="{{basket as product}}">
+            <div class='item_span' horizontal justified layout>
+              <img class='basket-image' src='{{product.image}}' height='50px'>
+              <div class='product-name'><b>{{product.product}}</b><br />Price: £{{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</div>
+              <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
+            </div>
+          </template>
+          <div id="sub_total">Sub-Total: £{{sub_total}}<div>
+          <paper-button on-click="{{basketToCheckout}}" affirmative>Proceed To Checkout</paper-button><paper-button dismissive>Close</paper-button>
+        </div>
       </paper-action-dialog>
     </content>
   </template>
@@ -71,8 +73,7 @@
             }
           }
         }
-        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
-        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        document.cookie = "george_basket="+JSON.stringify(this.basket);
         this.sub_total = 0;
         for(var i = 0; i< this.basket.length; i++){
           this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
@@ -86,8 +87,7 @@
             this.basket.splice(i,1);
           }
         }
-        document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
-        document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+        document.cookie = "george_basket="+JSON.stringify(this.basket);
         this.sub_total = 0;
         for(var i = 0; i< this.basket.length; i++){
           this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
@@ -97,19 +97,18 @@
       basketAdd: function(e, detail, sender) {
         if(this.unique != detail.unique){
           product_basket = {
-            id: this.items,
-            product: detail.product,
-            price: detail.price,
-            image: detail.image,
-            size: detail.sizes,
-            quantity: detail.quantity
+            "id": this.items,
+            "product": detail.product,
+            "price": detail.price,
+            "image": detail.image,
+            "size": detail.sizes,
+            "quantity": detail.quantity
           };
           //console.log(detail);
           this.items++;
           this.sub_total = this.sub_total + product_basket.price * product_basket.quantity;
           this.basket.push(product_basket);
-          document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
-          document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
+          document.cookie = "george_basket="+JSON.stringify(this.basket);
           this.unique = detail.unique;
           this.sub_total = 0;
           for(var i = 0; i< this.basket.length; i++){
@@ -130,7 +129,7 @@
         if(this.basket.length != 0){
           var checkoutData = this.basket;
           document.location.href = "/#/basketcheckout/";
-          this.asyncFire('core-signal', {name:"checkout", data:checkoutData});
+          this.asyncFire('core-signal', {"name":"checkout", "data":checkoutData});
         }
       },
 
