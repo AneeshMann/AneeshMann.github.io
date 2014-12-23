@@ -94,18 +94,18 @@
         }
       },
 
-      isAlreadyInBasket: function(uniqueId) {
+      isAlreadyInBasket: function(uniqueId, sizeGiven) {
         for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].productcode == uniqueId) {
+          if (this.basket[i].productcode == uniqueId && this.basket[i].size == sizeGiven) {
             return true;
           }
         }
         return false;
       },
 
-      updateBasketQuantity: function(uniqueId, quantity) {
+      updateBasketQuantity: function(uniqueId, sizeGiven, quantity) {
         for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].productcode = uniqueId) {
+          if (this.basket[i].productcode = uniqueId && this.basket[i].size == sizeGiven) {
             this.basket[i].quantity = parseInt(this.basket[i].quantity) + quantity;
             return;
           }
@@ -120,8 +120,9 @@
       },
 
       basketAdd: function(e, detail, sender) {
-        if (this.isAlreadyInBasket(detail.productcode)) {
-          this.updateBasketQuantity(detail.productcode, detail.quantity);
+        if (this.isAlreadyInBasket(detail.productcode, detail.sizes)) {
+          console.log(detail.productcode);
+          this.updateBasketQuantity(detail.productcode, detail.sizes, detail.quantity);
           this.updateSubtotal();
         } else {
           product_basket = {
