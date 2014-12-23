@@ -3,38 +3,41 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="/bower_components/paper-input/paper-input.html">
-<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="/bower_components/core-icons/av-icons.html">
 
 
 <polymer-element name="george-basket">
+  <core-signals on-core-signal-basket-add="{{basketAddSignal}}"></core-signals>
+  <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
   <template>
 
     <style>
         .product-name{
           font-size:0.8em;
         }
-        .basket_image{
+
+        .basket-image{
           height: 50px;
         }
     </style>
 
-    <core-signals on-core-signal-basket-add="{{basketAddSignal}}"></core-signals>
-    <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
-
     <content>
-      <section>
+      <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
+      </paper-icon-button>
+      <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-center">
+        <div id="sub_total">Sub-Total : £ {{sub_total}}  <paper-icon-button icon='clear' dismissive> </paper-icon-button><div>
         <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-cart" aria-label="Empty basket" role="img"></core-icon>Basket is empty</div>
-        <div id="sub_total">Sub-Total : £ {{sub_total}}<div>
         <template  id="basket_item" repeat="{{basket as product}}">
           <div class='item_span'>
-            <img class='basket_image' src='{{product.image}}'>
+            <img class='basket-image' src='{{product.image}}' height='50px'>
             <p class='product-name'><b>{{product.product}}</b> Price: £ {{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</p>
             <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
           </div>
         </template>
         <paper-button on-click="{{basketToCheckout}}">Proceed To Checkout</paper-button>
-      </section>
+      </paper-action-dialog>
     </content>
   </template>
 
@@ -54,7 +57,8 @@
             var cookie_search = test[i];
             if(cookie_search.indexOf(basket_name) != -1){
               basket_broken = (cookie_search.substring(basket_name.length+1, cookie_search.length-1)).split('},');
-              if(basket_broken != ''){
+              if(basket_broken != '[' && basket_broken != ''){
+                alert(basket_broken);
                 for( var j = 0; j < basket_broken.length;j++){
                   if(j+1 == basket_broken.length){
                     var data = JSON.parse(basket_broken[j]);
@@ -125,9 +129,16 @@
       },
 
       basketToCheckout: function(e, detail, sender) {
-        var checkoutData = this.basket;
-        document.location.href = "/#/basketcheckout/";
-        this.asyncFire('core-signal', {name:"checkout", data:checkoutData});
+        if(this.basket.length != 0){
+          alert(this.basket.length);
+          var checkoutData = this.basket;
+          document.location.href = "/#/basketcheckout/";
+          this.asyncFire('core-signal', {name:"checkout", data:checkoutData});
+        }
+      },
+
+      basketToggle: function() {
+        this.$.basket_content.toggle();
       }
     });
   </script>

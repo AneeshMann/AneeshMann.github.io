@@ -23,6 +23,7 @@
       body{
         font-family: 'RobotoDraft', sans-serif;
       }
+      /*chip*/
       .chip-container {
         position: absolute;
         right: 0;
@@ -63,10 +64,7 @@
         height:100%;
       }
 
-      #details {
-        padding: 200px 10% 0;
-      }
-
+      /*card layout*/
       .card {
         font-family: 'RobotoDraft', sans-serif;
         position: absolute;
@@ -83,7 +81,6 @@
         background-image: -moz-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
         background-image: -webkit-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
         background-image: -ms-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
-         /*style="background-image: linear-gradient(bottom, #FFFFFF 50%, #{{selectedProduct.color}} 50%);background-image: -o-linear-gradient(bottom, #FFFFFF 50%, #{{selectedProduct.color}} 50%);background-image: -moz-linear-gradient(bottom, #FFFFFF 50%, #{{selectedProduct.color}} 50%);background-image: -webkit-linear-gradient(bottom, #FFFFFF 50%, #{{selectedProduct.color}} 50%);background-image: -ms-linear-gradient(bottom, #FFFFFF 50%, #{{selectedProduct.color}} 50%);"*/
       }
 
       .card-left {
@@ -95,10 +92,21 @@
       .card-right {
         padding: 24px;
       }
+      .card-top-right{
+        height:55%;
+      }
+      .card-description{
+        padding-top: 10%;
+      }
 
+      /*card contents*/
       .card-product-title {
         color:white;
         font-size: 3em;
+        width:90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .card-clothing {
@@ -111,11 +119,6 @@
         font-size: 3em;
         padding-right: 2%;
       }
-      @media screen and (max-width: 1200px) {
-        .card-price {
-          float:left;
-        }
-      }
 
       .card-image{
         width:100%;
@@ -123,10 +126,6 @@
         max-height:20%;
       }
 
-      .card-description{
-        position: absolute;
-        top:55%;
-      }
       .paper-icon-close{
         position: absolute;
         top:0px;
@@ -138,6 +137,22 @@
       .inputs{
         display: inline-block;
       }
+      .input span{
+        color: white;
+      }
+      .input{
+        float:left;
+      }
+      paper-dropdown-menu::shadow #label, paper-dropdown-menu::shadow #arrow {
+        color: white !important;
+      }
+      paper-dropdown-menu::shadow #label {
+        width: 110px;
+      }
+      paper-dropdown-menu{
+        background-color: inherit;
+        border-bottom: 1px solid white;
+      }
       paper-fab{
         background: #FFEB3B;
         color: black;
@@ -145,15 +160,47 @@
         right:3%;
         bottom:50%;
       }
-      paper-dropdown-menu{
-        background-color: inherit;
-      }
-      paper-dropdown-menu::shadow #control {
-        color: black;
-        border-bottom-color: black;
-      }
-    </style>
 
+      /*hidef screen layout*/
+      /*card tablet layout*/
+      @media screen and (min-width: 1367px) {
+        .card-description{
+          padding-top: 15%;
+        }
+      }
+
+      /*card tablet layout*/
+      @media screen and (min-width: 481px) and (max-width: 1200px) {
+        .card-product-title {
+          font-size: 2em !important;
+
+        }
+        .card-price {
+          font-size: 2em !important;
+          float:left;
+        }
+      }
+      /*card mobile layout*/
+      @media screen and (max-width: 481px) {
+        .card{         
+        }
+        .card-product-title {
+          font-size: 1em !important;
+        }
+        .card-price {
+          font-size: 1em !important;
+          float:left;
+        }
+        .forward-fab{
+          display:none !important;
+        }
+        .card-description{
+          padding-top: 15%;
+          margin-left: -60%;
+        }
+      }
+
+    </style>
     <core-animated-pages id="coreAnimatedPages" selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
 
       <section>
@@ -176,21 +223,21 @@
         </div>
       </section>
 
-      <section id="details">
+      <section>
         <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
           <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
           <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
             <img class="card-image" src="{{selectedProduct.image}}"/>
           </div>
-          <div class="card-right" flex>
-            <div layout horizontal center>
-              <div flex>
-                <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" on-tap={{forward}}></paper-fab>
+          <div class="card-right" flex two>
+              <div class="card-top-right">
+                <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
                 <div class="card-product-title">{{selectedProduct.product}}</div>
                 <div class="card-clothing">{{selectedProduct.clothing}}</div>
                 <div class="card-price">£{{selectedProduct.price}}</div>
                 <div class="inputs">
-                  Size:
+                  <div class="input">
+                  <span>Size:</span>
                   <paper-dropdown-menu label="Select a Size">
                     <paper-dropdown class="dropdown">
                       <core-menu id="clothesSize" class="menu">
@@ -200,8 +247,9 @@
                       </core-menu>
                     </paper-dropdown>
                   </paper-dropdown-menu>
-
-                  Quantity:
+                  </div>
+                  <div class="input">
+                  <span>Quantity:</span>
                   <paper-dropdown-menu label="Select Quantity">
                     <paper-dropdown class="dropdown">
                       <core-menu id="clothesQuantity" class="menu">
@@ -211,16 +259,15 @@
                       </core-menu>
                     </paper-dropdown>
                   </paper-dropdown-menu>
+                  </div>
                 </div>
                 <div>
-                <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
+                  <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
                 </div>
-                <div class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br> {{selectedProduct.productcode}}</div>
               </div>
-            </div>
+              <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br> {{selectedProduct.productcode}}</div>
           </div>
         </div>
-
       </section>
 
     </core-animated-pages>
