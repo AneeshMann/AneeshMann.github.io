@@ -94,26 +94,51 @@
         }
       },
 
+      isAlreadyInBasket: function(uniqueId) {
+        for (var i = 0; i < this.basket.length; i++) {
+          if (this.basket[i].productcode == uniqueId) {
+            return true;
+          }
+        }
+        return false;
+      },
+
+      updateBasketQuantity: function(uniqueId, quantity) {
+        for (var i = 0; i < this.basket.length; i++) {
+          if (this.basket[i].productcode = uniqueId) {
+            this.basket[i].quantity = parseInt(this.basket[i].quantity) + quantity;
+            return;
+          }
+        }
+      },
+
+      updateSubtotal: function() {
+        this.sub_total = 0;
+        for(var i = 0; i < this.basket.length; i++){
+          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+        }
+      },
+
       basketAdd: function(e, detail, sender) {
-        if(this.unique != detail.unique){
+        if (this.isAlreadyInBasket(detail.productcode)) {
+          this.updateBasketQuantity(detail.productcode, detail.quantity);
+          this.updateSubtotal();
+        } else {
           product_basket = {
             "id": this.items,
             "product": detail.product,
             "price": detail.price,
             "image": detail.image,
             "size": detail.sizes,
-            "quantity": detail.quantity
+            "quantity": detail.quantity,
+            "productcode": detail.productcode
           };
           //console.log(detail);
           this.items++;
-          this.sub_total = this.sub_total + product_basket.price * product_basket.quantity;
           this.basket.push(product_basket);
+          this.updateSubtotal();
           document.cookie = "george_basket="+JSON.stringify(this.basket);
           this.unique = detail.unique;
-          this.sub_total = 0;
-          for(var i = 0; i< this.basket.length; i++){
-            this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
-          }
         }
       },
 
