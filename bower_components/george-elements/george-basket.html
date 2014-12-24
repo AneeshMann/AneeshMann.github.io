@@ -25,7 +25,7 @@
       <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
       <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
       </paper-icon-button>
-      <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-center">
+      <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-top" style="width: 50%;">
         <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-cart" aria-label="Empty basket" role="img"></core-icon>Basket is empty</div>
         <div id="basket_contents" style="display: {{basket.length === 0 ? 'none' : 'block'}}">
           <template id="basket_item" repeat="{{basket as product}}">
@@ -36,7 +36,10 @@
             </div>
           </template>
           <div id="sub_total">Sub-Total: £{{sub_total}}<div>
-          <paper-button on-click="{{basketToCheckout}}" affirmative>Proceed To Checkout</paper-button><paper-button dismissive>Close</paper-button>
+        </div>
+        <div id="buttons" style="float: right;">
+          <paper-button dismissive>Close</paper-button>
+          <paper-button on-click="{{basketToCheckout}}" affirmative autofocus>Checkout</paper-button>
         </div>
       </paper-action-dialog>
     </content>
