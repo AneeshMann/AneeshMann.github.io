@@ -31,6 +31,7 @@
 
   <script>
     Polymer({
+      orderedCatalogues: [],
       cataloguesLoaded: function() {
         this.catalogues = this.$.ajax.response.slice(0);
         this.inflateCarousel();
@@ -83,8 +84,34 @@
                           ]
         });
 
+        this.reorderCatalogues();
+
+
+        for (i = 0; i < this.orderedCatalogues.length; i++) {
+            $(this.$.carousel).slickAdd("<div class='item'><img src='" + this.orderedCatalogues[i] + "'/></div>");
+        }
+      },
+
+      reorderCatalogues: function(){
+        var carouselSwitch = Math.round(Math.random()*4);
+        var carouselTag;
+        switch(carouselSwitch){
+          case 0: carouselTag = 'raining';
+          break;
+          case 1: carouselTag = 'snowing';
+          break;
+          case 2: carouselTag = 'halloween';
+          break;
+          case 3: carouselTag = 'male';
+          break;
+          case 4: carouselTag = 'female';
+          break;
+        }
+        console.log(carouselTag);
         for (i = 0; i < this.catalogues.length; i++) {
-            $(this.$.carousel).slickAdd("<div class='item'><img src='" + this.catalogues[i] + "'/></div>");
+          if(this.catalogues[i].tag == carouselTag){
+            this.orderedCatalogues = this.catalogues[i].carousel
+          }
         }
       }
     });
