@@ -26,21 +26,21 @@
       <core-signals on-core-signal-basket-pass="{{basketCheckoutSignal}}"></core-signals>
       <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
       </paper-icon-button>
-      <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-top" style="width: 50%;">
-        <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-cart" aria-label="Empty basket" role="img"></core-icon>Basket is empty</div>
+      <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-top">
+        <div id="empty_basket" style="display: {{basket.length === 0 ? 'block' : 'none'}}"><core-icon icon="shopping-basket" aria-label="Empty basket" role="img" style="width:100px; height:100px; display: block; margin: 0 auto;"></core-icon><div style="margin-bottom: 20px; text-align: center;">Don't keep me empty!</div></div>
         <div id="basket_contents" style="display: {{basket.length === 0 ? 'none' : 'block'}}">
           <template id="basket_item" repeat="{{basket as product}}">
-            <div class='item_span' horizontal justified layout>
+            <div class='item_span' horizontal justified layout style="border-bottom: 1px solid #EEEEEE; padding-top: 15px; padding-bottom: 15px;">
               <img class='basket-image' src='{{product.image}}' height='50px'>
-              <div class='product-name'><b>{{product.product}}</b><br />Price: £{{product.price}} Size: {{product.size}} Quantity: {{product.quantity}}</div>
-              <paper-icon-button icon=delete on-click="{{updateBasket}}"></paper-icon-button>
+              <div class='product-name' style="width: 50%;"><b>{{product.product}}</b><br>£{{product.price}} <br> Size: {{product.size}} <br> Quantity: {{product.quantity}}</div>
+              <paper-icon-button icon="delete" on-click="{{updateBasket}}"></paper-icon-button>
             </div>
           </template>
-          <div id="sub_total">Sub-Total: £{{sub_total}}<div>
+          <span id="sub_total" style="float: right;margin-right: 5px; margin-bottom: 20px; margin-top: 20px; font-weight: bold;">Subtotal: £{{sub_total}}</span>
         </div>
-        <div id="buttons" style="float: right;">
+        <div id="buttons" style="float: right; clear: both;">
           <paper-button dismissive>Close</paper-button>
-          <paper-button on-click="{{basketToCheckout}}" affirmative autofocus>Checkout</paper-button>
+          <paper-button on-click="{{basketToCheckout}}" affirmative autofocus style="background: #FFEB3B; display: {{basket.length === 0 ? 'none' : ''}}">Checkout</paper-button>
         </div>
       </paper-action-dialog>
     </content>
