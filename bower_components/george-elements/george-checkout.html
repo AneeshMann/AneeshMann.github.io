@@ -90,43 +90,8 @@
       sub_total_orders: 0,
       total_price: 0,
 
-      ready: function(){
-        var basket_name = 'george_basket=';
-        if(this.basket.length == 0){
-          var test = document.cookie.split(';');
-          for(var i=0; i < test.length;i++){
-            var cookie_search = test[i];
-            if(cookie_search.indexOf(basket_name) != -1){
-              basket_broken = (cookie_search.substring(basket_name.length+1, cookie_search.length-1)).split('},');
-              if(basket_broken != ''){
-                for( var j = 0; j < basket_broken.length;j++){
-                  if(j+1 == basket_broken.length){
-                    var data = JSON.parse(basket_broken[j]);
-                  } else {
-                    var data = JSON.parse(basket_broken[j]+'}');
-                  }
-                  data.id = this.items;
-                  this.sub_total = this.sub_total + data.price * data.quantity;
-                  this.basket.push(data);
-                  this.items++;
-                }
-              }
-            }
-          }
-        }
-        this.sub_total_price = 0;
-        this.sub_total_items = 0;
-        this.sub_total_orders = 0;
-        this.total_price = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
-          this.sub_total_orders++;
-        }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
-        }
+      domReady: function(){
+        this.fire('core-signal', {name:"basket-pass", data:"checkout"});
       },
 
       updateCheckout: function(e, detail, sender) {
@@ -137,22 +102,10 @@
           }
         }
         var newBasket = this.basket;
-        this.fire('core-signal', {name:"basket-delete", data:newBasket});
+        this.fire('core-signal', {name:"basket-alter", data:newBasket});
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
-        this.sub_total_price = 0;
-        this.sub_total_items = 0;
-        this.sub_total_orders = 0;
-        this.total_price = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
-          this.sub_total_orders++;
-        }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
-        }
+        this.recalculatePrices();
       },
 
       alterOrderAdd: function(e, detail, sender) {
@@ -166,19 +119,7 @@
         this.fire('core-signal', {name:"basket-alter", data:newBasket});
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
-        this.sub_total_price = 0;
-        this.sub_total_items = 0;
-        this.sub_total_orders = 0;
-        this.total_price = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
-          this.sub_total_orders++;
-        }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
-        }
+        this.recalculatePrices();
       },
 
       alterOrderSubtract: function(e, detail, sender) {
@@ -192,42 +133,20 @@
         this.fire('core-signal', {name:"basket-alter", data:newBasket});
         document.cookie = "george_basket=; expires= Thu, 18 Dec 2013 12:00:00 UTC;";
         document.cookie = "george_basket="+JSON.stringify(this.basket)+";";
-        this.sub_total_price = 0;
-        this.sub_total_items = 0;
-        this.sub_total_orders = 0;
-        this.total_price = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
-          this.sub_total_orders++;
-        }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
-        }
+        this.recalculatePrices();
       },
 
 
       checkoutSignal: function(e, detail, sender) {
-        //console.log(detail);
         this.basket = detail;
-        this.sub_total_price = 0;
-        this.sub_total_items = 0;
-        this.sub_total_orders = 0;
-        this.total_price = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_price = this.sub_total_price + this.basket[i].price * this.basket[i].quantity;
-          this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
-          this.sub_total_orders++;
-        }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
-        }
+        this.recalculatePrices();
       },
 
       deliverMethodChange: function(e, detail, sender) {
-        //console.log(detail);
+        this.recalculatePrices();
+      },
+
+      recalculatePrices: function(){
         this.sub_total_price = 0;
         this.sub_total_items = 0;
         this.sub_total_orders = 0;

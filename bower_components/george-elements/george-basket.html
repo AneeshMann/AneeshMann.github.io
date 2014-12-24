@@ -23,6 +23,7 @@
     <content>
       <core-signals on-core-signal-basket-add="{{basketAdd}}"></core-signals>
       <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
+      <core-signals on-core-signal-basket-pass="{{basketCheckoutSignal}}"></core-signals>
       <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
       </paper-icon-button>
       <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-top" style="width: 50%;">
@@ -95,20 +96,21 @@
         for(var i = 0; i< this.basket.length; i++){
           this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
         }
+        this.fire('core-signal', {"name":"checkout", "data":this.basket});
       },
 
-      isAlreadyInBasket: function(uniqueId) {
+      isAlreadyInBasket: function(uniqueId, sizeGiven) {
         for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].productcode == uniqueId) {
+          if (this.basket[i].productcode == uniqueId && this.basket[i].size == sizeGiven) {
             return true;
           }
         }
         return false;
       },
 
-      updateBasketQuantity: function(uniqueId, quantity) {
+      updateBasketQuantity: function(uniqueId, sizeGiven, quantity) {
         for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].productcode = uniqueId) {
+          if (this.basket[i].productcode = uniqueId && this.basket[i].size == sizeGiven) {
             this.basket[i].quantity = parseInt(this.basket[i].quantity) + quantity;
             return;
           }
@@ -123,8 +125,9 @@
       },
 
       basketAdd: function(e, detail, sender) {
-        if (this.isAlreadyInBasket(detail.productcode)) {
-          this.updateBasketQuantity(detail.productcode, detail.quantity);
+        if (this.isAlreadyInBasket(detail.productcode, detail.sizes)) {
+          console.log(detail.productcode);
+          this.updateBasketQuantity(detail.productcode, detail.sizes, detail.quantity);
           this.updateSubtotal();
         } else {
           product_basket = {
@@ -155,10 +158,13 @@
 
       basketToCheckout: function(e, detail, sender) {
         if(this.basket.length != 0){
-          var checkoutData = this.basket;
           document.location.href = "/#/basketcheckout/";
-          this.asyncFire('core-signal', {"name":"checkout", "data":checkoutData});
         }
+      },
+
+      basketCheckoutSignal: function() {
+        var checkoutData = this.basket;
+        this.fire('core-signal', {"name":"checkout", "data":checkoutData});
       },
 
       basketToggle: function() {
