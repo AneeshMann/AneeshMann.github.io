@@ -23,6 +23,8 @@
     <content>
       <core-signals on-core-signal-basket-add="{{basketAdd}}"></core-signals>
       <core-signals on-core-signal-basket-alter="{{basketAlter}}"></core-signals>
+      <core-signals on-core-signal-basket-delete="{{basketDelete}}"></core-signals>
+      <core-signals on-core-signal-basket-pass="{{basketCheckoutSignal}}"></core-signals>
       <paper-icon-button id="shoppingbasketicon" icon="shopping-basket" on-click="{{basketToggle}}">
       </paper-icon-button>
       <paper-action-dialog id="basket_content" heading="Basket" transition="core-transition-center">
@@ -92,6 +94,7 @@
         for(var i = 0; i< this.basket.length; i++){
           this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
         }
+        this.fire('core-signal', {"name":"checkout", "data":this.basket});
       },
 
       isAlreadyInBasket: function(uniqueId, sizeGiven) {
@@ -153,10 +156,13 @@
 
       basketToCheckout: function(e, detail, sender) {
         if(this.basket.length != 0){
-          var checkoutData = this.basket;
           document.location.href = "/#/basketcheckout/";
-          this.asyncFire('core-signal', {"name":"checkout", "data":checkoutData});
         }
+      },
+
+      basketCheckoutSignal: function() {
+        var checkoutData = this.basket;
+        this.fire('core-signal', {"name":"checkout", "data":checkoutData});
       },
 
       basketToggle: function() {
