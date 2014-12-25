@@ -93,24 +93,61 @@
       },
 
       reorderCatalogues: function(){
-        var carouselSwitch = Math.round(Math.random()*4);
-        var carouselTag;
-        switch(carouselSwitch){
-          case 0: carouselTag = 'raining';
+        var event_tag = Math.round(Math.random());
+        switch(event_tag){
+          case 0: event_tag = 'winter';
           break;
-          case 1: carouselTag = 'snowing';
-          break;
-          case 2: carouselTag = 'halloween';
-          break;
-          case 3: carouselTag = 'male';
-          break;
-          case 4: carouselTag = 'female';
+          case 1: event_tag = 'halloween';
           break;
         }
-        console.log(carouselTag);
-        for (i = 0; i < this.catalogues.length; i++) {
-          if(this.catalogues[i].tag == carouselTag){
-            this.orderedCatalogues = this.catalogues[i].carousel
+        var weather_tag = Math.round(Math.random());
+        switch(weather_tag){
+          case 0: weather_tag = 'raining';
+          break;
+          case 1: weather_tag = 'snowing';
+          break;
+        }
+        var gender_tag = Math.round(Math.random());
+        switch(gender_tag){
+          case 0: gender_tag = 'female';
+          break;
+          case 1: gender_tag = 'male';
+          break;
+        }
+        console.log(event_tag);
+        console.log(weather_tag);
+        console.log(gender_tag);
+
+        for(i = 0; i < this.catalogues.length; i++) {
+          var optionSearch = this.catalogues[i].options;
+          for(j = 0; j < optionSearch.length; j++){
+            var optionCarousel = optionSearch[j].carousel;
+            switch(optionSearch[j].tag){
+              case 'today': this.searchAddCarousel(optionCarousel);
+                break;
+              case event_tag: this.searchAddCarousel(optionCarousel);
+                break;
+              case weather_tag: this.searchAddCarousel(optionCarousel);
+                break;
+              case gender_tag: this.searchAddCarousel(optionCarousel);
+                break;
+              case 'remainder': this.searchAddCarousel(optionCarousel);
+                break;
+            }
+          }
+        }
+      },
+
+      searchAddCarousel: function(carouselLinks){
+        for(var k = 0; k < carouselLinks.length; k++){
+          var found = 1;
+          for(var l = 0; l < this.orderedCatalogues.length; l++){
+            if(this.orderedCatalogues[l] == carouselLinks[k]){
+              found = 0;
+            }
+          }
+          if(found == 1){
+            this.orderedCatalogues.push(carouselLinks[k])
           }
         }
       }
