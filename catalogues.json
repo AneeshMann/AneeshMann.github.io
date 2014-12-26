@@ -38,6 +38,10 @@
         {
           "tag":"snowing",
           "carousel":["/images/catalogues/winter.png"]
+        },
+        {
+          "tag":"sun",
+          "carousel":["/images/catalogues/women/dresses.png"]
         }
       ]
   },
