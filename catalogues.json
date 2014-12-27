@@ -5,7 +5,8 @@
       [
         {
           "tag":"today",
-          "carousel":["/images/catalogues/today.png"]
+          "carousel":[{"image":"/images/catalogues/today.png",
+                      "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
         }
       ]
   },
@@ -16,11 +17,13 @@
       [
         {
           "tag":"winter",
-          "carousel":["/images/catalogues/winter.png"]
+          "carousel":[{"image":"/images/catalogues/winter.png",
+                      "href":"/#/2"}]
         },
         {
           "tag":"halloween",
-          "carousel":["/images/catalogues/boys/halloween.png"]
+          "carousel":[{"image":"/images/catalogues/boys/halloween.png",
+                      "href":"/#/2"}]
         }
       ]
   },
@@ -31,13 +34,22 @@
       [
         {
           "tag":"raining",
-          "carousel":["/images/catalogues/boys/coat.png",
-            "/images/catalogues/women/footwear.png",
-            "/images/catalogues/boys/footwear.png"]
+          "carousel":[{"image":"/images/catalogues/boys/coat.png",
+                        "href":"/#/3"},
+            {"image":"/images/catalogues/women/footwear.png",
+                        "href":"/#/4"},
+            {"image":"/images/catalogues/boys/footwear.png",
+                        "href":"/#/5"}]
         },
         {
           "tag":"snowing",
-          "carousel":["/images/catalogues/winter.png"]
+          "carousel":[{"image":"/images/catalogues/winter.png",
+                          "href":"/#/3"}]
+        },
+        {
+          "tag":"sun",
+          "carousel":[{"image":"/images/catalogues/women/dresses.png",
+                          "href":"/#/3"}]
         }
       ]
   },
@@ -48,17 +60,25 @@
       [
         {
           "tag":"female",
-          "carousel":["/images/catalogues/women/jeans.png",
-            "/images/catalogues/women/dresses.png",
-            "/images/catalogues/women/knitwear.png",
-            "/images/catalogues/women/footwear.png"]
+          "carousel":[{"image":"/images/catalogues/women/jeans.png",
+                        "href":"/#/4"},
+            {"image":"/images/catalogues/women/dresses.png",
+                        "href":"/#/4"},
+            {"image":"/images/catalogues/women/knitwear.png",
+                        "href":"/#/5"},
+            {"image":"/images/catalogues/women/footwear.png",
+                        "href":"/#/6"}]
         },
         {
           "tag":"male",
-          "carousel":["/images/catalogues/boys/coat.png",
-            "/images/catalogues/boys/nightwear.png",
-            "/images/catalogues/boys/footwear.png",
-            "/images/catalogues/boys/halloween.png"]
+          "carousel":[{"image":"/images/catalogues/boys/coat.png",
+                        "href":"/#/4"},
+            {"image":"/images/catalogues/boys/nightwear.png",
+                        "href":"/#/4"},
+            {"image":"/images/catalogues/boys/footwear.png",
+                        "href":"/#/5"},
+            {"image":"/images/catalogues/boys/halloween.png",
+                        "href":"/#/6"}]
         }
       ]
   },
@@ -68,14 +88,22 @@
       [
         {
           "tag":"remainder",
-          "carousel":["/images/catalogues/women/jeans.png",
-            "/images/catalogues/women/dresses.png",
-            "/images/catalogues/women/knitwear.png",
-            "/images/catalogues/women/footwear.png",
-            "/images/catalogues/boys/coat.png",
-            "/images/catalogues/boys/nightwear.png",
-            "/images/catalogues/boys/footwear.png",
-            "/images/catalogues/boys/halloween.png"]
+          "carousel":[{"image":"/images/catalogues/women/jeans.png",
+                        "href":"/#/7"},
+            {"image":"/images/catalogues/women/dresses.png",
+                        "href":"/#/7"},
+            {"image":"/images/catalogues/women/knitwear.png",
+                        "href":"/#/7"},
+            {"image":"/images/catalogues/women/footwear.png",
+                        "href":"/#/7"},
+            {"image":"/images/catalogues/boys/coat.png",
+                        "href":"/#/7"},
+            {"image":"/images/catalogues/boys/nightwear.png",
+                        "href":"/#/8"},
+            {"image":"/images/catalogues/boys/footwear.png",
+                        "href":"/#/9"},
+            {"image":"/images/catalogues/boys/halloween.png",
+                        "href":"/#/10"}]
         }
       ]
   }

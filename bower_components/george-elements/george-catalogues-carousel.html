@@ -1,6 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="/bower_components/geo-location/geo-location.html">
 
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/slick.js/slick/slick.js"></script>
@@ -23,7 +24,8 @@
     </style>
 
     <link rel="stylesheet" href="/bower_components/slick.js/slick/slick.css"/>
-
+    <geo-location on-geo-response={{onLatLng}} latitude="{{lat}}" longitude="{{lng}}"></geo-location>
+    <core-ajax id="weather_ajax" handleAs="json" url="http://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lng}}" response="{{weather_response}}" on-core-response={{weatherReceived}}></core-ajax>
     <core-ajax id="ajax" auto url="/catalogues.json" on-core-response="{{cataloguesLoaded}}" handleAs="json"></core-ajax>
 
     <div id="carousel"></div>
@@ -32,6 +34,7 @@
   <script>
     Polymer({
       orderedCatalogues: [],
+      weatherDescription: '',
       cataloguesLoaded: function() {
         this.catalogues = this.$.ajax.response.slice(0);
         this.inflateCarousel();
@@ -83,28 +86,26 @@
                             }
                           ]
         });
-
         this.reorderCatalogues();
-
-
-        for (i = 0; i < this.orderedCatalogues.length; i++) {
-            $(this.$.carousel).slickAdd("<div class='item'><img src='" + this.orderedCatalogues[i] + "'/></div>");
-        }
       },
 
       reorderCatalogues: function(){
+        this.removeCarousel();
+        this.orderedCatalogues = [];
         var event_tag = Math.round(Math.random());
         switch(event_tag){
-          case 0: event_tag = 'winter';
+          case 0: event_tag = 'halloween';
           break;
-          case 1: event_tag = 'halloween';
+          case 1: event_tag = 'winter';
           break;
         }
-        var weather_tag = Math.round(Math.random());
-        switch(weather_tag){
-          case 0: weather_tag = 'raining';
+        var weather_tag;
+        switch(true){
+          case ((this.weatherDescription).indexOf('rain') > -1): weather_tag = 'raining';
           break;
-          case 1: weather_tag = 'snowing';
+          case ((this.weatherDescription).indexOf('snow') > -1): weather_tag = 'snowing';
+          break;
+          case ((this.weatherDescription) == ''): weather_tag = 'sun';
           break;
         }
         var gender_tag = Math.round(Math.random());
@@ -136,13 +137,14 @@
             }
           }
         }
+        this.generateCarousel();
       },
 
       searchAddCarousel: function(carouselLinks){
         for(var k = 0; k < carouselLinks.length; k++){
           var found = 1;
           for(var l = 0; l < this.orderedCatalogues.length; l++){
-            if(this.orderedCatalogues[l] == carouselLinks[k]){
+            if(this.orderedCatalogues[l].image == carouselLinks[k].image){
               found = 0;
             }
           }
@@ -150,7 +152,35 @@
             this.orderedCatalogues.push(carouselLinks[k])
           }
         }
+      },
+
+      generateCarousel: function(){
+        for (i = 0; i < this.orderedCatalogues.length; i++) {
+            $(this.$.carousel).slickAdd("<div class='item'><img src='" + this.orderedCatalogues[i].image + "' onclick='categoryClick(" + '"' + this.orderedCatalogues[i].href + '"' + ")'/></div>");
+        }
+      },
+
+      removeCarousel: function(){
+        for (i = 0; i <= this.orderedCatalogues.length; i++) {
+            $(this.$.carousel).slickRemove(0);
+        }
+      },
+
+      onLatLng: function(){
+        this.$.weather_ajax.go();
+      },
+
+      weatherReceived: function(){
+        this.weatherDescription = this.weather_response.weather[0].description;
+        this.reorderCatalogues();
       }
+
     });
+
+    function categoryClick(i){
+      document.location.href=i;
+
+    }
+
   </script>
 </polymer-element>
