@@ -1,19 +1,21 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../core-signals/core-signals.html">
-<link rel="import" href="../core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../core-animated-pages/transitions/hero-transition.html">
-<link rel="import" href="../core-animated-pages/transitions/cross-fade.html">
-<link rel="import" href="../core-animated-pages/transitions/slide-from-right.html">
-<link rel="import" href="../core-animated-pages/transitions/slide-down.html">
-<link rel="import" href="../core-animated-pages/transitions/slide-up.html">
-<link rel="import" href="../core-animated-pages/transitions/tile-cascade.html">
-<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../paper-dropdown/paper-dropdown.html">
-<link rel="import" href="../core-menu/core-menu.html">
-<link rel="import" href="../paper-item/paper-item.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/hero-transition.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/slide-down.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="/bower_components/core-animated-pages/transitions/tile-cascade.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="/bower_components/core-menu/core-menu.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/font-roboto/roboto.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/core-collapse/core-collapse.html">
 
 
 
@@ -25,65 +27,228 @@
         font-size:1.4em;
       }
       .checkout_image{
-        height: 100px;
+        height: 80px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+        @media (max-width: 617px) {
+          .imageColumn {
+            display: none;
+          }
+        }
+
+      #container {
+        margin-left:10%;
+        margin-right:10%;
+      }
+
+      #deliveryOptionsContainer {
+        width: 85%;
+        margin: 0 auto;
+      }
+
+      #homeDeliveryContainer, #collectInStoreContainer, #internationalDeliveryContainer {
+        float: left;
+        width: 33%;
+      }
+
+        @media (max-width: 1090px) {
+          #homeDeliveryContainer, #collectInStoreContainer, #internationalDeliveryContainer {
+            float: none;
+            width: 100%;
+          }
+        }
+
+      .deliveryOptionHeader {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      paper-radio-button::shadow #ink[checked] {
+        color: #000;
+      }
+
+      paper-radio-button::shadow #onRadio {
+        background-color: #000;
       }
     </style>
-    <div id="checkout_summary" align="center"> Sub-Total: £{{sub_total_price}} Items Ordered: {{sub_total_items}} Orders: {{sub_total_orders}} </div>
-    <template  id="checkout_item" repeat="{{basket as product}}">
-      <div class='item_span' align="center">
-        <img class='checkout_image' src='{{product.image}}'>
-        <p class='product-name'><b>{{product.product}}</b> Price: {{product.price}} Size: {{product.size}} Quantity: <paper-icon-button icon="add" on-click="{{alterOrderAdd}}"></paper-icon-button>{{product.quantity}}<paper-icon-button icon="remove" on-click="{{alterOrderSubtract}}"></paper-icon-button></p>
-        <paper-icon-button icon=delete on-click="{{updateCheckout}}"></paper-icon-button>
+
+    <div id="container">
+      <h1>Checkout</h1>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr>
+          <th class="imageColumn"></th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+        <template id="checkout_item" repeat="{{basket as product}}">
+            <tr align="center" style="border-bottom: 1px solid #EEEEEE;">
+              <td class="imageColumn"><img class='checkout_image' src='{{product.image}}'></td>
+              <td>{{product.product}}<br>Size: {{product.size}}</td>
+              <td>£{{product.price}}</td>
+              <td><paper-icon-button icon="arrow-drop-up" on-click="{{alterOrderAdd}}"></paper-icon-button><br>{{product.quantity}}<br><paper-icon-button icon="arrow-drop-down" on-click="{{alterOrderSubtract}}"></paper-icon-button></td>
+              <td><paper-icon-button icon="delete" on-click="{{updateCheckout}}"></paper-icon-button></td>
+            </tr>
+        </template>
+        <tr>
+          <td class="imageColumn"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td align="center"><div style="margin-top:20px;">Subtotal: £{{sub_total_price}}</div></td>
+        </tr>
+        <tr>
+          <td class="imageColumn"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td align="center"><div style="font-weight: bold; margin-top:20px;">Total including delivery: £{{total_price}}</div></td>
+        </tr>
+      </table>
+
+      <h2>Select a delivery option</h2>
+      <div id="deliveryOptionsContainer">
+        <div id="homeDeliveryContainer">
+          <div class="deliveryOptionHeader" on-click="{{toggleHomeDelivery}}">
+            <img src="/images/home-delivery.png" alt="Home Delivery" />
+            <h3>Home Delivery</h3>
+          </div>
+          <core-collapse id="homeDeliveryCollapse">
+            <paper-radio-group id="homeDelivery" on-change="{{clearNotHomeDeliverySelection}}" on-core-change="{{deliveryMethodSelected}}">
+              <template repeat="{{homeDeliveryOptions}}">
+                <paper-radio-button name="{{option}}{{cost}}" label="{{option}}"><br>{{cost}}<br>{{deliveryTime}}</paper-radio-button>
+              </template>
+            </paper-radio-group>
+          </core-collapse>
+        </div>
+
+        <div id="collectInStoreContainer">
+          <div class="deliveryOptionHeader" on-click={{toggleCollectInStore}}>
+            <img src="/images/collect-in-store.png" alt="Collect In Store" />
+            <h3>Collect In Store</h3>
+          </div>
+          <core-collapse id="collectInStoreCollapse">
+            <paper-radio-group id="collectInStore" on-change="{{clearNotCollectInStoreSelection}}" on-core-change="{{deliveryMethodSelected}}">
+              <template repeat="{{collectInStoreOptions}}">
+                <paper-radio-button name="{{option}}{{cost}}" label="{{option}}"><br>{{cost}}<br>{{deliveryTime}}</paper-radio-button>
+              </template>
+            </paper-radio-group>
+          </core-collapse>
+        </div>
+
+        <div id="internationalDeliveryContainer">
+          <div class="deliveryOptionHeader" on-click={{toggleInternationalDelivery}}>
+            <img src="/images/international-delivery.png" alt="International Delivery" />
+            <h3>International Delivery</h3>
+          </div>
+          <core-collapse id="internationalDeliveryCollapse">
+            <paper-radio-group id="internationalDelivery" on-change="{{clearNotInternationalDeliverySelection}}" on-core-change="{{deliveryMethodSelected}}">
+              <template repeat="{{internationalDeliveryOptions}}">
+                <paper-radio-button name="{{option}}{{cost}}" label="{{option}}"><br>{{cost}}<br>{{deliveryTime}}</paper-radio-button>
+              </template>
+            </paper-radio-group>
+          </core-collapse>
+        </div>
       </div>
-    </template>
-    <div id="deliveryOptList" align="center">Delivery Method :
-      <paper-dropdown-menu label="Select a Delivery Method">
-        <paper-dropdown class="dropdown">
-          <core-menu id="deliveryMethod" class="menu" on-core-select="{{deliverMethodChange}}">
-            <template repeat="{{deliveryOptions}}">
-              <paper-item value="{{cost}}">{{option}}</paper-item>
-            </template>
-          </core-menu>
-        </paper-dropdown>
-      </paper-dropdown-menu> Total Price: £{{total_price}}</div>
+    </div>
   </template>
   <script>
 
     Polymer('george-checkout', {
 
       basket: [],
-      quantities: ['1', '2', '3', '4', '5'],
-      deliveryOptions: [{
-        option:'Free Click and Collect',
-        cost:0
-      },{
-        option:'Free Home Delivery',
-        cost:0
-      },{
-        option:'Free Delivery When You Spend £45 Or More',
-        cost:0
-      },{
-        option:'Standard Home Delivery',
-        cost:2.95
-      },{
-        option:'Next Day Home Delivery',
-        cost:4.50
-      },{
-        option:'Named Day Home Delivery',
-        cost:4.50
-      },{
-        option:'Named Day With Time Slot Delivery',
-        cost:5.95
-      },{
-        option:'Standard Large Item Delivery',
-        cost:8.95
-      },{
-        option:'Collect+',
-        cost:4.50
-      },{
-        option:'International Delivery',
-        cost:5
-      }],
+
+      collectInStoreOptions: [
+        {
+          option: 'Click and Collect',
+          cost: 'Free',
+          deliveryTime: 'Order before 7pm, collect 5pm next day'
+        },
+        {
+          option: 'Collect+',
+          cost: '£4.50',
+          deliveryTime: 'Order before 4pm, collect by 8pm next day'
+        }
+      ],
+
+      homeDeliveryOptions: [
+        {
+          option: 'Standard',
+          cost: '£2.95',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Next Day',
+          cost: '£4.50',
+          deliveryTime: 'Order before 7pm for next working day delivery'
+        },
+        {
+          option: 'Named Day',
+          cost: '£4.50',
+          deliveryTime: 'Pick a day you would like your order delivered'
+        },
+        {
+          option: 'Named Day With Time Slot',
+          cost: '£5.95',
+          deliveryTime: 'Pick a day & time you would like your order delivered'
+        }
+      ],
+
+      internationalDeliveryOptions: [
+        {
+          option: 'Belgium',
+          cost: '£5.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Luxembourg',
+          cost: '£5.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'France',
+          cost: '£5.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Republic of Ireland',
+          cost: '£5.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Holland',
+          cost: '£5.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Spain (mainland only)',
+          cost: '£10.00',
+          deliveryTime: '3-5 working days'
+        },
+        {
+          option: 'Italy',
+          cost: '£10.00',
+          deliveryTime: '5-7 working days'
+        },
+        {
+          option: 'Sweden',
+          cost: '£10.00',
+          deliveryTime: '5-7 working days'
+        },
+        {
+          option: 'Czech Republic',
+          cost: '£10.00',
+          deliveryTime: '5-7 working days'
+        },
+        {
+          option: 'Slovakia',
+          cost: '£10.00',
+          deliveryTime: '5-7 working days'
+        }
+      ],
+
       items : 1,
       sub_total_price: 0,
       sub_total_items: 0,
@@ -92,6 +257,8 @@
 
       domReady: function(){
         this.fire('core-signal', {name:"basket-pass", data:"checkout"});
+        this.$.homeDeliveryCollapse.toggle();
+        this.$.homeDelivery.selected = "Standard£2.95";
       },
 
       updateCheckout: function(e, detail, sender) {
@@ -111,7 +278,7 @@
       alterOrderAdd: function(e, detail, sender) {
         var product_id = e.target.templateInstance.model.product;
         for(var i = 0; i< this.basket.length; i++){
-          if(product_id.id == this.basket[i].id){
+          if(product_id.id == this.basket[i].id && this.basket[i].quantity < 5){
             this.basket[i].quantity = this.basket[i].quantity+1;
           }
         }
@@ -125,7 +292,7 @@
       alterOrderSubtract: function(e, detail, sender) {
         var product_id = e.target.templateInstance.model.product;
         for(var i = 0; i< this.basket.length; i++){
-          if(product_id.id == this.basket[i].id){
+          if(product_id.id == this.basket[i].id && this.basket[i].quantity > 1){
             this.basket[i].quantity = this.basket[i].quantity-1;
           }
         }
@@ -142,11 +309,16 @@
         this.recalculatePrices();
       },
 
-      deliverMethodChange: function(e, detail, sender) {
-        this.recalculatePrices();
+      deliveryMethodSelected: function(e, detail, sender) {
+        var deliveryPrice = 0;
+        if((sender.selected).indexOf('£') != -1) {
+          deliveryPrice = Number((sender.selected).substr((sender.selected).indexOf('£') + 1));
+        }
+
+        this.recalculatePrices(deliveryPrice);
       },
 
-      recalculatePrices: function(){
+      recalculatePrices: function(deliveryPrice){
         this.sub_total_price = 0;
         this.sub_total_items = 0;
         this.sub_total_orders = 0;
@@ -157,11 +329,38 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
-        if(this.$.deliveryMethod.selected != null){
-          this.total_price = this.total_price + this.deliveryOptions[this.$.deliveryMethod.selected].cost;
+        if(deliveryPrice != null){
+          this.total_price = this.total_price + deliveryPrice;
+          this.total_price = this.total_price.toFixed(2);
         }
-      }
+      },
 
+      toggleCollectInStore: function() {
+        this.$.collectInStoreCollapse.toggle();
+      },
+
+      toggleHomeDelivery: function() {
+        this.$.homeDeliveryCollapse.toggle();
+      },
+
+      toggleInternationalDelivery: function() {
+        this.$.internationalDeliveryCollapse.toggle();
+      },
+
+      clearNotCollectInStoreSelection: function() {
+        this.$.homeDelivery.selected = null;
+        this.$.internationalDelivery.selected = null;
+      },
+
+      clearNotHomeDeliverySelection: function() {
+        this.$.collectInStore.selected = null;
+        this.$.internationalDelivery.selected = null;
+      },
+
+      clearNotInternationalDeliverySelection: function() {
+        this.$.collectInStore.selected = null;
+        this.$.homeDelivery.selected = null;
+      }
     });
 
   </script>
