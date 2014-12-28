@@ -126,7 +126,6 @@
 
       basketAdd: function(e, detail, sender) {
         if (this.isAlreadyInBasket(detail.productcode, detail.sizes)) {
-          console.log(detail.productcode);
           this.updateBasketQuantity(detail.productcode, detail.sizes, detail.quantity);
           this.updateSubtotal();
         } else {
@@ -139,7 +138,6 @@
             "quantity": detail.quantity,
             "productcode": detail.productcode
           };
-          //console.log(detail);
           this.items++;
           this.basket.push(product_basket);
           this.updateSubtotal();
