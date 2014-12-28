@@ -22,7 +22,7 @@
             {
               "tag":"winter",
               "carousel":[{"image":"/images/catalogues/winter.png",
-                          "href":"/#/2"}]
+                          "href":"/#/productresultsgrid/?&season=winter"}]
             },
             {
               "tag":"halloween",
