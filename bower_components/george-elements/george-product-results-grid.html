@@ -11,10 +11,12 @@
 <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="/bower_components/core-menu/core-menu.html">
 <link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="/bower_components/core-collapse/core-collapse.html">
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
 <link href="../core-collapse/core-collapse.html" rel="import">
@@ -218,21 +220,48 @@
     <core-animated-pages id="coreAnimatedPages" selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
 
       <section>
-        <paper-button on-click="{{filtersToggle}}">Filters</paper-button>
-        <paper-action-dialog id="editableFilters" heading="Filters" transition="core-transition-top">
+        <paper-button on-click="{{filtersToggle}}">Filters & Sorting</paper-button>
+        <paper-action-dialog id="editableFilters" heading="Filters & Sorting" transition="core-transition-top">
           <br>
-          <div class="filter">
-          <span>Size Filter:</span>
-          <template repeat={{sizesFilter}}>
-              <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox><br>
-          </template>
-          </core-list>
+          <div>
+            <h2>Filters</h2>
+            <div class="filter">
+              <span>Size Filter:</span><br>
+              <template repeat={{sizesFilter}}>
+                  <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+              </template>
+            </div>
+            <div class="filter">
+              <span>Colour Filter:</span><br>
+              <template repeat={{coloursFilter}}>
+                  <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+              </template>
+            </div>
+            <div class="filter">
+              <span>Price Filter:</span><br>
+              <template repeat={{pricesFilter}}>
+                  {{label}}<paper-slider id="{{name}}" on-change={{selectionMade2}} min="{{min}}" max="{{max}}" value="{{value}}" pin editable></paper-slider>
+              </template>
+            </div>
           </div>
-          <div class="filter">
-          <span>Colour Filter:</span>
-          <template repeat={{coloursFilter}}>
-              <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}" ></paper-checkbox><br>
-          </template>
+          <div>
+            <h2>Sorting</h2>
+            <div class="filter">
+              <span>Alphabetical Sorting:</span><br>
+              <paper-radio-group selected="None">
+                <template repeat={{alphabeticalOrdering}}>
+                  <paper-radio-button id="{{list}}" on-change={{orderChanged}} label="{{name}}" checked="{{checked}}"></paper-radio-button>
+                </template>
+              </paper-radio-group>
+            </div>
+            <div class="filter">
+              <span>Price Sorting:</span><br>
+              <paper-radio-group selected="None">
+                <template repeat={{priceOrdering}}>
+                  <paper-radio-button id="{{list}}" on-change={{orderChanged}} label="{{name}}" checked="{{checked}}"></paper-radio-button>
+                </template>
+              </paper-radio-group>
+            </div>
           </div>
         </paper-action-dialog>
 
@@ -497,7 +526,7 @@
           product: 'Basic Pique Polo Shirt',
           clothing: 'Men',
           type: "tee",
-          price: 6,
+          price: 7,
           sizes: [6, 8, 10, 12, 14, 16],
           quantities: [1, 2, 3, 4, 5],
           color: 'green',
@@ -653,6 +682,10 @@
 
       sizesFilter: [{name:6, checked:false}, {name:8, checked:false}, {name:10, checked:false}, {name:12, checked:false}, {name:14, checked:false}, {name:16, checked:false}],
       coloursFilter: [{name:'red', checked:false}, {name:'navy', checked:false},{name:'blue', checked:false}, {name:'black', checked:false}, {name:'white', checked:false}, {name:'pink', checked:false}, {name:'grey', checked:false}, {name:'green', checked:false}],
+      pricesFilter: [{min:0 , max:50, value:0, label:"Min Price:", name:"Min"},{min:0 , max:50, value:50, label:"Max Price:", name:"Max"}],
+
+      alphabeticalOrdering: [{name:'None', list:'alpha', checked:false, order:'None'}, {name:'A-Z', list:'alpha', checked: false, order:'Asc'}, {name:'Z-A', list:'alpha', checked: false, order:'Desc'}],
+      priceOrdering: [{name:'None', list:'price', checked:false, order:'None'}, {name:'£0-9', list:'price', checked: false, order:'Asc'}, {name:'£9-0', list:'price', checked: false, order:'Desc'}],
 
       selectedProduct: null,
 
@@ -753,6 +786,8 @@
             sizeFilters.push(this.sizesFilter[j].name);
           }
         }
+        var minPrice = this.pricesFilter[0].value;
+        var maxPrice = this.pricesFilter[1].value;
 
         // Get the currently selected profile from the cookies
         var selectedProfile = this.getSelectedProfileData();
@@ -765,7 +800,7 @@
           var matchesColour = (colourFilters.length == 0) ? true : false;
           var matchesProfiles = (profileFilters.length == 0) ? true : false;
           var matchesSizes = (sizeFilters.length == 0) ? true : false;
-
+          var matchesPrices = false;
           // Does it match at least one of the clothes types detected
           for (var i = 0; i < clothesFilters.length; i++) {
             if (d.type == clothesFilters[i]) {
@@ -787,6 +822,9 @@
                 matchesSizes = true;
               }
             }
+          }
+          if(minPrice <= d.price && d.price <= maxPrice){
+            matchesPrices = true;
           }
 
           // Does it match the profile being used for this search (male/female, no sizes yet)
@@ -818,8 +856,9 @@
 
 
           // Check to see if matches all filters and at least 50% of the search terms matched
-          return matchesClothes && matchesColour && matchesSizes && matchesProfiles && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+          return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
+        this.orderingMade();
       },
 
       forward: function(e) {
@@ -856,10 +895,110 @@
 
       selectionMade: function(e, detail, sender) {
         this.runFilterSearch();
+      },
+
+      selectionMade2: function(e, detail, sender) {
+        if(this.pricesFilter[0].value > this.pricesFilter[1].value){
+          if(e.target.id == 'Max'){
+            this.pricesFilter[1].value = this.pricesFilter[0].value;
+          }else{
+            this.pricesFilter[0].value = this.pricesFilter[1].value;
+          }
+        }
+        this.runFilterSearch();
+      },
+
+      orderChanged: function(e){
+
+        if(e.target.id == 'alpha'){
+          for(var i = 0; i < this.alphabeticalOrdering.length; i++){
+            if(this.alphabeticalOrdering[i].name == e.target.label){
+              this.alphabeticalOrdering[i].checked = true;
+            } else {
+              this.alphabeticalOrdering[i].checked = false;
+            }
+          }
+        }
+        if(e.target.id == 'price'){
+          for(var i = 0; i < this.priceOrdering.length; i++){
+            if(this.priceOrdering[i].name == e.target.label){
+              this.priceOrdering[i].checked = true;
+            } else {
+              this.priceOrdering[i].checked = false;
+            }
+          }
+        }
+        this.orderingArray();
+      },
+
+
+
+      orderingArray: function() {
+        var alphaOrdering = '';
+        var priceOrdering = '';
+        var alphabetArray = this.alphabeticalOrdering;
+        var priceArray = this.priceOrdering;
+        for(var i = 0; i < alphabetArray.length; i++){
+          if(alphabetArray[i].checked == true){
+              alphaOrdering = alphabetArray[i].order;
+          }
+        }
+        if(alphaOrdering == ''){
+          alphaOrdering = 'None';
+        }
+        for(var i = 0; i < priceArray.length; i++){
+          if(priceArray[i].checked == true){
+              priceOrdering = priceArray[i].order;
+          }
+        }
+        if(priceOrdering == ''){
+          priceOrdering = 'None';
+        }
+        //console.log(this.priceOrdering);
+        if(priceOrdering != 'None' && alphaOrdering == 'None'){
+          for(var i = 0; i < this.filteredItems.length-1; i++){
+            for(var j = 0; j < this.filteredItems.length-1; j++){
+              var firstProduct = this.filteredItems[j];
+              var secondProduct = this.filteredItems[j+1];
+              if(priceOrdering == 'Asc' && firstProduct.price > secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Desc' && firstProduct.price < secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+            }
+          }
+        }
+
+        if(alphaOrdering != 'None'){
+          for(var i = 0; i < this.filteredItems.length-1; i++){
+            for(var j = 0; j < this.filteredItems.length-1; j++){
+              var firstProduct = this.filteredItems[j];
+              var secondProduct = this.filteredItems[j+1];
+              if(alphaOrdering == 'Asc' && firstProduct.product > secondProduct.product){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(alphaOrdering == 'Desc' && firstProduct.product < secondProduct.product){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Asc' && firstProduct.product == secondProduct.product && firstProduct.price > secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Desc' && firstProduct.product == secondProduct.product && firstProduct.price < secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+            }
+          }
+        }
       }
 
     });
-    var product_basket;
 
   </script>
   </polymer-element>
