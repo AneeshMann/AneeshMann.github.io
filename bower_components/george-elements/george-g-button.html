@@ -128,37 +128,37 @@
 
       profileRelations: [
         {
-          "profileKey": "son",
+          "key": "son",
           "keywords": [
             "son"
           ]
         },
         {
-          "profileKey": "daughter",
+          "key": "daughter",
           "keywords": [
             "daughter"
           ]
         },
         {
-          "profileKey": "mum",
+          "key": "mum",
           "keywords": [
             "mother", "mum"
           ]
         },
         {
-          "profileKey": "dad",
+          "key": "dad",
           "keywords": [
             "father", "dad"
           ]
         },
         {
-          "profileKey": "brother",
+          "key": "brother",
           "keywords": [
             "bro", "brother"
           ],
         },
         {
-          "profileKey": "sister",
+          "key": "sister",
           "keywords": [
             "sis", "sister"
           ]
@@ -173,21 +173,48 @@
 
       clothesKeywords: [
         {
-          "clothesKey": "tee",
+          "key": "tee",
           "keywords": [
             "tee", "t-shirt", "tshirt", "tshirts", "t-shirts", "tees"
           ]
         },
         {
-          "clothesKey": "jeans",
+          "key": "jeans",
           "keywords": [
             "jeans", "jeggings", "jean", "jegging"
           ]
         },
         {
-          "clothesKey": "dress",
+          "key": "dress",
           "keywords": [
             "dress", "dresses"
+          ]
+        },
+        {
+          "key": "scarf",
+          "keywords": [
+            "scarf", "scarves", "scarfs"
+          ]
+        }
+      ],
+
+      seasonKeywords: [
+        {
+          "key": "winter",
+          "keywords": [
+            "winter", "december", "november", "january"
+          ]
+        },
+        {
+          "key": "summer",
+          "keywords": [
+            "summer", "june", "july"
+          ]
+        },
+        {
+          "key": "spring",
+          "keywords": [
+            "spring"
           ]
         }
       ],
@@ -212,6 +239,7 @@
       matchingColours: [],
       matchedWords: [],
       matchingProfiles: [],
+      matchingSeasons: [],
 
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
@@ -222,7 +250,7 @@
 
         // Reset all the arrays
         this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
-        this.matchedWords = []; this.matchingProfiles = [];
+        this.matchedWords = []; this.matchingProfiles = []; this.matchingSeasons = [];
 
         // Loop through each word in the search string and analyse it
         for (var i = 0; i < words.length; i++) {
@@ -261,7 +289,7 @@
         }
 
         // Take us to the results
-        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + "&profiles=" + this.matchingProfiles.join() + "&types=" + this.matchingClothes.join();
+        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + "&profiles=" + this.matchingProfiles.join() + "&types=" + this.matchingClothes.join() + "&season=" + this.matchingSeasons.join();
       },
 
       stripMatchingWords: function(term) {
@@ -291,6 +319,12 @@
         var clothesKey = this.isClothesKeyword(word);
         if (clothesKey != "") {
           this.matchingClothes.push(clothesKey);
+          this.matchedWords.push(word);
+        }
+
+        var seasonKey = this.getKeyFromKeyword(this.seasonKeywords, word);
+        if (seasonKey != "") {
+          this.matchingSeasons.push(seasonKey);
           this.matchedWords.push(word);
         }
 
@@ -328,6 +362,18 @@
         };
       },
 
+      getKeyFromKeyword: function(keywords, keyword) {
+        for (var i = 0; i < keywords.length; i++) {
+          var kws = keywords[i].keywords;
+          for (var j = 0; j < kws.length; j++) {
+            if (kws[j] == keyword.toLowerCase()) {
+              return keywords[i].key;
+            }
+          }
+        }
+        return "";
+      },
+
       // TODO: this function can be generalised and reused if we use "key" instead of "clothesKey"
       // Check if a clothes type keyword
       isClothesKeyword: function(word) {
@@ -336,7 +382,7 @@
           var keywords = clothes[i].keywords;
           for (var j = 0; j < keywords.length; j++) {
             if (keywords[j] == word.toLowerCase()) {
-              return clothes[i].clothesKey;
+              return clothes[i].key;
             }
           }
         }
@@ -350,7 +396,7 @@
           var keywords = relations[i].keywords;
           for (var j = 0; j < keywords.length; j++) {
             if (keywords[j] == word.toLowerCase()) {
-              return relations[i].profileKey;
+              return relations[i].key;
             }
           }
         }
