@@ -120,23 +120,51 @@
         console.log(weather_tag);
         console.log(this.weatherDescription);
         console.log(gender_tag);
-
-        for(i = 0; i < this.catalogues.length; i++) {
-          var optionSearch = this.catalogues[i].options;
-          for(j = 0; j < optionSearch.length; j++){
-            var optionCarousel = optionSearch[j].carousel;
-            switch(optionSearch[j].tag){
-              case 'today': this.searchAddCarousel(optionCarousel);
-                break;
-              case event_tag: this.searchAddCarousel(optionCarousel);
-                break;
-              case weather_tag: this.searchAddCarousel(optionCarousel);
-                break;
-              case gender_tag: this.searchAddCarousel(optionCarousel);
-                break;
-              case 'remainder': this.searchAddCarousel(optionCarousel);
-                break;
+        var catalogue_url = (window.location.href).split("/#/");
+        var catalogue_id = catalogue_url[1];
+        switch(catalogue_id){
+            case '0': var catalogue_name = 'home';
+              break;
+            case '1': var catalogue_name = 'homeGarden';
+              break;
+            case '2': var catalogue_name = 'women';
+              break;
+            case '3': var catalogue_name = 'men';
+              break;
+            case '4': var catalogue_name = 'boys';
+              break;
+            case '5': var catalogue_name = 'girls';
+              break;
+            case '6': var catalogue_name = 'baby';
+              break;
+            case '7': var catalogue_name = 'school';
+              break;
+        }
+        for(var k = 0; k < this.catalogues.length; k++){
+          if(this.catalogues[k].catalogue == catalogue_name && catalogue_name == 'home'){
+            var homeCatalogue = this.catalogues[k].carouselOptions;
+            for(i = 0; i < homeCatalogue.length; i++) {
+              var optionSearch = homeCatalogue[i].options;
+              for(j = 0; j < optionSearch.length; j++){
+                var optionCarousel = optionSearch[j].carousel;
+                switch(optionSearch[j].tag){
+                  case 'today': this.searchAddCarousel(optionCarousel);
+                    break;
+                  case event_tag: this.searchAddCarousel(optionCarousel);
+                    break;
+                  case weather_tag: this.searchAddCarousel(optionCarousel);
+                    break;
+                  case gender_tag: this.searchAddCarousel(optionCarousel);
+                    break;
+                  case 'remainder': this.searchAddCarousel(optionCarousel);
+                    break;
+                }
+              }
             }
+          }
+          if(this.catalogues[k].catalogue == catalogue_name && catalogue_name != 'home'){
+            var optionCarousel = this.catalogues[k].carouselOptions;
+            this.searchAddCarousel(optionCarousel);
           }
         }
         this.generateCarousel();
