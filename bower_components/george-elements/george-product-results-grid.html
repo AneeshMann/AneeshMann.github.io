@@ -10,9 +10,12 @@
 <link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="/bower_components/core-menu/core-menu.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="/bower_components/core-collapse/core-collapse.html">
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
 <link href="../core-collapse/core-collapse.html" rel="import">
 
@@ -143,6 +146,17 @@
       .input{
         float:left;
       }
+
+      .filters{
+        display: inline-block;
+      }
+      .filter span{
+        color: black;
+      }
+      .filter{
+        float:left;
+      }
+
       paper-dropdown-menu::shadow #label, paper-dropdown-menu::shadow #arrow {
         color: white !important;
       }
@@ -204,9 +218,26 @@
     <core-animated-pages id="coreAnimatedPages" selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
 
       <section>
+        <paper-button on-click="{{filtersToggle}}">Filters</paper-button>
+        <paper-action-dialog id="editableFilters" heading="Filters" transition="core-transition-top">
+          <br>
+          <div class="filter">
+          <span>Size Filter:</span>
+          <template repeat={{sizesFilter}}>
+              <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox><br>
+          </template>
+          </core-list>
+          </div>
+          <div class="filter">
+          <span>Colour Filter:</span>
+          <template repeat={{coloursFilter}}>
+              <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}" ></paper-checkbox><br>
+          </template>
+          </div>
+        </paper-action-dialog>
+
 
         <div class="chip-container" hero-p on-tap="{{transition}}">
-
           <template repeat="{{filteredItems as item}}">
             <div class="chip" hero-id="{{item.product}}-{{item.clothing}}" hero?="{{selectedProduct === item }}">
               <div class="chip-top" hero-id="{{item.product}}-{{item.clothing}}-art" hero?="{{selectedProduct === item}}">
@@ -558,7 +589,7 @@
           clothing: 'Women',
           type: "jeans",
           price: 12,
-          sizes: [6, 8, 10, 12, 14, 16],
+          sizes: [6, 8],
           quantities: [1, 2, 3, 4, 5],
           color: 'black',
           image:'/images/men/G004870428.png',
@@ -619,6 +650,9 @@
           productcode:  '4896094'
         }
       ],
+
+      sizesFilter: [{name:6, checked:false}, {name:8, checked:false}, {name:10, checked:false}, {name:12, checked:false}, {name:14, checked:false}, {name:16, checked:false}],
+      coloursFilter: [{name:'red', checked:false}, {name:'navy', checked:false},{name:'blue', checked:false}, {name:'black', checked:false}, {name:'white', checked:false}, {name:'pink', checked:false}, {name:'grey', checked:false}, {name:'green', checked:false}],
 
       selectedProduct: null,
 
@@ -684,15 +718,41 @@
       jsonLoaded: function() {
         // Store the profile information in the this.profiles variable
         this.profiles = this.$.ajax.response.slice(0);
+        var colours = this.getUrlParam("colours");
+        var colourFilters = (colours === "") ? [] : colours.split(",");
+        for(var j = 0; j < this.coloursFilter.length; j++){
+          this.coloursFilter[j].checked = false;
+        }
+        for(var j = 0; j < this.coloursFilter.length; j++){
+          for(var i = 0; i < colourFilters.length; i++){
+            if(this.coloursFilter[j].name == colourFilters[i]){
+              this.coloursFilter[j].checked = true;
+            }
+          }
+        }
+        this.runFilterSearch();
 
+      },
+
+      runFilterSearch: function() {
         // Get the search term and parameters to filter by from the url
         var types = this.getUrlParam("types");
-        var colours = this.getUrlParam("colours");
         var profiles = this.getUrlParam("profiles");
         var searchTerm = this.getUrlParam("search");
         var clothesFilters = (types === "") ? [] : types.split(",");
-        var colourFilters = (colours === "") ? [] : colours.split(",");
         var profileFilters = (profiles === "") ? [] : profiles.split(",");
+        var colourFilters = [];
+        for(var j = 0; j < this.coloursFilter.length; j++){
+          if(this.coloursFilter[j].checked == true){
+            colourFilters.push(this.coloursFilter[j].name);
+          }
+        }
+        var sizeFilters = [];
+        for(var j = 0; j < this.sizesFilter.length; j++){
+          if(this.sizesFilter[j].checked == true){
+            sizeFilters.push(this.sizesFilter[j].name);
+          }
+        }
 
         // Get the currently selected profile from the cookies
         var selectedProfile = this.getSelectedProfileData();
@@ -704,6 +764,7 @@
           var matchesClothes = (clothesFilters.length == 0) ? true : false;
           var matchesColour = (colourFilters.length == 0) ? true : false;
           var matchesProfiles = (profileFilters.length == 0) ? true : false;
+          var matchesSizes = (sizeFilters.length == 0) ? true : false;
 
           // Does it match at least one of the clothes types detected
           for (var i = 0; i < clothesFilters.length; i++) {
@@ -716,6 +777,15 @@
           for (var i = 0; i < colourFilters.length; i++) {
             if (d.color == colourFilters[i]) {
               matchesColour = true;
+            }
+          }
+
+          for (var i = 0; i < sizeFilters.length; i++) {
+            var sizes = d.sizes;
+            for(var j = 0; j < sizes.length; j++){
+              if (sizes[j] == sizeFilters[i]) {
+                matchesSizes = true;
+              }
             }
           }
 
@@ -748,7 +818,7 @@
 
 
           // Check to see if matches all filters and at least 50% of the search terms matched
-          return matchesClothes && matchesColour && matchesProfiles && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+          return matchesClothes && matchesColour && matchesSizes && matchesProfiles && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
       },
 
@@ -778,6 +848,14 @@
           unique: Math.random()
         };
         this.fire('core-signal', {name:"basket-add", data:itemComplete});
+      },
+
+      filtersToggle: function() {
+        this.$.editableFilters.toggle();
+      },
+
+      selectionMade: function(e, detail, sender) {
+        this.runFilterSearch();
       }
 
     });
