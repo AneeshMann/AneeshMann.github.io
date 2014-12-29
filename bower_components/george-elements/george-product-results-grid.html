@@ -299,9 +299,9 @@
                   <div class="input">
                   <span>Size:</span>
                   <paper-dropdown-menu label="Select a Size">
-                    <paper-dropdown class="dropdown">
+                    <paper-dropdown id="sizeDropdown" class="dropdown">
                       <core-menu id="clothesSize" class="menu">
-                        <template repeat="{{selectedProduct.sizes}}">
+                        <template repeat="{{clothesSizeDropdown}}">
                           <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
@@ -311,9 +311,9 @@
                   <div class="input">
                   <span>Quantity:</span>
                   <paper-dropdown-menu label="Select Quantity">
-                    <paper-dropdown class="dropdown">
+                    <paper-dropdown id="quantityDropdown" class="dropdown">
                       <core-menu id="clothesQuantity" class="menu">
-                        <template repeat="{{selectedProduct.quantities}}">
+                        <template repeat="{{clothesQuantityDropdown}}">
                           <paper-item value="{{}}">{{}}</paper-item>
                         </template>
                       </core-menu>
@@ -375,7 +375,7 @@
           seasons: "all",
           price: 3.50,
           color: 'red',
-          sizes: [6, 8, 10, 12, 14, 16],
+          sizes: [6, 8, 10],
           quantities: [1, 2, 3, 4, 5],
           image:'/images/women/red3.jpg',
           description: 'Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.',
@@ -722,13 +722,32 @@
         }
       ],
 
-      sizesFilter: [{name:6, checked:false}, {name:8, checked:false}, {name:10, checked:false}, {name:12, checked:false}, {name:14, checked:false}, {name:16, checked:false}],
-      coloursFilter: [{name:'red', checked:false}, {name:'navy', checked:false},{name:'blue', checked:false}, {name:'black', checked:false}, {name:'white', checked:false}, {name:'pink', checked:false}, {name:'grey', checked:false}, {name:'green', checked:false}],
-      pricesFilter: [{min:0 , max:50, value:0, label:"Min Price:", name:"Min"},{min:0 , max:50, value:50, label:"Max Price:", name:"Max"}],
+      sizesFilter: [{name:6, checked:false},
+                    {name:8, checked:false},
+                    {name:10, checked:false},
+                    {name:12, checked:false},
+                    {name:14, checked:false},
+                    {name:16, checked:false}],
+      coloursFilter: [{name:'red', checked:false},
+                      {name:'navy', checked:false},
+                      {name:'blue', checked:false},
+                      {name:'black', checked:false},
+                      {name:'white', checked:false},
+                      {name:'pink', checked:false},
+                      {name:'grey', checked:false},
+                      {name:'green', checked:false}],
+      pricesFilter: [{min:0 , max:50, value:0, label:"Min Price:", name:"Min"},
+                      {min:0 , max:50, value:50, label:"Max Price:", name:"Max"}],
 
-      alphabeticalOrdering: [{name:'None', list:'alpha', checked:false, order:'None'}, {name:'A-Z', list:'alpha', checked: false, order:'Asc'}, {name:'Z-A', list:'alpha', checked: false, order:'Desc'}],
-      priceOrdering: [{name:'None', list:'price', checked:false, order:'None'}, {name:'£0-9', list:'price', checked: false, order:'Asc'}, {name:'£9-0', list:'price', checked: false, order:'Desc'}],
+      alphabeticalOrdering: [{name:'None', list:'alpha', checked:false, order:'None'},
+                              {name:'A-Z', list:'alpha', checked: false, order:'Asc'},
+                              {name:'Z-A', list:'alpha', checked: false, order:'Desc'}],
+      priceOrdering: [{name:'None', list:'price', checked:false, order:'None'},
+                        {name:'£0-9', list:'price', checked: false, order:'Asc'},
+                        {name:'£9-0', list:'price', checked: false, order:'Desc'}],
 
+      clothesSizeDropdown: [],
+      clothesQuantityDropdown: [],
       selectedProduct: null,
 
       created: function(){
@@ -756,6 +775,10 @@
         if (this.page === 0 && e.target.templateInstance.model.item) {
           this.selectedProduct = e.target.templateInstance.model.item;
           this.$.clothesQuantity.selected = null;
+          this.clothesSizeDropdown = e.target.templateInstance.model.item.sizes;
+          this.clothesQuantityDropdown = e.target.templateInstance.model.item.quantities;
+          this.$.sizeDropdown.$.scroller.style.height = "";
+          this.$.quantityDropdown.$.scroller.style.height = "";
           this.page = 1;
         } else {
           this.page = 0;
@@ -922,7 +945,7 @@
           // Check to see if matches all filters and at least 50% of the search terms matched
           return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
-        this.orderingMade();
+        this.orderingArray();
       },
 
       forward: function(e) {
