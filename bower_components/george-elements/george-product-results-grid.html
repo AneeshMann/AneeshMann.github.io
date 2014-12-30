@@ -220,7 +220,9 @@
     <core-animated-pages id="coreAnimatedPages" selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
 
       <section>
-        <paper-button on-click="{{filtersToggle}}">Filters & Sorting</paper-button>
+        <div style="float: right; margin-top: 10px;">
+          <paper-button on-click="{{filtersToggle}}" style="background: #FFEB3B;">Filters & Sorting</paper-button>
+        </div>
         <paper-action-dialog id="editableFilters" heading="Filters & Sorting" transition="core-transition-top">
           <br>
           <div>
@@ -265,6 +267,7 @@
           </div>
         </paper-action-dialog>
 
+        <div style="clear: both;"></div>
 
         <div class="chip-container" hero-p on-tap="{{transition}}">
           <template repeat="{{filteredItems as item}}">
@@ -291,7 +294,6 @@
           </div>
           <div class="card-right" flex two>
               <div class="card-top-right">
-                <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
                 <div class="card-product-title">{{selectedProduct.product}}</div>
                 <div class="card-clothing">{{selectedProduct.clothing}}</div>
                 <div class="card-price">£{{selectedProduct.price}}</div>
@@ -569,14 +571,6 @@
           return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
         this.orderingArray();
-      },
-
-      forward: function(e) {
-        this.page = 0;
-        setTimeout(function() {
-          this.page = 1;;
-          this.nextProduct();
-        }.bind(this), 300);
       },
 
       addToBasket: function(e, detail, sender) {
