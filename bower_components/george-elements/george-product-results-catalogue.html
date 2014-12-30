@@ -1,6 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/core-signals/core-signals.html">
 <link rel="import" href="/bower_components/swipe-pages-master/swipe-pages.html">
+<link rel="import" href="/bower_components/swipe-pages-master/swipe-page.html">
 <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
@@ -175,7 +176,6 @@
 
 
     <div flex layout vertical>
-      <template is="auto-binding">
         <paper-tabs selected="{{page}}">
           <paper-tab>Page 0</paper-tab>
           <paper-tab>Page 1</paper-tab>
@@ -185,7 +185,7 @@
         <swipe-pages selected="{{page}}">
           <template repeat="{{filteredItems as selectedProduct}}">
             <swipe-page layout vertical center center-justified>
-              <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
+               <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
                 <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
                 <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
                   <img class="card-image" src="{{selectedProduct.image}}"/>
@@ -230,10 +230,9 @@
                     <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br>Product Code: {{selectedProduct.productcode}}</div>
                 </div>
               </div>
-            </swipe-page>
-          </template>
-        </swipe-pages>
-      </template>
+          </swipe-page>
+        </template>
+      </swipe-pages>
     </div>
 
     <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json"></core-ajax>
@@ -272,6 +271,7 @@
       clothesSizeDropdown: [],
       clothesQuantityDropdown: [],
       selectedProduct: null,
+
 
       created: function(){
 
