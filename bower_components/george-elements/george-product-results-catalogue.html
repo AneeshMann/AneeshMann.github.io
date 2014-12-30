@@ -1,61 +1,607 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
-<link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
+<link rel="import" href="/bower_components/swipe-pages-master/swipe-pages.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="/bower_components/core-menu/core-menu.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
+<link rel="import" href="/bower_components/font-roboto/roboto.html">
+<link href="../core-collapse/core-collapse.html" rel="import">
 
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/slick.js/slick/slick.js"></script>
-
-<polymer-element name="george-product-results-catalogue">
-
+  <polymer-element name="george-product-results-catalogue" attributes="query">
   <template>
+
     <style>
-      #carousel{
-        height:100%;
+      body{
+        font-family: 'RobotoDraft', sans-serif;
       }
-      .item {
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-bottom: 5px;
-        margin-top: 5px;
+
+      /*card layout*/
+      .card {
+        font-family: 'RobotoDraft', sans-serif;
+        position: absolute;
+        left:5%;
+        top:10%;
+        width: 90%;
+        height: auto;
+        border-radius: 3px;
+        text-align: start;
+        background: #fff;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-image: linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
+        background-image: -o-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
+        background-image: -moz-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
+        background-image: -webkit-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
+        background-image: -ms-linear-gradient(bottom, #FFFFFF 50%, #F44336 50%);
+      }
+
+      .card-left {
+        width: 35%;
+        margin-top: 2%;
+        margin-left: 2%;
+      }
+
+      .card-right {
+        padding: 24px;
+      }
+      .card-top-right{
+        height:55%;
+      }
+      .card-description{
+        padding-top: 10%;
+      }
+
+      /*card contents*/
+      .card-product-title {
+        color:white;
+        font-size: 3em;
+        width:90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .card-clothing {
+        color:white;
+        font-size: 1em;
+      }
+
+      .card-price {
+        color:white;
+        font-size: 3em;
+        padding-right: 2%;
+      }
+
+      .card-image{
         width:100%;
-        height:100%;
+        height:auto;
+        max-height:20%;
       }
 
-      .item img {
-        /* z=1 paper-shadow */
-        max-height: 200px;
-        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      .paper-icon-close{
+        position: absolute;
+        top:0px;
+        right:0px;
       }
-    </style>
+      .basket {
+        background: #FFEB3B;
+      }
+      .inputs{
+        display: inline-block;
+      }
+      .input span{
+        color: white;
+      }
+      .input{
+        float:left;
+      }
 
-    <link rel="stylesheet" href="/bower_components/slick.js/slick/slick.css"/>
-    <core-ajax id="ajax" auto url="/bower_components/george-elements/results.json" on-core-response="{{resultsLoaded}}" handleAs="json"></core-ajax>
+      .filters{
+        display: inline-block;
+      }
+      .filter span{
+        color: black;
+      }
+      .filter{
+        float:left;
+      }
 
-    <div id="carousel"></div>
-  </template>
+      paper-dropdown-menu::shadow #label, paper-dropdown-menu::shadow #arrow {
+        color: white !important;
+      }
+      paper-dropdown-menu::shadow #label {
+        width: 110px;
+      }
+      paper-dropdown-menu{
+        background-color: inherit;
+        border-bottom: 1px solid white;
+      }
+      paper-fab{
+        background: #FFEB3B;
+        color: black;
+        position:absolute;
+        right:3%;
+        bottom:50%;
+      }
 
-  <script>
-    Polymer({
-      resultsLoaded: function() {
-        this.results = this.$.ajax.response.slice(0);
-        this.inflateCarousel();
-      },
-
-      inflateCarousel: function() {
-        $(this.$.carousel).slick({
-              arrows: true,
-              infinite: true,
-              nextArrow: '<paper-fab mini icon="arrow-forward" class="slick-next"></paper-fab>',
-              prevArrow: '<paper-fab mini icon="arrow-back" class="slick-prev"></paper-fab>',
-              slidesToShow: 1,
-              slidesToScroll: 1
-        });
-
-        for (i = 0; i < this.results.length; i++) {
-            $(this.$.carousel).slickAdd("<div class='item'><img src='" + this.results[i].image + "'/></div>");
+      /*hidef screen layout*/
+      /*card tablet layout*/
+      @media screen and (min-width: 1367px) {
+        .card-description{
+          padding-top: 15%;
         }
       }
+
+      /*card tablet layout*/
+      @media screen and (min-width: 481px) and (max-width: 1200px) {
+        .card-product-title {
+          font-size: 2em !important;
+
+        }
+        .card-price {
+          font-size: 2em !important;
+          float:left;
+        }
+      }
+      /*card mobile layout*/
+      @media screen and (max-width: 481px) {
+        .card{
+        }
+        .card-product-title {
+          font-size: 1em !important;
+        }
+        .card-price {
+          font-size: 1em !important;
+          float:left;
+        }
+        .forward-fab{
+          display:none !important;
+        }
+        .card-description{
+          padding-top: 15%;
+          margin-left: -60%;
+        }
+      }
+
+    </style>
+
+
+    <swipe-pages selected="{{page}}">
+      <template repeat="{{filteredItems as selectedProduct}}">
+        <swipe-page>
+          <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
+            <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
+            <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
+              <img class="card-image" src="{{selectedProduct.image}}"/>
+            </div>
+            <div class="card-right" flex two>
+                <div class="card-top-right">
+                  <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
+                  <paper-fab mini icon="arrow-back" title="arrow-back" role="button" tabindex="0" aria-label="arrow-back" class="back-fab" on-tap={{back}}></paper-fab>
+                  <div class="card-product-title">{{selectedProduct.product}}</div>
+                  <div class="card-clothing">{{selectedProduct.clothing}}</div>
+                  <div class="card-price">£{{selectedProduct.price}}</div>
+                  <div class="inputs">
+                    <div class="input">
+                    <span>Size:</span>
+                    <paper-dropdown-menu label="Select a Size">
+                      <paper-dropdown id="sizeDropdown" class="dropdown">
+                        <core-menu id="clothesSize" class="menu">
+                          <template repeat="{{clothesSizeDropdown}}">
+                            <paper-item value="{{}}">{{}}</paper-item>
+                          </template>
+                        </core-menu>
+                      </paper-dropdown>
+                    </paper-dropdown-menu>
+                    </div>
+                    <div class="input">
+                    <span>Quantity:</span>
+                    <paper-dropdown-menu label="Select Quantity">
+                      <paper-dropdown id="quantityDropdown" class="dropdown">
+                        <core-menu id="clothesQuantity" class="menu">
+                          <template repeat="{{clothesQuantityDropdown}}">
+                            <paper-item value="{{}}">{{}}</paper-item>
+                          </template>
+                        </core-menu>
+                      </paper-dropdown>
+                    </paper-dropdown-menu>
+                    </div>
+                  </div>
+                  <div>
+                    <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
+                  </div>
+                </div>
+                <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br>Product Code: {{selectedProduct.productcode}}</div>
+            </div>
+          </div>
+        </swipe-page>
+      </template>
+    </swipe-pages>
+
+    <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json"></core-ajax>
+    <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
+  </template>
+  <script>
+
+    Polymer('george-product-results-catalogue', {
+
+      page: 0,
+
+      sizesFilter: [{name:6, checked:false},
+                    {name:8, checked:false},
+                    {name:10, checked:false},
+                    {name:12, checked:false},
+                    {name:14, checked:false},
+                    {name:16, checked:false}],
+      coloursFilter: [{name:'red', checked:false},
+                      {name:'navy', checked:false},
+                      {name:'blue', checked:false},
+                      {name:'black', checked:false},
+                      {name:'white', checked:false},
+                      {name:'pink', checked:false},
+                      {name:'grey', checked:false},
+                      {name:'green', checked:false}],
+      pricesFilter: [{min:0 , max:50, value:0, label:"Min Price:", name:"Min"},
+                      {min:0 , max:50, value:50, label:"Max Price:", name:"Max"}],
+
+      alphabeticalOrdering: [{name:'None', list:'alpha', checked:false, order:'None'},
+                              {name:'A-Z', list:'alpha', checked: false, order:'Asc'},
+                              {name:'Z-A', list:'alpha', checked: false, order:'Desc'}],
+      priceOrdering: [{name:'None', list:'price', checked:false, order:'None'},
+                        {name:'£0-9', list:'price', checked: false, order:'Asc'},
+                        {name:'£9-0', list:'price', checked: false, order:'Desc'}],
+
+      clothesSizeDropdown: [],
+      clothesQuantityDropdown: [],
+      selectedProduct: null,
+
+      created: function(){
+
+      },
+
+      // Get the selected profile data from the cookie
+      getSelectedProfileData: function() {
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf("profileData=") != -1) {
+            return JSON.parse(c.substring(12, c.length));
+          }
+        }
+        return {
+          "id": "-1"
+        };
+      },
+
+      transition: function(e) {
+        if (this.page === 0 && e.target.templateInstance.model.item) {
+          this.selectedProduct = e.target.templateInstance.model.item;
+          this.$.clothesQuantity.selected = null;
+          this.clothesSizeDropdown = e.target.templateInstance.model.item.sizes;
+          this.clothesQuantityDropdown = e.target.templateInstance.model.item.quantities;
+          this.$.sizeDropdown.$.scroller.style.height = "";
+          this.$.quantityDropdown.$.scroller.style.height = "";
+          this.page = 1;
+        } else {
+          this.page = 0;
+        }
+      },
+
+      nextProduct: function(e) {
+        for (var i = 0; i < this.items.length; i++) {
+          if (this.items[i].product == this.selectedProduct.product) {
+            if (i+1 < this.items.length) {
+              this.selectedProduct = this.items[i+1];
+            } else {
+              if (i+1 == this.items.length) {
+                this.selectedProduct = this.items[0];
+              }
+            }
+            break;
+          }
+        }
+      },
+
+      // Get a parameter from the url
+      getUrlParam: function(key) {
+        var url = window.location + "";
+        var parameterString = url.substring(url.indexOf("?") + 1);
+        var parameters = parameterString.split("&");
+        for (var i = 0; i < parameters.length; i++) {
+          if (parameters[i].split("=")[0].toLowerCase() == key && parameters[i].split("=").length > 1) {
+            return parameters[i].split("=")[1];
+          }
+        }
+        return "";
+      },
+
+      jsonLoaded: function() {
+        if(this.$.resultsAjax.response === undefined || this.$.resultsAjax.response == null){
+          window.location = document.URL;
+        }
+        else{
+          this.items = this.$.resultsAjax.response.slice(0);
+          // Store the profile information in the this.profiles variable
+          this.profiles = this.$.ajax.response.slice(0);
+          var colours = this.getUrlParam("colours");
+          var colourFilters = (colours === "") ? [] : colours.split(",");
+          for(var j = 0; j < this.coloursFilter.length; j++){
+            this.coloursFilter[j].checked = false;
+          }
+          for(var j = 0; j < this.coloursFilter.length; j++){
+            for(var i = 0; i < colourFilters.length; i++){
+              if(this.coloursFilter[j].name == colourFilters[i]){
+                this.coloursFilter[j].checked = true;
+              }
+            }
+          }
+          this.runFilterSearch();
+        }
+      },
+
+      runFilterSearch: function() {
+        // Get the search term and parameters to filter by from the url
+        var types = this.getUrlParam("types");
+        var profiles = this.getUrlParam("profiles");
+        var searchTerm = this.getUrlParam("search");
+        var season = this.getUrlParam("season");
+        var clothesFilters = (types === "") ? [] : types.split(",");
+        var profileFilters = (profiles === "") ? [] : profiles.split(",");
+        var seasonFilter = (season === "") ? [] : season.split(",");
+        var colourFilters = [];
+        for(var j = 0; j < this.coloursFilter.length; j++){
+          if(this.coloursFilter[j].checked == true){
+            colourFilters.push(this.coloursFilter[j].name);
+          }
+        }
+        var sizeFilters = [];
+        for(var j = 0; j < this.sizesFilter.length; j++){
+          if(this.sizesFilter[j].checked == true){
+            sizeFilters.push(this.sizesFilter[j].name);
+          }
+        }
+        var minPrice = this.pricesFilter[0].value;
+        var maxPrice = this.pricesFilter[1].value;
+
+        // Get the currently selected profile from the cookies
+        var selectedProfile = this.getSelectedProfileData();
+
+        // Filter down the products
+        this.filteredItems = this.items;
+        var that = this;
+        this.filteredItems = this.items.filter(function(d, idx, array) {
+          var matchesClothes = (clothesFilters.length == 0) ? true : false;
+          var matchesColour = (colourFilters.length == 0) ? true : false;
+          var matchesProfiles = (profileFilters.length == 0) ? true : false;
+          var matchesSizes = (sizeFilters.length == 0) ? true : false;
+          var matchesSeason = (seasonFilter.length == 0) ? true : false;
+          var matchesPrices = false;
+
+          // Does it match at least one of the clothes types detected
+          for (var i = 0; i < clothesFilters.length; i++) {
+            if (d.type == clothesFilters[i]) {
+              matchesClothes = true;
+            }
+          }
+
+          // Does it match at least one of the colours detected
+          for (var i = 0; i < colourFilters.length; i++) {
+            if (d.color == colourFilters[i]) {
+              matchesColour = true;
+            }
+          }
+
+          for (var i = 0; i < sizeFilters.length; i++) {
+            var sizes = d.sizes;
+            for(var j = 0; j < sizes.length; j++){
+              if (sizes[j] == sizeFilters[i]) {
+                matchesSizes = true;
+              }
+            }
+          }
+
+          for (var i = 0; i < seasonFilter.length; i++) {
+            if (d.seasons === null) {
+              matchesSeason = true;
+              break;
+            }
+
+            if (seasonFilter != "all" && seasonFilter.length == 0) {
+              matchesSeason = true;
+              break;
+            }
+
+            for (var j = 0; seasonFilter != "all" && j < seasonFilter.length; j++) {
+              if (seasonFilter[j] == d.seasons[j]) {
+                matchesSeason = true;
+              }
+            }
+          }
+
+          if(minPrice <= d.price && d.price <= maxPrice){
+            matchesPrices = true;
+          }
+
+          // Does it match the profile being used for this search (male/female, no sizes yet)
+          for (var i = 0; i < profileFilters.length; i++) {
+            var profile = { "id":"-1"};
+            for (var j = 0; j < that.profiles.length; j++) {
+              if (that.profiles[j].id == profileFilters[i]) {
+                profile = that.profiles[j];
+              }
+            }
+            if (d.clothing == 'All Genders' || (profile.id != -1 && (d.clothing == 'Men' && profile.gender == 'm') || (d.clothing == 'Women' && profile.gender == 'f'))) {
+
+              // TODO: Add checks for sizes, need to confirm how we're going to show profiles though - if we're sticking with numbers then the profiles need to be numbers - should be s, m, l, xl etc. though
+              matchesProfiles = true;
+            }
+          }
+
+          // Now filter by the rest of the search terms in the title and the description
+          var wordMatches = 0; var totalWords = 0;
+          var searchTerms = searchTerm.split(" ");
+          for (var i = 0; i < searchTerms.length && searchTerms[i] != ""; i++) {
+            var regex = new RegExp(searchTerms[i], 'i');
+            if (regex.test(d.product) || regex.test(d.description)) {
+              wordMatches++;
+            }
+            totalWords++;
+          }
+
+
+          // Check to see if matches all filters and at least 50% of the search terms matched
+          return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+        });
+        this.orderingArray();
+      },
+
+      forward: function(e) {
+        this.page = 0;
+        setTimeout(function() {
+          this.page = 1;;
+          this.nextProduct();
+        }.bind(this), 300);
+      },
+
+      addToBasket: function(e, detail, sender) {
+        var item = e.target.templateInstance.model.selectedProduct;
+        if (this.$.clothesQuantity.selected === null) {
+          // TODO: Add check for no size selecetd too
+          alert("No quantity selected. Add some errof rot shi");
+          return;
+        }
+        var itemComplete = {
+          product: item.product,
+          price: item.price,
+          image: item.image,
+          sizes: item.sizes[this.$.clothesSize.selected],
+          quantity: item.quantities[this.$.clothesQuantity.selected],
+          productcode: item.productcode,
+          unique: Math.random()
+        };
+        this.fire('core-signal', {name:"basket-add", data:itemComplete});
+      },
+
+      filtersToggle: function() {
+        this.$.editableFilters.toggle();
+      },
+
+      selectionMade: function(e, detail, sender) {
+        this.runFilterSearch();
+      },
+
+      selectionMade2: function(e, detail, sender) {
+        if(this.pricesFilter[0].value > this.pricesFilter[1].value){
+          if(e.target.id == 'Max'){
+            this.pricesFilter[1].value = this.pricesFilter[0].value;
+          }else{
+            this.pricesFilter[0].value = this.pricesFilter[1].value;
+          }
+        }
+        this.runFilterSearch();
+      },
+
+      orderChanged: function(e){
+
+        if(e.target.id == 'alpha'){
+          for(var i = 0; i < this.alphabeticalOrdering.length; i++){
+            if(this.alphabeticalOrdering[i].name == e.target.label){
+              this.alphabeticalOrdering[i].checked = true;
+            } else {
+              this.alphabeticalOrdering[i].checked = false;
+            }
+          }
+        }
+        if(e.target.id == 'price'){
+          for(var i = 0; i < this.priceOrdering.length; i++){
+            if(this.priceOrdering[i].name == e.target.label){
+              this.priceOrdering[i].checked = true;
+            } else {
+              this.priceOrdering[i].checked = false;
+            }
+          }
+        }
+        this.orderingArray();
+      },
+
+
+
+      orderingArray: function() {
+        var alphaOrdering = '';
+        var priceOrdering = '';
+        var alphabetArray = this.alphabeticalOrdering;
+        var priceArray = this.priceOrdering;
+        for(var i = 0; i < alphabetArray.length; i++){
+          if(alphabetArray[i].checked == true){
+              alphaOrdering = alphabetArray[i].order;
+          }
+        }
+        if(alphaOrdering == ''){
+          alphaOrdering = 'None';
+        }
+        for(var i = 0; i < priceArray.length; i++){
+          if(priceArray[i].checked == true){
+              priceOrdering = priceArray[i].order;
+          }
+        }
+        if(priceOrdering == ''){
+          priceOrdering = 'None';
+        }
+        //console.log(this.priceOrdering);
+        if(priceOrdering != 'None' && alphaOrdering == 'None'){
+          for(var i = 0; i < this.filteredItems.length-1; i++){
+            for(var j = 0; j < this.filteredItems.length-1; j++){
+              var firstProduct = this.filteredItems[j];
+              var secondProduct = this.filteredItems[j+1];
+              if(priceOrdering == 'Asc' && firstProduct.price > secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Desc' && firstProduct.price < secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+            }
+          }
+        }
+
+        if(alphaOrdering != 'None'){
+          for(var i = 0; i < this.filteredItems.length-1; i++){
+            for(var j = 0; j < this.filteredItems.length-1; j++){
+              var firstProduct = this.filteredItems[j];
+              var secondProduct = this.filteredItems[j+1];
+              if(alphaOrdering == 'Asc' && firstProduct.product > secondProduct.product){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(alphaOrdering == 'Desc' && firstProduct.product < secondProduct.product){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Asc' && firstProduct.product == secondProduct.product && firstProduct.price > secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+              if(priceOrdering == 'Desc' && firstProduct.product == secondProduct.product && firstProduct.price < secondProduct.price){
+                this.filteredItems[j] = secondProduct;
+                this.filteredItems[j+1] = firstProduct;
+              }
+            }
+          }
+        }
+      }
+
     });
 
   </script>
-</polymer-element>
+  </polymer-element>
