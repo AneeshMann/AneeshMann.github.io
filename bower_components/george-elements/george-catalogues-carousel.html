@@ -110,11 +110,14 @@
           break;
         }
         var gender_tag = Math.round(Math.random());
-        switch(gender_tag){
-          case 0: gender_tag = 'female';
-          break;
-          case 1: gender_tag = 'male';
-          break;
+        var selectedProfile = this.getSelectedProfile();
+        if (selectedProfile.gender == null) {
+          // No gender selected
+          gender_tag = '';
+        } else if (selectedProfile.gender == 'm') {
+          gender_tag = 'male';
+        } else if (selectedProfile.gender == 'f') {
+          gender_tag = 'female';
         }
         console.log(event_tag);
         console.log(weather_tag);
@@ -182,6 +185,22 @@
             this.orderedCatalogues.push(carouselLinks[k])
           }
         }
+      },
+
+      getSelectedProfile: function() {
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf("profileData=") != -1) {
+            return JSON.parse(c.substring(12, c.length));
+          }
+        }
+        return {
+          "id": "1"
+        };
       },
 
       generateCarousel: function(){
