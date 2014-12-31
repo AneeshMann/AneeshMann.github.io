@@ -11,58 +11,62 @@
   <core-signals on-core-signal-basket="{{profileSignal}}"></core-signals>
   <template>
     <style>
-      #availableProfiles {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .profileImage {
-        margin-right: 5px;
-      }
-
-      .selectedProfile {
-        background-color:
-      }
-
       polyfill-next-selector {
         content: ':host > .selected';
       }
-
-      .selected {
-        background-color: #3F51B5;
-        color: white;
-      }
-
-      .profile {
-        padding: 5px;
-        display: block;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        cursor: pointer;
-      }
     </style>
 
-    <content>
-      <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
-      <paper-icon-button id="selectedProfile"
-        src="{{selectedProfileInfo.image}}" on-click="{{openProfileSelection}}">
-      </paper-icon-button>
-      <paper-action-dialog id="profile_selection" heading="Profile Selection" transition="core-transition-center">
+    <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
+    <paper-icon-button id="selectedProfile"
+      src="{{selectedProfileInfo.image}}" on-click="{{openProfileSelection}}">
+    </paper-icon-button>
+    <paper-action-dialog id="profile_selection" heading="Shopping for" transition="core-transition-center">
+      <content>
         <ul on-tap="{{itemTapAction}}" id="availableProfiles">
           <template repeat="{{profiles as profile}}">
-            <li id="profile_{{profile.id}}" profileId="{{profile.id}}" layout horizontal center class="profile {{profile.id === selectedProfile ? 'selected' : ''}}">
+            <style>
+              .profileOption {
+                padding: 5px;
+                display: block;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: pointer;
+              }
+
+              .selected {
+                background-color: #eee;
+                color: black;
+              }
+
+              #availableProfiles {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+              }
+
+              .profileImage {
+                margin-right: 5px;
+              }
+            </style>
+            <li id="profile_{{profile.id}}" profileId="{{profile.id}}" layout horizontal center class="profileOption {{profile.id === selectedProfile ? 'selected' : ''}}">
               <img profileId="{{profile.id}}" class="profileImage" src="{{profile.image}}" width="65px" />
               <h3 profileId="{{profile.id}}">{{profile.name}} ({{profile.relation}})</h3>
             </li>
           </template>
         </ul>
         <core-selection id="selection" multi="false" on-core-select="{{selectAction}}"></core-selection>
-        <paper-button dismissive>Close</paper-button>
-      </paper-action-dialog>
-    </content>
+
+        <div style="clear: both;"><br /></div>
+
+        <div style="float: right;">
+          <paper-button style="background: #FFEB3B;" on-click="{{modifyProfiles}}" affirmative>Modify Profiles</paper-button>
+          <paper-button dismissive>Close</paper-button>
+        </div>
+      </content>
+    </paper-action-dialog>
   </template>
 
   <script>
@@ -125,6 +129,10 @@
           }
         }
         return -1;
+      },
+
+      modifyProfiles: function() {
+
       },
 
       jsonLoaded: function() {
