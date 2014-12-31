@@ -176,60 +176,59 @@
 
 
     <div flex layout vertical>
-        <paper-tabs selected="{{page}}">
-          <paper-tab>Page 0</paper-tab>
-          <paper-tab>Page 1</paper-tab>
-          <paper-tab>Page 2</paper-tab>
-          <paper-tab>Page 3</paper-tab>
-        </paper-tabs>
-        <swipe-pages selected="{{page}}">
-          <template repeat="{{filteredItems as selectedProduct}}">
-            <swipe-page layout vertical center center-justified>
-               <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
-                <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
-                <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
-                  <img class="card-image" src="{{selectedProduct.image}}"/>
-                </div>
-                <div class="card-right" flex two>
-                    <div class="card-top-right">
-                      <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
-                      <paper-fab mini icon="arrow-back" title="arrow-back" role="button" tabindex="0" aria-label="arrow-back" class="back-fab" on-tap={{back}}></paper-fab>
-                      <div class="card-product-title">{{selectedProduct.product}}</div>
-                      <div class="card-clothing">{{selectedProduct.clothing}}</div>
-                      <div class="card-price">£{{selectedProduct.price}}</div>
-                      <div class="inputs">
-                        <div class="input">
-                        <span>Size:</span>
-                        <paper-dropdown-menu label="Select a Size">
-                          <paper-dropdown id="sizeDropdown" class="dropdown">
-                            <core-menu id="clothesSize" class="menu">
-                              <template repeat="{{clothesSizeDropdown}}">
-                                <paper-item value="{{}}">{{}}</paper-item>
-                              </template>
-                            </core-menu>
-                          </paper-dropdown>
-                        </paper-dropdown-menu>
-                        </div>
-                        <div class="input">
-                        <span>Quantity:</span>
-                        <paper-dropdown-menu label="Select Quantity">
-                          <paper-dropdown id="quantityDropdown" class="dropdown">
-                            <core-menu id="clothesQuantity" class="menu">
-                              <template repeat="{{clothesQuantityDropdown}}">
-                                <paper-item value="{{}}">{{}}</paper-item>
-                              </template>
-                            </core-menu>
-                          </paper-dropdown>
-                        </paper-dropdown-menu>
-                        </div>
-                      </div>
-                      <div>
-                        <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
-                      </div>
-                    </div>
-                    <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br>Product Code: {{selectedProduct.productcode}}</div>
-                </div>
+      <paper-tabs selected="{{page}}">
+        <template repeat="{{filteredItems as selectedProduct}}">
+        <paper-tab>{{selectedProduct.product}}</paper-tab>
+        </template>
+      </paper-tabs>
+      <swipe-pages selected="{{page}}">
+        <template repeat="{{filteredItems as selectedProduct}}">
+          <swipe-page layout vertical center center-justified>
+            <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
+              <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
+              <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
+                <img class="card-image" src="{{selectedProduct.image}}"/>
               </div>
+              <div class="card-right" flex two>
+                <div class="card-top-right">
+                  <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
+                  <paper-fab mini icon="arrow-back" title="arrow-back" role="button" tabindex="0" aria-label="arrow-back" class="back-fab" on-tap={{back}}></paper-fab>
+                  <div class="card-product-title">{{selectedProduct.product}}</div>
+                  <div class="card-clothing">{{selectedProduct.clothing}}</div>
+                  <div class="card-price">£{{selectedProduct.price}}</div>
+                  <div class="inputs">
+                    <div class="input">
+                    <span>Size:</span>
+                    <paper-dropdown-menu label="Select a Size">
+                      <paper-dropdown id="sizeDropdown" class="dropdown">
+                        <core-menu id="clothesSize" class="menu">
+                          <template repeat="{{clothesSizeDropdown}}">
+                            <paper-item value="{{}}">{{}}</paper-item>
+                          </template>
+                        </core-menu>
+                      </paper-dropdown>
+                    </paper-dropdown-menu>
+                    </div>
+                    <div class="input">
+                    <span>Quantity:</span>
+                    <paper-dropdown-menu label="Select Quantity">
+                      <paper-dropdown id="quantityDropdown" class="dropdown">
+                        <core-menu id="clothesQuantity" class="menu">
+                          <template repeat="{{clothesQuantityDropdown}}">
+                            <paper-item value="{{}}">{{}}</paper-item>
+                          </template>
+                        </core-menu>
+                      </paper-dropdown>
+                    </paper-dropdown-menu>
+                    </div>
+                  </div>
+                  <div>
+                    <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
+                  </div>
+                </div>
+                <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br>Product Code: {{selectedProduct.productcode}}</div>
+              </div>
+            </div>
           </swipe-page>
         </template>
       </swipe-pages>
