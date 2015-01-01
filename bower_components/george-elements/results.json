@@ -1,8 +1,12 @@
 [
         {
+          "id": 1,
           "product": "Sporty Gingham Dress",
           "clothing": "Girls",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 4,
           "color": "red",
@@ -18,9 +22,13 @@
           "productcode": "4774861"
         },
         {
+          "id": 2,
           "product": "Girls School 2 Pack Gingham Dress",
           "clothing": "Girls",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 6,
           "color": "red",
@@ -36,9 +44,13 @@
           "productcode": "4774862"
         },
         {
+          "id": 3,
           "product": "Floral Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 3.50,
           "color": "red",
@@ -54,9 +66,13 @@
           "productcode": "4774863"
         },
         {
+          "id": 4,
           "product": "Bardot Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 10,
           "color": "red",
@@ -72,9 +88,13 @@
           "productcode": "4774864"
         },
         {
+          "id": 5,
           "product": "Check Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 8,
           "color": "red",
@@ -90,9 +110,13 @@
           "productcode": "4774865"
         },
         {
+          "id": 6,
           "product": "Patterned Maternity Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 12,
           "color": "red",
@@ -108,9 +132,13 @@
           "productcode": "4774866"
         },
         {
+          "id": 7,
           "product": "Spotty Fit and Flare Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 14,
           "color": "red",
@@ -126,9 +154,13 @@
           "productcode": "4774867"
         },
         {
+          "id": 8,
           "product": "Waterfall Party Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 12,
           "color": "red",
@@ -144,9 +176,13 @@
           "productcode": "4774868"
         },
         {
+          "id": 9,
           "product": "Spot Bow Party Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 10,
           "color": "red",
@@ -162,9 +198,13 @@
           "productcode": "4774869"
         },
         {
+          "id": 10,
           "product": "Dropped Waist Crepe Dress",
           "clothing": "Women",
           "type": "dress",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 14,
           "color": "red",
@@ -180,9 +220,13 @@
           "productcode": "4774870"
         },
         {
+          "id": 11,
           "product": "Collegiate Graphic T-shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 5,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -198,9 +242,13 @@
           "productcode": "4859238"
         },
         {
+          "id": 12,
           "product": "New York City T-shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 5,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -216,9 +264,13 @@
           "productcode": "4860059"
         },
         {
+          "id": 13,
           "product": "Basic Pique Polo Shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 6,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -234,9 +286,13 @@
           "productcode": "4859430"
         },
         {
+          "id": 14,
           "product": "Textured Front Polo Shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 10,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -252,9 +308,13 @@
           "productcode": "4843416"
         },
         {
+          "id": 15,
           "product": "Basic Pique Polo Shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 7,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -270,9 +330,13 @@
           "productcode": "4859431"
         },
         {
+          "id": 16,
           "product": "V-neck T-shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 5,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -288,9 +352,13 @@
           "productcode": "4833201"
         },
         {
+          "id": 17,
           "product": "Crew Neck T-shirt",
           "clothing": "Men",
           "type": "tee",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 5,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -306,9 +374,13 @@
           "productcode": "4833206"
         },
         {
+          "id": 18,
           "product": "Straight Cut Dark Wash Jeans",
           "clothing": "Men",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 6,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -324,9 +396,13 @@
           "productcode": "4544077 / 4650092"
         },
         {
+          "id": 19,
           "product": "Belted Jeans",
           "clothing": "Men",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 14,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -342,9 +418,13 @@
           "productcode": "4708051"
         },
         {
+          "id": 20,
           "product": "Slim Fit Jeans",
           "clothing": "Men",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 10,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -360,9 +440,13 @@
           "productcode": "4809307"
         },
         {
+          "id": 21,
           "product": "Belted Dark Wash Slim Fit Jeans",
           "clothing": "Men",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 15,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -378,9 +462,13 @@
           "productcode": "4809308"
         },
         {
+          "id": 22,
           "product": "Jeggings",
           "clothing": "Women",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 12,
           "sizes": [6, 8],
@@ -396,9 +484,13 @@
           "productcode": "4869167"
         },
         {
+          "id": 23,
           "product": "Corduroy Jeggings",
           "clothing": "Women",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 14,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -414,9 +506,13 @@
           "productcode": "4887529"
         },
         {
+          "id": 24,
           "product": "Floral Skinny Jeans",
           "clothing": "Women",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 16,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -432,9 +528,13 @@
           "productcode": "4890076"
         },
         {
+          "id": 25,
           "product": "Skinny Jeans",
           "clothing": "Women",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 8,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -450,9 +550,13 @@
           "productcode": "4868138"
         },
         {
+          "id": 26,
           "product": "Acid Wash High Waisted Skinny Jeans",
           "clothing": "Women",
           "type": "jeans",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 16,
           "sizes": [6, 8, 10, 12, 14, 16],
@@ -468,9 +572,13 @@
           "productcode": "4896094"
         },
         {
+          "id": 27,
           "product": "Scarf",
           "clothing": "All Genders",
           "type": "scarf",
+          "categories": [
+
+          ],
           "seasons": [
             "winter"
           ],
@@ -488,9 +596,13 @@
           "productcode": "807874"
         },
         {
+          "id": 28,
           "product": "Long Pink Jacket",
           "clothing": "Women",
           "type": "coat",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 24.99,
           "sizes": ["XS", "S", "M", "L", "XL"],
@@ -507,9 +619,13 @@
           "productcode": "45-78961"
         },
         {
+          "id": 29,
           "product": "Long White Jacket",
           "clothing": "Women",
           "type": "coat",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 24.99,
           "sizes": ["XS", "S", "M", "L", "XL"],
@@ -526,9 +642,13 @@
           "productcode": "45-78962"
         },
         {
+          "id": 30,
           "product": "Black Leather Jacket",
           "clothing": "Women",
           "type": "coat",
+          "categories": [
+
+          ],
           "seasons": "all",
           "price": 24.99,
           "sizes": ["XS", "S", "M", "L", "XL"],
