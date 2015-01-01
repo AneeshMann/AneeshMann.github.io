@@ -14,7 +14,10 @@
   <script>
     Polymer({
       ready: function() {
-        this.$.router.go("/0");
+        var url = window.location + "";
+        if(url.indexOf("#") == -1) {
+          this.$.router.go("/0");
+        }
       }
     });
   </script>
