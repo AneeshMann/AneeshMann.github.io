@@ -457,16 +457,43 @@
         }
       },
 
+      getProductById: function(id) {
+        for (var i = 0; this.items.length; i++) {
+          if (this.items[i].id == id) {
+            return [this.items[i]];
+          }
+        }
+        return [];
+      },
+
       runFilterSearch: function() {
         // Get the search term and parameters to filter by from the url
         var types = this.getUrlParam("types");
         var profiles = this.getUrlParam("profiles");
         var searchTerm = this.getUrlParam("search");
         var season = this.getUrlParam("season");
+        var categories = this.getUrlParam("categories");
+        var productid = this.getUrlParam("id");
         var clothesFilters = (types === "") ? [] : types.split(",");
         var profileFilters = (profiles === "") ? [] : profiles.split(",");
         var seasonFilter = (season === "") ? [] : season.split(",");
+        var categoryFilters = (categories === "") ? [] : categories.split(",");
         var colourFilters = [];
+
+        if (productid !== "") {
+          this.filteredItems = this.getProductById(productid);
+          if (this.filteredItems.length != 0) {
+            this.selectedProduct = this.filteredItems[0];
+            this.$.clothesQuantity.selected = null;
+            this.clothesSizeDropdown = this.selectedProduct.sizes;
+            this.clothesQuantityDropdown = this.selectedProduct.quantities;
+            this.$.sizeDropdown.$.scroller.style.height = "";
+            this.$.quantityDropdown.$.scroller.style.height = "";
+            this.page = 1;
+          }
+          return;
+        }
+
         for(var j = 0; j < this.coloursFilter.length; j++){
           if(this.coloursFilter[j].checked == true){
             colourFilters.push(this.coloursFilter[j].name);
@@ -493,6 +520,7 @@
           var matchesProfiles = (profileFilters.length == 0) ? true : false;
           var matchesSizes = (sizeFilters.length == 0) ? true : false;
           var matchesSeason = (seasonFilter.length == 0) ? true : false;
+          var matchesCategories = (categoryFilters.length == 0) ? true : false;
           var matchesPrices = false;
 
           // Does it match at least one of the clothes types detected
@@ -541,17 +569,33 @@
           }
 
           // Does it match the profile being used for this search (male/female, no sizes yet)
-          for (var i = 0; i < profileFilters.length; i++) {
-            var profile = { "id":"-1"};
-            for (var j = 0; j < that.profiles.length; j++) {
-              if (that.profiles[j].id == profileFilters[i]) {
-                profile = that.profiles[j];
+          // Alternatively, if categories given, does it match the categories and ignore the profiles
+          if (categoryFilters.length > 0) {
+            matchesProfiles = true;
+            // TODO: Filter by category
+            for (var i = 0; i < categoryFilters.length; i++) {
+              var filter = categoryFilters[i];
+              if ((filter == "men" || filter == "women") && (filter == d.clothing.toLowerCase() || d.clothing == "All Genders")) {
+                matchesCategories = true;
+              } else {
+                if (d.categories.indexOf(filter) > -1) {
+                  matchesCategories = true;
+                }
               }
             }
-            if (d.clothing == 'All Genders' || (profile.id != -1 && (d.clothing == 'Men' && profile.gender == 'm') || (d.clothing == 'Women' && profile.gender == 'f'))) {
+          } else {
+            for (var i = 0; i < profileFilters.length; i++) {
+              var profile = { "id":"-1"};
+              for (var j = 0; j < that.profiles.length; j++) {
+                if (that.profiles[j].id == profileFilters[i]) {
+                  profile = that.profiles[j];
+                }
+              }
+              if (d.clothing == 'All Genders' || (profile.id != -1 && (d.clothing == 'Men' && profile.gender == 'm') || (d.clothing == 'Women' && profile.gender == 'f'))) {
 
-              // TODO: Add checks for sizes, need to confirm how we're going to show profiles though - if we're sticking with numbers then the profiles need to be numbers - should be s, m, l, xl etc. though
-              matchesProfiles = true;
+                // TODO: Add checks for sizes, need to confirm how we're going to show profiles though - if we're sticking with numbers then the profiles need to be numbers - should be s, m, l, xl etc. though
+                matchesProfiles = true;
+              }
             }
           }
 
@@ -568,7 +612,7 @@
 
 
           // Check to see if matches all filters and at least 50% of the search terms matched
-          return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+          return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && matchesCategories && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
         this.orderingArray();
       },

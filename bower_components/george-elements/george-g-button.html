@@ -120,6 +120,7 @@
   <script>
     Polymer("george-g-button", {
       ready: function() {
+        console.log("testing mobile: g button is ready");
         this.showOrHide = "hide";
 
         this.addEventListener('click', this.showContent);
@@ -197,6 +198,54 @@
           "keywords": [
             "scarf", "scarves", "scarfs"
           ]
+        },
+        {
+          "key": "coat",
+          "keywords": [
+            "coat", "jacket", "anorak",
+            "coats", "jackets", "anoraks"
+          ],
+        }
+      ],
+
+      // Category keywords will override profiles
+      categoryKeywords: [
+        {
+          "key": "men",
+          "keywords": [
+            "male", "men", "man", "males"
+          ]
+        },
+        {
+          "key": "women",
+          "keywords": [
+            "female", "women", "females", "woman"
+          ]
+        },
+        {
+          "key": "boy",
+          "keywords": [
+            "boys", "boy"
+          ]
+        },
+        {
+          "key": "girl",
+          "keywords": [
+            "girls", "girl"
+          ]
+        },
+        {
+          "key": "home",
+          "keywords": [
+            "home", "garden", "kitchen"
+          ]
+        },
+        {
+          "key": "school",
+          "keywords": [
+            "school", "uniform", "reception",
+            "schoolwear"
+          ]
         }
       ],
 
@@ -242,6 +291,7 @@
       matchedWords: [],
       matchingProfiles: [],
       matchingSeasons: [],
+      matchingCategories: [],
 
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
@@ -253,6 +303,7 @@
         // Reset all the arrays
         this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
         this.matchedWords = []; this.matchingProfiles = []; this.matchingSeasons = [];
+        this.matchingCategories = [];
 
         // Loop through each word in the search string and analyse it
         for (var i = 0; i < words.length; i++) {
@@ -290,8 +341,13 @@
           termParam = "search=" + term;
         }
 
+        var profileOrCategoryParam = "&profiles=" + this.matchingProfiles.join();
+        if (this.matchingCategories.length > 0) {
+          profileOrCategoryParam = "&categories=" + this.matchingCategories.join();
+        }
+
         // Take us to the results
-        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + "&profiles=" + this.matchingProfiles.join() + "&types=" + this.matchingClothes.join() + "&season=" + this.matchingSeasons.join();
+        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + profileOrCategoryParam + "&types=" + this.matchingClothes.join() + "&season=" + this.matchingSeasons.join();
       },
 
       stripMatchingWords: function(term) {
@@ -310,6 +366,8 @@
       },
 
       analyseWord: function(word) {
+        // TODO: At lot of these can be moved in to one single function as they all basically do the same thing
+
         // Check to see if the word is a recognised relation keyword
         var profileKey = this.isProfileKeyword(word);
         if (profileKey != "") {
@@ -344,6 +402,13 @@
             this.matchingProfiles.push(this.profiles[i].id);
             this.matchedWords.push(word);
           }
+        }
+
+        // Check to see if the word is a category
+        var categoryKeyword = this.getKeyFromKeyword(this.categoryKeywords, word);
+        if (categoryKeyword != "") {
+          this.matchingCategories.push(categoryKeyword);
+          this.matchedWords.push(word);
         }
       },
 
@@ -420,6 +485,7 @@
       },
 
       askGeorge: function() {
+        console.log("Hit the ask george button");
         var that = this;
         that.clearResult = true;
         var recog = this.$.georgeRecognition;
