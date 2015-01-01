@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 #sliderBar::shadow #activeProgress {
-  background-color: #3f51b5;
+  background-color: #000;
 }
 
 .transiting #sliderBar::shadow #activeProgress {
@@ -137,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   border-radius: 50%;
-  background-color: #3f51b5;
+  background-color: #000;
   /* FIXME(ffu): can't use the following. https://github.com/Polymer/platform/issues/53 */
   /* transition-property: height, width, background-color, border;
   transition-duration: 0.1s;
@@ -158,7 +158,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 #sliderKnobInner::before {
-  background-color: #3f51b5;
+  background-color: #000;
 }
 
 .pin > #sliderKnob > #sliderKnobInner::before {

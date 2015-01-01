@@ -135,6 +135,7 @@
         position: absolute;
         top:0px;
         right:0px;
+        color: #fff;
       }
       .basket {
         background: #FFEB3B;
@@ -146,16 +147,6 @@
         color: white;
       }
       .input{
-        float:left;
-      }
-
-      .filters{
-        display: inline-block;
-      }
-      .filter span{
-        color: black;
-      }
-      .filter{
         float:left;
       }
 
@@ -220,36 +211,42 @@
     <core-animated-pages id="coreAnimatedPages" selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
 
       <section>
-        <div style="float: right; margin-top: 10px;">
-          <paper-button on-click="{{filtersToggle}}" style="background: #FFEB3B;">Filters & Sorting</paper-button>
+        <div style="float: right; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;">
+          <paper-button raised on-click="{{filtersToggle}}" style="background: #FFEB3B;">Filter & Sort</paper-button>
         </div>
-        <paper-action-dialog id="editableFilters" heading="Filters & Sorting" transition="core-transition-top">
-          <br>
+
+        <paper-action-dialog id="editableFilters" heading="Filter & Sort" transition="core-transition-top">
           <div>
-            <h2>Filters</h2>
+            <h3>Filter by</h3>
             <div class="filter">
-              <span>Size Filter:</span><br>
+              <h4>Size</h4>
               <template repeat={{sizesFilter}}>
-                  <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+                  <span style="margin: 10px; display: inline-block;">
+                    <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+                  </span>
               </template>
             </div>
             <div class="filter">
-              <span>Colour Filter:</span><br>
+              <h4>Colour</h4>
               <template repeat={{coloursFilter}}>
-                  <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+                  <span style="margin: 10px; display: inline-block;">
+                    <paper-checkbox id="{{name}}" on-change={{selectionMade}} label="{{name}}" checked="{{checked}}"></paper-checkbox>
+                  </span>
               </template>
             </div>
             <div class="filter">
-              <span>Price Filter:</span><br>
+              <h4>Price</h4>
               <template repeat={{pricesFilter}}>
-                  {{label}}<paper-slider id="{{name}}" on-change={{selectionMade2}} min="{{min}}" max="{{max}}" value="{{value}}" pin editable></paper-slider>
+                  <span style="margin: 10px; display: inline-block;">
+                    {{label}}<br><paper-slider id="{{name}}" on-change={{selectionMade2}} min="{{min}}" max="{{max}}" value="{{value}}" pin editable></paper-slider>
+                  </span>
               </template>
             </div>
           </div>
           <div>
-            <h2>Sorting</h2>
+            <h3>Sort by</h3>
             <div class="filter">
-              <span>Alphabetical Sorting:</span><br>
+              <h4>Name</h4>
               <paper-radio-group selected="None">
                 <template repeat={{alphabeticalOrdering}}>
                   <paper-radio-button id="{{list}}" on-change={{orderChanged}} label="{{name}}" checked="{{checked}}"></paper-radio-button>
@@ -257,13 +254,16 @@
               </paper-radio-group>
             </div>
             <div class="filter">
-              <span>Price Sorting:</span><br>
+              <h4>Price</h4>
               <paper-radio-group selected="None">
                 <template repeat={{priceOrdering}}>
                   <paper-radio-button id="{{list}}" on-change={{orderChanged}} label="{{name}}" checked="{{checked}}"></paper-radio-button>
                 </template>
               </paper-radio-group>
             </div>
+          </div>
+          <div style="float: right; clear: both;">
+            <paper-button dismissive>Done</paper-button>
           </div>
         </paper-action-dialog>
 
@@ -356,15 +356,15 @@
                       {name:'pink', checked:false},
                       {name:'grey', checked:false},
                       {name:'green', checked:false}],
-      pricesFilter: [{min:0 , max:50, value:0, label:"Min Price:", name:"Min"},
-                      {min:0 , max:50, value:50, label:"Max Price:", name:"Max"}],
+      pricesFilter: [{min:0 , max:50, value:0, label:"Minimum", name:"Min"},
+                      {min:0 , max:50, value:50, label:"Maximum", name:"Max"}],
 
       alphabeticalOrdering: [{name:'None', list:'alpha', checked:false, order:'None'},
                               {name:'A-Z', list:'alpha', checked: false, order:'Asc'},
                               {name:'Z-A', list:'alpha', checked: false, order:'Desc'}],
       priceOrdering: [{name:'None', list:'price', checked:false, order:'None'},
-                        {name:'£0-9', list:'price', checked: false, order:'Asc'},
-                        {name:'£9-0', list:'price', checked: false, order:'Desc'}],
+                        {name:'Low to High', list:'price', checked: false, order:'Asc'},
+                        {name:'High to Low', list:'price', checked: false, order:'Desc'}],
 
       clothesSizeDropdown: [],
       clothesQuantityDropdown: [],
