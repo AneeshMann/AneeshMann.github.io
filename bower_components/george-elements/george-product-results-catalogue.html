@@ -1,21 +1,10 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/core-signals/core-signals.html">
-<link rel="import" href="/bower_components/swipe-pages-master/swipe-pages.html">
-<link rel="import" href="/bower_components/swipe-pages-master/swipe-page.html">
-<link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
-<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
-<link rel="import" href="/bower_components/core-menu/core-menu.html">
-<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
-<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
-<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="/bower_components/core-collapse/core-collapse.html">
-<link rel="import" href="/bower_components/paper-item/paper-item.html">
-<link rel="import" href="/bower_components/paper-button/paper-button.html">
-<link rel="import" href="/bower_components/paper-slider/paper-slider.html">
-<link rel="import" href="/bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
-<link href="../core-collapse/core-collapse.html" rel="import">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/slick.js/slick/slick.js"></script>
 
   <polymer-element name="george-product-results-catalogue" attributes="query">
   <template>
@@ -172,10 +161,35 @@
         }
       }
 
+      #catalogue_results {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .product_information {
+        height: 100%;
+      }
+
+      .product_info {
+        margin-top: 15%;
+      }
+
+      .product_price {
+        background-color: #FFEB3B;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
     </style>
 
+    <link rel="stylesheet" href="/bower_components/slick.js/slick/slick-catalogue.css"/>
 
-    <div flex layout vertical>
+    <div id="catalogue_results" flex layout vertical>
+    </div>
+
+
+    <!--<div flex layout vertical>
       <paper-tabs selected="{{page}}">
         <template repeat="{{filteredItems as selectedProduct}}">
         <paper-tab>{{selectedProduct.product}}</paper-tab>
@@ -232,7 +246,7 @@
           </swipe-page>
         </template>
       </swipe-pages>
-    </div>
+    </div>-->
 
     <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json"></core-ajax>
     <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
@@ -336,6 +350,7 @@
       },
 
       jsonLoaded: function() {
+        console.log("Json in catalogue view loaded");
         if(this.$.resultsAjax.response === undefined || this.$.resultsAjax.response == null){
           window.location = document.URL;
         }
@@ -356,6 +371,24 @@
             }
           }
           this.runFilterSearch();
+          this.createSlick();
+        }
+      },
+
+      createSlick: function() {
+        $(this.$.catalogue_results).slick({
+              arrows: true,
+              infinite: true,
+              nextArrow: '<paper-fab mini icon="arrow-forward" class="slick-next"></paper-fab>',
+              prevArrow: '<paper-fab mini icon="arrow-back" class="slick-prev"></paper-fab>',
+              slidesToShow: 1,
+              slidesToScroll: 1,
+        });
+
+        for (var i = 0; i < this.filteredItems.length; i++) {
+          var product = this.filteredItems[i];
+          console.log(product);
+          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background-image: url('" + product.catalogue.fullbleed + "');\"><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
         }
       },
 
@@ -473,6 +506,7 @@
           return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
         this.orderingArray();
+        console.log(this.filteredItems);
       },
 
       forward: function(e) {
