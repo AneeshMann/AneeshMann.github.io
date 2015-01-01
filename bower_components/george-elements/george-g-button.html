@@ -243,7 +243,8 @@
         {
           "key": "school",
           "keywords": [
-            "school", "uniform", "reception"
+            "school", "uniform", "reception",
+            "schoolwear"
           ]
         }
       ],
@@ -302,6 +303,7 @@
         // Reset all the arrays
         this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
         this.matchedWords = []; this.matchingProfiles = []; this.matchingSeasons = [];
+        this.matchingCategories = [];
 
         // Loop through each word in the search string and analyse it
         for (var i = 0; i < words.length; i++) {
@@ -406,7 +408,7 @@
         var categoryKeyword = this.getKeyFromKeyword(this.categoryKeywords, word);
         if (categoryKeyword != "") {
           this.matchingCategories.push(categoryKeyword);
-          this.matchedWords.push(categoryKeyword);
+          this.matchedWords.push(word);
         }
       },
 
