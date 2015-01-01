@@ -10,7 +10,9 @@
             {
               "tag":"today",
               "carousel":[{"image":"/images/catalogues/today.png",
-                          "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+                          "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+                          {"image":"/images/catalogues/sale.png",
+                                      "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
             }
           ]
       },
@@ -21,12 +23,12 @@
           [
             {
               "tag":"winter",
-              "carousel":[{"image":"/images/catalogues/winter.png",
+              "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
                           "href":"/#/productresultsgrid/?&season=winter"}]
             },
             {
-              "tag":"halloween",
-              "carousel":[{"image":"/images/catalogues/boys/halloween.png",
+              "tag":"summer",
+              "carousel":[{"image":"/images/catalogues//summer-catalogue.png",
                           "href":"/#/2"}]
             }
           ]
@@ -38,22 +40,38 @@
           [
             {
               "tag":"raining",
-              "carousel":[{"image":"/images/catalogues/boys/coat.png",
+              "carousel":[{"image":"/images/catalogues/boys/coats.png",
                             "href":"/#/3"},
-                {"image":"/images/catalogues/women/footwear.png",
-                            "href":"/#/4"},
-                {"image":"/images/catalogues/boys/footwear.png",
-                            "href":"/#/5"}]
+                          {"image":"/images/catalogues/women/footwear.png",
+                                      "href":"/#/4"},
+                          {"image":"/images/catalogues/boys/footwear.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/rainy-days-catalogue.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/rain-coats.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/umbrellas.png",
+                                      "href":"/#/5"}]
             },
             {
               "tag":"snowing",
-              "carousel":[{"image":"/images/catalogues/winter.png",
-                              "href":"/#/3"}]
+              "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
+                              "href":"/#/3"},
+                          {"image":"/images/catalogues/women/knitwear.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/winter-coats.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/boys/coats.png",
+                                      "href":"/#/5"}]
             },
             {
               "tag":"sun",
-              "carousel":[{"image":"/images/catalogues/women/dresses.png",
-                              "href":"/#/3"}]
+              "carousel":[{"image":"/images/catalogues/women/summer-dresses.png",
+                              "href":"/#/3"},
+                          {"image":"/images/catalogues/summer-catalogue.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/beachwear.png",
+                                      "href":"/#/5"}]
             }
           ]
       },
@@ -71,18 +89,51 @@
                 {"image":"/images/catalogues/women/knitwear.png",
                             "href":"/#/5"},
                 {"image":"/images/catalogues/women/footwear.png",
+                            "href":"/#/6"},
+                {"image":"/images/catalogues/women/rain-coats.png",
+                            "href":"/#/6"},
+                {"image":"/images/catalogues/women/beachwear.png",
+                            "href":"/#/6"},
+                {"image":"/images/catalogues/women/summer-dresses.png",
+                            "href":"/#/6"},
+                {"image":"/images/catalogues/women/umbrellas.png",
+                            "href":"/#/6"},
+                {"image":"/images/catalogues/women/winter-coats.png",
                             "href":"/#/6"}]
             },
             {
               "tag":"male",
-              "carousel":[{"image":"/images/catalogues/boys/coat.png",
+              "carousel":[{"image":"/images/catalogues/men/accessories.png",
                             "href":"/#/4"},
-                {"image":"/images/catalogues/boys/nightwear.png",
-                            "href":"/#/4"},
-                {"image":"/images/catalogues/boys/footwear.png",
-                            "href":"/#/5"},
-                {"image":"/images/catalogues/boys/halloween.png",
-                            "href":"/#/6"}]
+                          {"image":"/images/catalogues/men/cardigans.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/coats-jackets.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/hoodies.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/jeans.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/jumpers.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/nightwear.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/shirts.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/shorts.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/socks.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/suits.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/swimwear.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/trousers.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/tshirt-polo.png",
+                                        "href":"/#/4"},
+                          {"image":"/images/catalogues/men/underwear.png",
+                                        "href":"/#/4"}
+                        ]
             }
           ]
       },
@@ -100,14 +151,12 @@
                             "href":"/#/7"},
                 {"image":"/images/catalogues/women/footwear.png",
                             "href":"/#/7"},
-                {"image":"/images/catalogues/boys/coat.png",
+                {"image":"/images/catalogues/boys/coats.png",
                             "href":"/#/7"},
                 {"image":"/images/catalogues/boys/nightwear.png",
                             "href":"/#/8"},
                 {"image":"/images/catalogues/boys/footwear.png",
-                            "href":"/#/9"},
-                {"image":"/images/catalogues/boys/halloween.png",
-                            "href":"/#/10"}]
+                            "href":"/#/9"}]
             }
           ]
       }
@@ -118,49 +167,215 @@
     "catalogue":"homeGarden",
     "carouselOptions":
       [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/furnishings.png",
+          "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/office.png",
+          "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/bedroom.png",
+            "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/bathroom.png",
+            "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/outdoor.png",
+            "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+        {"image":"/images/catalogues/home-garden/kitchen-dining.png",
+            "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
 
   },
 
   {
     "catalogue":"women",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "carouselOptions": [
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/sale.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/accessories.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/beachwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/blouses.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/winter-coats.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/summer-dresses.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/footwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/jeans.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/knitwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/leggings.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/lingerie.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/maternity.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/nightwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/skirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/swimwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/tops.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/trousers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/women/shorts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"}
+    ]
   },
 
   {
     "catalogue":"men",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "carouselOptions":[
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/sale.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/men/accessories.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/cardigans.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/coats-jackets.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/hoodies.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/jeans.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/jumpers.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/nightwear.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/shirts.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/shorts.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/socks.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/suits.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/swimwear.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/trousers.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/tshirt-polo.png",
+                    "href":"/#/4"},
+      {"image":"/images/catalogues/men/underwear.png",
+                    "href":"/#/4"}
+    ]
   },
 
   {
     "catalogue":"boys",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "carouselOptions": [
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/sale.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/accessories.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/coats.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/hoodies.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/jeans.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/jumpers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/nightwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/shirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/tops.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/boys/trousers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"}
+    ]
   },
 
   {
-    "catalogue":"girl",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "catalogue":"girls",
+    "carouselOptions": [
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/sale.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/accessories.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/coats-jackets.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/dresses.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/hoodies.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/jeans.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/jumpers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/jeggings.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/nightwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/skirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/tops.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/girls/trousers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"}
+    ]
   },
 
   {
     "catalogue":"baby",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "carouselOptions": [
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/accessories.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/all-in-ones.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/bodysuits.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/coats.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/cardigans.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/sleepsuits.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/tops.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/baby/trousers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"}
+    ]
   },
 
   {
     "catalogue":"school",
-    "carouselOptions":
-      [{"image":"/images/catalogues/today.png",
-        "href":"/#/productresultsgrid/?&colours=red&types=dress"}]
+    "carouselOptions": [
+      {"image":"/images/catalogues/today.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/bags.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/blazers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/footwear.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/jumpers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/pinafores.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/polo-shirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/shirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/skirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/sweatshirts.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"},
+      {"image":"/images/catalogues/school/trousers.png",
+        "href":"/#/productresultsgrid/?&colours=red&types=dress"}
+    ]
   }
 ]
