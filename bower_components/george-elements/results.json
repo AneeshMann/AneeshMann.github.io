@@ -19,7 +19,8 @@
           },
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
-          "productcode": "4774861"
+          "productcode": "4774861",
+          "backgroundColour": "#B71C1C"
         },
         {
           "id": 2,
@@ -41,7 +42,8 @@
           },
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
-          "productcode": "4774862"
+          "productcode": "4774862",
+          "backgroundColour": "#B71C1C"
         },
         {
           "id": 3,
@@ -64,7 +66,7 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774863",
-          "backgroundColour": "#F44336"
+          "backgroundColour": "#B71C1C"
         },
         {
           "id": 4,
@@ -641,7 +643,8 @@
           },
           "description": "A beautiful figure-fit jacket. This lucious pink jacket will be sure to catch peoples eye.",
           "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
-          "productcode": "45-78961"
+          "productcode": "45-78961",
+          "backgroundColour": "#9E9E9E"
         },
         {
           "id": 29,
@@ -664,7 +667,8 @@
           },
           "description": "A beautiful figure-fit jacket. This lucious white jacket will be sure to catch peoples eye.",
           "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
-          "productcode": "45-78962"
+          "productcode": "45-78962",
+          "backgroundColour": "#9E9E9E"
         },
         {
           "id": 30,
@@ -687,6 +691,7 @@
           },
           "description": "A stylish black leather jacket perfect for any occasion.",
           "materials": " x% leather",
-          "productcode": "45-78963"
+          "productcode": "45-78963",
+          "backgroundColour": "#9E9E9E"
         }
       ]
