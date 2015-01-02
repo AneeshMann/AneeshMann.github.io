@@ -78,10 +78,7 @@
           }
         }
         document.cookie = "george_basket="+JSON.stringify(this.basket);
-        this.sub_total = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
-        }
+        this.updateSubtotal();
       },
 
       updateBasket: function(e, detail, sender) {
@@ -92,10 +89,7 @@
           }
         }
         document.cookie = "george_basket="+JSON.stringify(this.basket);
-        this.sub_total = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
-        }
+        this.updateSubtotal();
         this.fire('core-signal', {"name":"checkout", "data":this.basket});
       },
 
@@ -121,6 +115,13 @@
         this.sub_total = 0;
         for(var i = 0; i < this.basket.length; i++){
           this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
+        }
+        var decimalPrice = this.sub_total.toFixed(2);
+        if(decimalPrice.substr(-2) == 00){
+          this.sub_total = decimalPrice.substr(0, decimalPrice.length-3);
+        }
+        else{
+          this.sub_total = decimalPrice;
         }
       },
 
@@ -149,10 +150,7 @@
 
       basketAlter: function(e, detail, sender) {
         this.basket = detail;
-        this.sub_total = 0;
-        for(var i = 0; i< this.basket.length; i++){
-          this.sub_total = this.sub_total + this.basket[i].price * this.basket[i].quantity;
-        }
+        this.updateSubtotal();
       },
 
       basketToCheckout: function(e, detail, sender) {
