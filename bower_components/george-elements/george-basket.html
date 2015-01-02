@@ -110,7 +110,7 @@
 
       updateBasketQuantity: function(uniqueId, sizeGiven, quantity) {
         for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].productcode = uniqueId && this.basket[i].size == sizeGiven) {
+          if (this.basket[i].productcode == uniqueId && this.basket[i].size == sizeGiven) {
             this.basket[i].quantity = parseInt(this.basket[i].quantity) + quantity;
             return;
           }
@@ -128,6 +128,7 @@
         if (this.isAlreadyInBasket(detail.productcode, detail.sizes)) {
           this.updateBasketQuantity(detail.productcode, detail.sizes, detail.quantity);
           this.updateSubtotal();
+          document.cookie = "george_basket="+JSON.stringify(this.basket);
         } else {
           product_basket = {
             "id": this.items,
