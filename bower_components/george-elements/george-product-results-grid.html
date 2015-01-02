@@ -443,6 +443,15 @@
         }
         else{
           this.items = this.$.resultsAjax.response.slice(0);
+          for (var i = 0; i<this.items.length; i++) {
+            var decimalPrice = this.items[i].price.toFixed(2);
+            if(decimalPrice.substr(-2) == 00){
+              this.items[i].price = decimalPrice.substr(0, decimalPrice.length-3);
+            }
+            else{
+              this.items[i].price = decimalPrice;
+            }
+          }
           // Store the profile information in the this.profiles variable
           this.profiles = this.$.ajax.response.slice(0);
           var colours = this.getUrlParam("colours");
