@@ -486,11 +486,13 @@
         var searchTerm = this.getUrlParam("search");
         var season = this.getUrlParam("season");
         var categories = this.getUrlParam("categories");
+        var tags = this.getUrlParam("tags");
         var productid = this.getUrlParam("id");
         var clothesFilters = (types === "") ? [] : types.split(",");
         var profileFilters = (profiles === "") ? [] : profiles.split(",");
         var seasonFilter = (season === "") ? [] : season.split(",");
         var categoryFilters = (categories === "") ? [] : categories.split(",");
+        var tagFilters = (tags === "") ? [] : tags.split(",");
         var colourFilters = [];
 
         if (productid !== "") {
@@ -534,6 +536,7 @@
           var matchesSizes = (sizeFilters.length == 0) ? true : false;
           var matchesSeason = (seasonFilter.length == 0) ? true : false;
           var matchesCategories = (categoryFilters.length == 0) ? true : false;
+          var matchesTags = (tagFilters.length == 0) ? true : false;
           var matchesPrices = false;
 
           // Does it match at least one of the clothes types detected
@@ -581,6 +584,12 @@
             matchesPrices = true;
           }
 
+          for (var i = 0; i < tagFilters.length; i++) {
+            if (d.tags.indexOf(tagFilters[i]) > -1) {
+              matchesTags = true;
+            }
+          }
+
           // Does it match the profile being used for this search (male/female, no sizes yet)
           // Alternatively, if categories given, does it match the categories and ignore the profiles
           if (categoryFilters.length > 0) {
@@ -625,7 +634,7 @@
 
 
           // Check to see if matches all filters and at least 50% of the search terms matched
-          return matchesClothes && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && matchesCategories && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+          return matchesClothes && matchesTags && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && matchesCategories && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
         });
         this.orderingArray();
       },

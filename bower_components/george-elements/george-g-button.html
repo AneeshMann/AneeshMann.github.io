@@ -270,6 +270,15 @@
         }
       ],
 
+      tags: [
+        {
+          "key": "sale",
+          "keywords": [
+            "sale", "sales", "offers", "offer"
+          ]
+        }
+      ],
+
       sizes: [
         {
           "key": "m",
@@ -292,6 +301,7 @@
       matchingProfiles: [],
       matchingSeasons: [],
       matchingCategories: [],
+      matchingTags: [],
 
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
@@ -303,7 +313,7 @@
         // Reset all the arrays
         this.matchingRelations = []; this.matchingClothes = []; this.matchingColours = [];
         this.matchedWords = []; this.matchingProfiles = []; this.matchingSeasons = [];
-        this.matchingCategories = [];
+        this.matchingCategories = []; this.matchingTags = [];
 
         // Loop through each word in the search string and analyse it
         for (var i = 0; i < words.length; i++) {
@@ -347,7 +357,7 @@
         }
 
         // Take us to the results
-        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + profileOrCategoryParam + "&types=" + this.matchingClothes.join() + "&season=" + this.matchingSeasons.join();
+        document.location.href = "/#/productresultsgrid/?" + termParam + "&colours=" + this.matchingColours.join() + profileOrCategoryParam + "&types=" + this.matchingClothes.join() + "&season=" + this.matchingSeasons.join() + "&tags=" + this.matchingTags.join();
       },
 
       stripMatchingWords: function(term) {
@@ -408,6 +418,12 @@
         var categoryKeyword = this.getKeyFromKeyword(this.categoryKeywords, word);
         if (categoryKeyword != "") {
           this.matchingCategories.push(categoryKeyword);
+          this.matchedWords.push(word);
+        }
+
+        var tagKeyword = this.getKeyFromKeyword(this.tags, word);
+        if (tagKeyword != "") {
+          this.matchingTags.push(tagKeyword);
           this.matchedWords.push(word);
         }
       },

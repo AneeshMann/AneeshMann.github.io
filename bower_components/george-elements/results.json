@@ -20,7 +20,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774861",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 2,
@@ -43,7 +46,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774862",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 3,
@@ -66,7 +72,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774863",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 4,
@@ -89,7 +98,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774864",
-          "backgroundColour": "#F44336"
+          "backgroundColour": "#F44336",
+          "tags": [
+
+          ]
         },
         {
           "id": 5,
@@ -112,7 +124,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774865",
-          "backgroundColour": "#000000"
+          "backgroundColour": "#000000",
+          "tags": [
+
+          ]
         },
         {
           "id": 6,
@@ -135,7 +150,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774866",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 7,
@@ -158,7 +176,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774867",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 8,
@@ -181,7 +202,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774868",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 9,
@@ -204,7 +228,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774869",
-          "backgroundColour": "#d62845"
+          "backgroundColour": "#d62845",
+          "tags": [
+
+          ]
         },
         {
           "id": 10,
@@ -227,7 +254,10 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774870",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 11,
@@ -250,7 +280,10 @@
           "description": "A little preppy, a little laidback and totally on-trend, this collegiate graphic tee is a great addition to your wardrobe. Crafted with cotton fabric, this cool piece is sure to become a favourite of yours.",
           "materials": "100% cotton",
           "productcode": "4859238",
-          "backgroundColour": "#243443"
+          "backgroundColour": "#243443",
+          "tags": [
+
+          ]
         },
         {
           "id": 12,
@@ -273,7 +306,10 @@
           "description": "Refresh your casual wardrobe with this great New York City tee. This versatile piece is ideal for bringing a pop of colour and character to your day to day casual outfits.",
           "materials": "100% cotton",
           "productcode": "4860059",
-          "backgroundColour": "#2a252c"
+          "backgroundColour": "#2a252c",
+          "tags": [
+
+          ]
         },
         {
           "id": 13,
@@ -296,7 +332,10 @@
           "description": "An essential in any mans wardrobe, this polo shirt comes in pique cotton thats breathable, light and easy to wash. Button it up for a smart look and try it layered for a cool weekend vibe.",
           "materials": "100% cotton",
           "productcode": "4859430",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 14,
@@ -319,7 +358,10 @@
           "description": "Introduce a timeless classic to your wardrobe with this textured front polo shirt this season. Created with soft fabric to keep you comfy, this versatile piece is ideal for completing your casual looks with a smart spin.",
           "materials": "100% cotton",
           "productcode": "4843416",
-          "backgroundColour": "#181d21"
+          "backgroundColour": "#181d21",
+          "tags": [
+
+          ]
         },
         {
           "id": 15,
@@ -342,7 +384,10 @@
           "description": "An essential in any mans wardrobe, this polo shirt comes in pique cotton thats breathable, light and easy to wash. Button it up for a smart look and try it layered for a cool weekend vibe.",
           "materials": "100% cotton",
           "productcode": "4859431",
-          "backgroundColour": "#1B5E20"
+          "backgroundColour": "#1B5E20",
+          "tags": [
+
+          ]
         },
         {
           "id": 16,
@@ -365,7 +410,10 @@
           "description": "Stylish staples are a must-have for every wardrobe and with this great V-neck tee you’ll be set for all seasons. Created with light fabric to ensure your comfort, this trendy piece is perfect for acing those laidback and layered looks.",
           "materials": "100% cotton",
           "productcode": "4833201",
-          "backgroundColour": "#009688"
+          "backgroundColour": "#009688",
+          "tags": [
+
+          ]
         },
         {
           "id": 17,
@@ -388,7 +436,10 @@
           "description": "For a staple you’ll be wearing year-round, invest in this stylish crew neck tee. Crafted with light fabric to ensure your comfort and with a versatile design, you’ll be able to mix and match with this piece time and again.",
           "materials": "100% cotton",
           "productcode": "4833206",
-          "backgroundColour": "#212121"
+          "backgroundColour": "#212121",
+          "tags": [
+
+          ]
         },
         {
           "id": 18,
@@ -411,7 +462,10 @@
           "description": "Classically fuss-free these dark wash jeans have been cut in a straight fit offering steadfast style that will see you through season after season.",
           "materials": "100% cotton",
           "productcode": "4544077 / 4650092",
-          "backgroundColour": "#3F51B5"
+          "backgroundColour": "#3F51B5",
+          "tags": [
+
+          ]
         },
         {
           "id": 19,
@@ -434,7 +488,10 @@
           "description": "Cool and casual, these belted jeans are bound to become a favourite of yours. Designed to be basic and versatile, these jeans are sure to become a staple for your casual outfits.",
           "materials": "100% cotton",
           "productcode": "4708051",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 20,
@@ -457,7 +514,10 @@
           "description": "A great new staple for your wardrobe this season, these slim fit jeans are a great investment. Highly versatile, these are bound to become the key to your casual outfits this winter.",
           "materials": "99% Cotton, 1% Elastane",
           "productcode": "4809307",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 21,
@@ -480,7 +540,10 @@
           "description": "Invest in a great new staple with these belted dark wash slim fit jeans this winter. Created to become your go-to versatile pick, you’ll be completing your outfits with these trendy jeans again and again this season.",
           "materials": "100% Cotton",
           "productcode": "4809308",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 22,
@@ -503,7 +566,10 @@
           "description": "Go for a stylish staple you’ll be wearing year-round with these great jeggings. Crafted with soft fabric and featuring an elasticated waistband, these are a comfy alternative to jeans that you’re sure to adore.",
           "materials": "72% Cotton, 25% Polyester, 3% Elastane",
           "productcode": "4869167",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 23,
@@ -526,7 +592,10 @@
           "description": "Step-up the style stakes this season with these comfy and versatile corduroy jeggings. Whether you’re heading out with friends or visiting family, these are bound to become a staple in your casual outfits.",
           "materials": "75% Cotton, 23% Viscose, 2% Elastane",
           "productcode": "4887529",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 24,
@@ -549,7 +618,10 @@
           "description": "With a magnificent medley of floral patterns, these stylish skinny jeans are a fabulous addition to your casual wardrobe. These charming bottoms are perfect for transforming your everyday outfits and adding some subtle femininity to every look.",
           "materials": "73% Cotton, 25% Polyester, 2% Elastane",
           "productcode": "4890076",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 25,
@@ -572,7 +644,10 @@
           "description": "Bound to become your keep-forever favourites, these skinny jeans are a stylish must-have. With a versatile design and a flattering fit, these are an indispensable staple you’ll be wearing time and again.",
           "materials": "80% Cotton, 19% Polyester, 1% Elastane",
           "productcode": "4868138",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 26,
@@ -595,7 +670,10 @@
           "description": "Embrace your inner rocker with these cool acid wash high waisted skinny jeans. These versatile bottoms are perfect for adding an edge to every look and are guaranteed to become your go-to for an effortless stylish statement piece.",
           "materials": "68% Cotton, 30% Polyester, 2% Elastane",
           "productcode": "4896094",
-          "backgroundColour": "#0D47A1"
+          "backgroundColour": "#0D47A1",
+          "tags": [
+
+          ]
         },
         {
           "id": 27,
@@ -620,7 +698,10 @@
           "description": "Wrap yourself up in warmth this winter with this stylish scarf. Versatile and fashionable, you’ll be completing all of your outfits with this lovely piece.",
           "materials": "100% Polyester",
           "productcode": "807874",
-          "backgroundColour": "#B71C1C"
+          "backgroundColour": "#B71C1C",
+          "tags": [
+
+          ]
         },
         {
           "id": 28,
@@ -644,7 +725,10 @@
           "description": "A beautiful figure-fit jacket. This lucious pink jacket will be sure to catch peoples eye.",
           "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
           "productcode": "45-78961",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 29,
@@ -668,7 +752,10 @@
           "description": "A beautiful figure-fit jacket. This lucious white jacket will be sure to catch peoples eye.",
           "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
           "productcode": "45-78962",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
         },
         {
           "id": 30,
@@ -692,6 +779,9 @@
           "description": "A stylish black leather jacket perfect for any occasion.",
           "materials": " x% leather",
           "productcode": "45-78963",
-          "backgroundColour": "#9E9E9E"
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+            "sale"
+          ]
         }
       ]
