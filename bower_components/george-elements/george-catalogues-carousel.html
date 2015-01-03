@@ -150,12 +150,12 @@
               var optionSearch = homeCatalogue[i].options;
               for(j = 0; j < optionSearch.length; j++){
                 var optionCarousel = optionSearch[j].carousel;
-                switch(optionSearch[j].tag){
+                switch(optionSearch[j].tag[0]){
                   case 'today': this.searchAddCarousel(optionCarousel);
                     break;
                   case event_tag: this.searchAddCarousel(optionCarousel);
                     break;
-                  case weather_tag: this.searchAddCarousel(optionCarousel);
+                  case weather_tag: if(optionSearch[j].tag[1] == gender_tag){this.searchAddCarousel(optionCarousel);}
                     break;
                   case gender_tag: this.searchAddCarousel(optionCarousel);
                     break;

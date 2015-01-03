@@ -8,7 +8,7 @@
         "options":
           [
             {
-              "tag":"today",
+              "tag":["today"],
               "carousel":[{"image":"/images/catalogues/today.png",
                           "href":"/#/productresultsgrid/?&colours=red&types=dress"},
                           {"image":"/images/catalogues/sale.png",
@@ -22,12 +22,12 @@
         "options":
           [
             {
-              "tag":"winter",
+              "tag":["winter"],
               "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
                           "href":"/#/productresultsgrid/?&season=winter"}]
             },
             {
-              "tag":"summer",
+              "tag":["summer"],
               "carousel":[{"image":"/images/catalogues//summer-catalogue.png",
                           "href":"/#/2"}]
             }
@@ -39,7 +39,7 @@
         "options":
           [
             {
-              "tag":"raining",
+              "tag":["raining",""],
               "carousel":[{"image":"/images/catalogues/boys/coats.png",
                             "href":"/#/3"},
                           {"image":"/images/catalogues/women/footwear.png",
@@ -54,7 +54,7 @@
                                       "href":"/#/5"}]
             },
             {
-              "tag":"snowing",
+              "tag":["snowing",""],
               "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
                               "href":"/#/3"},
                           {"image":"/images/catalogues/women/knitwear.png",
@@ -65,7 +65,57 @@
                                       "href":"/#/5"}]
             },
             {
-              "tag":"sun",
+              "tag":["sun",""],
+              "carousel":[{"image":"/images/catalogues/women/summer-dresses.png",
+                              "href":"/#/3"},
+                          {"image":"/images/catalogues/summer-catalogue.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/beachwear.png",
+                                                  "href":"/#/5"}]
+            },
+            {
+              "tag":["raining","male"],
+              "carousel":[{"image":"/images/catalogues/boys/coats.png",
+                            "href":"/#/3"},
+                          {"image":"/images/catalogues/boys/footwear.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/rainy-days-catalogue.png",
+                                      "href":"/#/5"}]
+            },
+            {
+              "tag":["snowing","male"],
+              "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
+                              "href":"/#/3"},
+                          {"image":"/images/catalogues/boys/coats.png",
+                                      "href":"/#/5"}]
+            },
+            {
+              "tag":["sun","male"],
+              "carousel":[{"image":"/images/catalogues/summer-catalogue.png",
+                                      "href":"/#/5"}]
+            },
+            {
+              "tag":["raining","female"],
+              "carousel":[{"image":"/images/catalogues/women/footwear.png",
+                                      "href":"/#/4"},
+                          {"image":"/images/catalogues/rainy-days-catalogue.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/rain-coats.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/umbrellas.png",
+                                      "href":"/#/5"}]
+            },
+            {
+              "tag":["snowing","female"],
+              "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
+                              "href":"/#/3"},
+                          {"image":"/images/catalogues/women/knitwear.png",
+                                      "href":"/#/5"},
+                          {"image":"/images/catalogues/women/winter-coats.png",
+                                      "href":"/#/5"}]
+            },
+            {
+              "tag":["sun","female"],
               "carousel":[{"image":"/images/catalogues/women/summer-dresses.png",
                               "href":"/#/3"},
                           {"image":"/images/catalogues/summer-catalogue.png",
@@ -81,7 +131,7 @@
         "options":
           [
             {
-              "tag":"female",
+              "tag":["female"],
               "carousel":[{"image":"/images/catalogues/women/jeans.png",
                             "href":"/#/4"},
                 {"image":"/images/catalogues/women/dresses.png",
@@ -102,7 +152,7 @@
                             "href":"/#/6"}]
             },
             {
-              "tag":"male",
+              "tag":["male"],
               "carousel":[{"image":"/images/catalogues/men/accessories.png",
                             "href":"/#/4"},
                           {"image":"/images/catalogues/men/cardigans.png",
@@ -142,7 +192,7 @@
         "options":
           [
             {
-              "tag":"remainder",
+              "tag":["remainder"],
               "carousel":[{"image":"/images/catalogues/women/jeans.png",
                             "href":"/#/7"},
                 {"image":"/images/catalogues/women/dresses.png",
