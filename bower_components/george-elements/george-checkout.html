@@ -329,6 +329,8 @@
           this.sub_total_items = this.sub_total_items + this.basket[i].quantity;
           this.sub_total_orders++;
         }
+        this.sub_total_price = this.sub_total_price.toFixed(2);
+
         if(deliveryPrice != null){
           this.total_price = this.total_price + deliveryPrice;
           this.total_price = this.total_price.toFixed(2);
