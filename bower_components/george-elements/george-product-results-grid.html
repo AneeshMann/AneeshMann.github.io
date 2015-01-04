@@ -306,7 +306,7 @@
                   <span>Size:</span>
                   <paper-dropdown-menu label="Select a Size">
                     <paper-dropdown id="sizeDropdown" class="dropdown">
-                      <core-menu id="clothesSize" class="menu">
+                      <core-menu id="clothesSize" class="menu" selected="{{selectedProduct.recommendedSize}}" valueattr="value">
                         <template repeat="{{clothesSizeDropdown}}">
                           <paper-item value="{{}}">{{}}</paper-item>
                         </template>
@@ -344,6 +344,135 @@
 
     Polymer('george-product-results-grid', {
 
+      sizeGuides: [
+        {
+          "keys": ["trousers", "jeans"],
+          "male": [
+            {
+              "size": "28 Short",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 0,
+                  "upper": 28
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 0,
+                  "upper": 26
+                }
+              ]
+            },
+            {
+              "size": "30 Short",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 29,
+                  "upper": 30
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 0,
+                  "upper": 26
+                }
+              ]
+            },
+            {
+              "size": "32 Short",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 31,
+                  "upper": 32
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 0,
+                  "upper": 26
+                }
+              ]
+            },
+            {
+              "size": "28 Regular",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 0,
+                  "upper": 28
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 27,
+                  "upper": 30
+                }
+              ]
+            },
+            {
+              "size": "30 Regular",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 29,
+                  "upper": 30
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 27,
+                  "upper": 30
+                }
+              ]
+            },
+            {
+              "size": "32 Regular",
+              "measurements": [
+                {
+                  "key": "waist",
+                  "lower": 31,
+                  "upper": 32
+                },
+                {
+                  "key": "inside_leg",
+                  "lower": 27,
+                  "upper": 30
+                }
+              ]
+            }
+          ],
+          "female": [
+
+          ]
+        },
+        {
+          "keys": ["tee", "vests", "polos", "sweatshirt", "hoodies", "coats", "jackets"],
+          "male": [
+            {
+              "size": "XXS",
+              "measurements": [
+                {
+                  "key": "chest",
+                  "lower": 32,
+                  "upper": 34
+                }
+              ]
+            },
+            {
+              "size": "XS",
+              "measurements": [
+                {
+                  "key": "chest",
+                  "lower": 34,
+                  "upper": 36
+                }
+              ]
+            }
+          ],
+          "female": [
+
+          ]
+        }
+      ],
+
       page: 0,
 
       sizesFilter: [{name:6, checked:false},
@@ -378,6 +507,64 @@
 
       },
 
+      calculateRecommendedSize: function(product, profile) {
+        if (profile.measurements === null) {
+          return;
+        }
+
+        var sg = this.sizeGuides;
+        var guide = null;
+        for (var i = 0; i < sg.length; i++) {
+          if (sg[i].keys.indexOf(product.type) > -1) {
+            guide = sg[i];
+            break;
+          }
+        }
+
+        if (guide === null) {
+          return;
+        }
+
+        var measurements = null;
+        if (product.clothing == 'Men' && guide.male !== null) {
+          measurements = guide.male;
+        } else if (product.clothing == 'Women' && guide.female !== null) {
+          measurements = guide.female;
+        }
+
+        if (measurements === null) {
+          return;
+        }
+
+        for (var i = 0; i < measurements.length; i++) {
+          var m = measurements[i];
+          var currentSize = measurements[i].size;
+          var profileFits = true;
+          for (var l = 0; l < m.measurements.length; l++) {
+            var measurementKey = measurements[i].measurements[l].key;
+            var cM = measurements[i].measurements[l];
+            var matchesSize = false;
+            for (var j = 0; j < profile.measurements.length; j++) {
+              var pMm = profile.measurements[j];
+              if (pMm.key == measurementKey) {
+                if (pMm.size >= cM.lower && pMm.size <= cM.upper) {
+                  matchesSize = true;
+                }
+              }
+            }
+            if (!matchesSize) {
+              profileFits = false;
+            }
+          }
+
+          if (profileFits) {
+            return currentSize;
+          }
+        }
+
+        return;
+      },
+
       // Get the selected profile data from the cookie
       getSelectedProfileData: function() {
         var ca = document.cookie.split(';');
@@ -398,11 +585,18 @@
       transition: function(e) {
         if (this.page === 0 && e.target.templateInstance.model.item) {
           this.selectedProduct = e.target.templateInstance.model.item;
-          this.$.clothesQuantity.selected = null;
+          this.$.clothesQuantity.selected = 0;
           this.clothesSizeDropdown = e.target.templateInstance.model.item.sizes;
           this.clothesQuantityDropdown = e.target.templateInstance.model.item.quantities;
           this.$.sizeDropdown.$.scroller.style.height = "";
           this.$.quantityDropdown.$.scroller.style.height = "";
+
+          if (this.selectedProduct.recommendedSize !== null) {
+            var options = e.target.templateInstance.model.item.sizes;
+            var index = options.indexOf(this.selectedProduct.recommendedSize);
+            this.selectedProduct.selectedSize = index;
+          }
+
           this.page = 1;
         } else {
           this.page = 0;
@@ -590,6 +784,7 @@
             }
           }
 
+
           // Does it match the profile being used for this search (male/female, no sizes yet)
           // Alternatively, if categories given, does it match the categories and ignore the profiles
           if (categoryFilters.length > 0) {
@@ -616,6 +811,7 @@
               if (d.clothing == 'All Genders' || (profile.id != -1 && (d.clothing == 'Men' && profile.gender == 'm') || (d.clothing == 'Women' && profile.gender == 'f'))) {
 
                 // TODO: Add checks for sizes, need to confirm how we're going to show profiles though - if we're sticking with numbers then the profiles need to be numbers - should be s, m, l, xl etc. though
+
                 matchesProfiles = true;
               }
             }
@@ -634,7 +830,22 @@
 
 
           // Check to see if matches all filters and at least 50% of the search terms matched
-          return matchesClothes && matchesTags && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && matchesCategories && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50);
+          if (matchesClothes && matchesTags && matchesColour && matchesSizes && matchesPrices && matchesProfiles && matchesSeason && matchesCategories && ((wordMatches == 0 && totalWords == 0) || (wordMatches/totalWords)*100 > 50)) {
+            var currentProfile = that.getSelectedProfileData();
+            if (profileFilters.length > 0) {
+              for (var j = 0; j < that.profiles; j++) {
+                if (that.profiles[j].id == profileFilters[0]) {
+                  currentProfile = that.profiles[j];
+                }
+              }
+            }
+
+            var recommendedSize = that.calculateRecommendedSize(d, currentProfile);
+            d.recommendedSize = recommendedSize;
+            return true;
+          } else {
+            return false;
+          }
         });
         this.orderingArray();
       },

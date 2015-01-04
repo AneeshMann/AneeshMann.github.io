@@ -6,13 +6,20 @@
         "image": "/images/profile-martin.png",
         "relation": "You",
         "gender": "m",
-        "sizes": {
-          "tees": "m",
-          "shirts": "m",
-          "trousers": "m",
-          "shoes": "11",
-          "underwear": "m"
-        }
+        "measurements": [
+          {
+            "key": "waist",
+            "size": 30
+          },
+          {
+            "key": "inside_leg",
+            "size": 32
+          },
+          {
+            "key": "chest",
+            "size": 35
+          }
+        ]
     },
 
     {
@@ -22,12 +29,15 @@
         "image": "/images/profile-aneesh.png",
         "relation": "Mum",
         "gender": "f",
-        "sizes": {
-          "tees": "s",
-          "shirts": "s",
-          "trousers": "s",
-          "shoes": "11",
-          "underwear": "s"
-        }
+        "measurements": [
+          {
+            "key": "waist",
+            "size": 26
+          },
+          {
+            "key": "inside_leg",
+            "size": 28
+          }
+        ]
     }
 ]
