@@ -475,12 +475,23 @@
 
       page: 0,
 
-      sizesFilter: [{name:6, checked:false},
-                    {name:8, checked:false},
-                    {name:10, checked:false},
-                    {name:12, checked:false},
-                    {name:14, checked:false},
-                    {name:16, checked:false}],
+      sizesFilter: [],
+      sizeList: [
+                    {name:'XS', rank:1},
+                    {name:'S', rank:2},
+                    {name:'M', rank:3},
+                    {name:'L', rank:4},
+                    {name:'XL', rank:5},
+                    {name:6, rank:6},
+                    {name:8, rank:7},
+                    {name:10, rank:8},
+                    {name:12, rank:9},
+                    {name:14, rank:10},
+                    {name:16, rank:11},
+                    {name:18, rank:12},
+                    {name:20, rank:13},
+                    {name:22, rank:14}
+                    ],
       coloursFilter: [{name:'red', checked:false},
                       {name:'navy', checked:false},
                       {name:'blue', checked:false},
@@ -502,6 +513,7 @@
       clothesSizeDropdown: [],
       clothesQuantityDropdown: [],
       selectedProduct: null,
+      sizeFiltersLoaded: 0,
 
       created: function(){
 
@@ -847,6 +859,7 @@
             return false;
           }
         });
+        this.makeSizesFilters();
         this.orderingArray();
       },
 
@@ -973,6 +986,46 @@
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
+            }
+          }
+        }
+      },
+
+      makeSizesFilters: function(){
+        var sizeArray = this.filteredItems;
+        for(var i = 0; i < sizeArray.length; i++){
+          var productItemSizes = sizeArray[i].sizes;
+          for(var j = 0; j < productItemSizes.length; j++){
+            var foundSize = 0;
+            for(var k = 0; k < this.sizesFilter.length; k++){
+                if(this.sizesFilter[k].name == productItemSizes[j]){
+                  foundSize = 1;
+                }
+            }
+            if(foundSize == 0){
+              var sizeFilter = {
+                name: productItemSizes[j],
+                checked: false
+              }
+              this.sizesFilter.push(sizeFilter);
+            }
+          }
+        }
+        for(var j = 0; j < this.sizesFilter.length; j++){
+          for(var i = 0; i < this.sizesFilter.length-1; i++){
+            var firstSize = this.sizesFilter[i];
+            var secondSize = this.sizesFilter[i+1];
+            for(var k = 0; k < this.sizeList.length; k++){
+              if(firstSize.name == this.sizeList[k].name){
+                var firstSizeRank = this.sizeList[k].rank;
+              }
+              if(secondSize.name == this.sizeList[k].name){
+                var secondSizeRank = this.sizeList[k].rank;
+              }
+            }
+            if(firstSizeRank > secondSizeRank){
+              this.sizesFilter[i] = secondSize;
+              this.sizesFilter[i+1] = firstSize;
             }
           }
         }
