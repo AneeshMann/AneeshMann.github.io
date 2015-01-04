@@ -491,12 +491,26 @@
         // Replace all matching words
         var parsedTerm = term;
         for (var i = 0; i < this.matchedWords.length; i++) {
-          parsedTerm = parsedTerm.replace(this.matchedWords[i], "");
+          var word = this.matchedWords[i];
+          var regex = new RegExp("^" + word + " ", "i");
+          parsedTerm = parsedTerm.replace(regex, "");
+          var regex = new RegExp(" " + word + "$", "i");
+          parsedTerm = parsedTerm.replace(regex, "");
+          var regex = new RegExp(" " + word + " ", "i");
+          parsedTerm = parsedTerm.replace(regex, " ");
+          
           parsedTerm = parsedTerm.replace("  ", " ");
         }
 
         for (var i = 0; i < this.nonSearchTerms.length; i++) {
-          parsedTerm = parsedTerm.replace(this.nonSearchTerms[i], "");
+          var word = this.nonSearchTerms[i];
+          var regex = new RegExp("^" + word + " ", "i");
+          parsedTerm = parsedTerm.replace(regex, "");
+          var regex = new RegExp(" " + word + "$", "i");
+          parsedTerm = parsedTerm.replace(regex, "");
+          var regex = new RegExp(" " + word + " ", "i");
+          parsedTerm = parsedTerm.replace(regex, " ");
+
           parsedTerm = parsedTerm.replace("  ", " ");
         }
         return parsedTerm;
