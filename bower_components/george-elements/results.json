@@ -124,7 +124,7 @@
           "description": "Invest in a beautiful new addition to your wardrobe this season with this stunning spotty fit and flare dress. Crafted with long sleeves and an eye-catching pattern, this piece combines sophistication and style perfectly.",
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774865",
-          "backgroundColour": "#000000",
+          "backgroundColour": "#212121",
           "tags": [
 
           ]
@@ -151,9 +151,7 @@
           "materials": "Fabric composition: 72% Polyester, 27% Viscose, 1% Elastane",
           "productcode": "4774866",
           "backgroundColour": "#B71C1C",
-          "tags": [
-
-          ]
+          "tags": ["maternity"]
         },
         {
           "id": 7,
@@ -700,88 +698,986 @@
           "productcode": "807874",
           "backgroundColour": "#B71C1C",
           "tags": [
-
+            "accessory"
           ]
         },
         {
           "id": 28,
-          "product": "Long Pink Jacket",
+          "product": "Formal Jacket",
           "clothing": "Women",
           "type": "coat",
           "categories": [
 
           ],
           "seasons": "all",
-          "price": 24.99,
-          "sizes": ["XS", "S", "M", "L", "XL"],
+          "price": 18,
+          "sizes": [6, 8, 10 , 12, 14],
           "quantities": [1, 2, 3, 4, 5],
-          "color": "pink",
-          "image": "/images/women/52034.jpg",
+          "color": "yellow",
+          "image": "/images/women/formal-jacket.png",
           "catalogue": {
             "info_left": 55,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.jpeg"
           },
-          "description": "A beautiful figure-fit jacket. This lucious pink jacket will be sure to catch peoples eye.",
-          "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
-          "productcode": "45-78961",
-          "backgroundColour": "#9E9E9E",
+          "description": "Enliven your formal wardrobe with this sensational jacket. Sophisticated and fun, this piece will bring tons of character to your looks and have you catching attention whether you’re at work or out with friends.",
+          "materials": "Fabric composition: 98% Polyester, 2% Elastane˚",
+          "productcode": "4891126",
+          "backgroundColour": "#212121",
           "tags": [
 
           ]
         },
         {
           "id": 29,
-          "product": "Long White Jacket",
+          "product": "Formal Belted Coat",
           "clothing": "Women",
           "type": "coat",
           "categories": [
 
           ],
           "seasons": "all",
-          "price": 24.99,
-          "sizes": ["XS", "S", "M", "L", "XL"],
+          "price": 15,
+          "sizes": [6, 8, 10 , 12, 14],
           "quantities": [1, 2, 3, 4, 5],
-          "color": "white",
-          "image": "/images/women/52034.jpg",
+          "color": "blue",
+          "image": "/images/women/formal-belted-coat.png",
           "catalogue": {
             "info_left": 25,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.2.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.2.jpeg"
           },
-          "description": "A beautiful figure-fit jacket. This lucious white jacket will be sure to catch peoples eye.",
-          "materials": " 43% cotton, 56% polyester, 1% elastane. Machine wash at 30˚",
-          "productcode": "45-78962",
-          "backgroundColour": "#9E9E9E",
+          "description": "You’ll be sure to stun when you wrap up in our hottest new coat. The formal style features a belt and 2 pockets for that formal touch to every outfit you have planned.",
+          "materials": "Fabric composition: 96% Polyester, 4% Viscose",
+          "productcode": "4783860",
+          "backgroundColour": "#82B1FF",
           "tags": [
 
           ]
         },
         {
           "id": 30,
-          "product": "Black Leather Jacket",
+          "product": "Tailored Coat",
           "clothing": "Women",
           "type": "coat",
           "categories": [
 
           ],
           "seasons": "all",
-          "price": 24.99,
-          "sizes": ["XS", "S", "M", "L", "XL"],
+          "price": 32,
+          "sizes": [6, 8, 10 , 12, 14],
           "quantities": [1, 2, 3, 4, 5],
-          "color": "black",
-          "image": "/images/women/52034.jpg",
+          "color": "red",
+          "image": "/images/women/tailored-coat.png",
           "catalogue": {
             "info_left": 55,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
           },
-          "description": "A stylish black leather jacket perfect for any occasion.",
-          "materials": " x% leather",
-          "productcode": "45-78963",
-          "backgroundColour": "#9E9E9E",
+          "description": "Bright and brilliant, this gorgeous tailored coat is a fabulous investment. Cut in a sophisticated style, this stunning piece is guaranteed to become your favourite cover-up and is sure to be making a yearly appearance during the colder months.",
+          "materials": "Fabric composition: 62% Polyester, 25% Acrylic, 8% Cotton, 3% Viscose, 2% ",
+          "productcode": "4805361",
+          "backgroundColour": "#B71C1C",
           "tags": [
             "sale"
           ]
+        },
+        {
+          "id": 31,
+          "product": "Neon Fairisle Mittens",
+          "clothing": "Women",
+          "type": "glove",
+          "categories": [
+
+          ],
+          "seasons": [
+            "winter"
+          ],
+          "price": 5,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/neon-fairisle-mittens.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Make a stylish statement with your winter accessories with these trendy neon fairisle mittens. Crafted with soft fabric, these are perfect for keeping your hands warm whenever you leave the house this season.",
+          "materials": "100% Acrylic",
+          "productcode": "4864932",
+          "backgroundColour": "#E91E63",
+          "tags": [
+            "accessory"
+          ]
+        },
+        {
+          "id": 32,
+          "product": "Leather Gloves",
+          "clothing": "All Genders",
+          "type": "glove",
+          "categories": [
+
+          ],
+          "seasons": [
+            "winter"
+          ],
+          "price": 9,
+          "sizes": ["S", "M", "L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/leather-gloves.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Wrap your hands in complete luxury with these leather gloves. With a super soft fleece lining, these versatile gloves are a gorgeous addition to your winter accessories.",
+          "materials": "Fabric composition: Shell: Genuine leather Lining: 100% Polyester",
+          "productcode": "4243571",
+          "backgroundColour": "#212121",
+          "tags": [
+            "accessory"
+          ]
+        },
+        {
+          "id": 33,
+          "product": "Cross Body Bag",
+          "clothing": "Women",
+          "type": "bag",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "plum",
+          "image": "/images/women/cross-body-bag.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Practical and fashionable, this cross body bag is bound to become your go-to for completing your outfits with a pop of colour and style.",
+          "materials": "",
+          "productcode": "4775618",
+          "backgroundColour": "#5f4c51",
+          "tags": [
+            "accessory"
+          ]
+        },
+        {
+          "id": 34,
+          "product": "Textured Clutch",
+          "clothing": "Women",
+          "type": "bag",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/textured-clutch.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Go bold and beautiful with your accessories this season with this trendy textured clutch. This eye-catching piece is perfect for completing your outfits with an elegant and striking spin.",
+          "materials": "",
+          "productcode": "4843426",
+          "backgroundColour": "#F44336",
+          "tags": [
+            "accessory"
+          ]
+        },
+        {
+          "id": 35,
+          "product": "Crochet Shoulder Blouse",
+          "clothing": "Women",
+          "type": "blouse",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": [6, 8, 10, 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "cream",
+          "image": "/images/women/crochet-shoulder-blouse.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Invest in this gently unique crochet shoulder blouse this season. This lovely piece will add a delightful touch to every look and will work in perfect harmony with your formal outfits. Team with one of our camisole vests to complete the look.",
+          "materials": "Fabric composition: Main body: 100% Polyester Trim: 100% Cotton",
+          "productcode": "4931794",
+          "backgroundColour": "#9E9E9E",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 36,
+          "product": "Floral Chiffon Wrap Blouse",
+          "clothing": "Women",
+          "type": "blouse",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [6, 8, 10, 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/floral-chiffon-wrap-blouse.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Give your formal wardrobe a wonderful update with this floral chiffon wrap blouse. Crafted with light fabric, this piece is a stunning fusion of comfort and style that will take you from your desk to the dancefloor time and again.",
+          "materials": "Fabric composition: Outer: 100% Polyester Inner: 95% Viscose, 5% Elastane",
+          "productcode": "4943984",
+          "backgroundColour": "#212121",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 37,
+          "product": "Floral Print Oversized Blouse",
+          "clothing": "Women",
+          "type": "blouse",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": [6, 8, 10, 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/floral-print-oversized-blouse.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Go bold with blossoms this winter; this gorgeous floral print oversized blouse is certain to have you standing out from the crowd. Equally flattering and fun, this eye-catching piece will take you from work to the weekend in style this season. Team with one of our camisole vests to complete the look.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4896764",
+          "backgroundColour": "#212121",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 38,
+          "product": "Tie Dye Maxi Dress",
+          "clothing": "Women",
+          "type": "dress",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 14,
+          "sizes": [8, 10, 12, 14, 16, 18, 20, 22],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "blue",
+          "image": "/images/women/tie-dye-maxi-dress.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Transform your style with this wonderful tie dye maxi dress this season. Crafted with lightweight fabric to ensure you’re kept comfy, this lovely piece is sure to become a favourite.",
+          "materials": "Fabric composition: 100% Viscose",
+          "productcode": "4845063",
+          "backgroundColour": "#2196F3",
+          "tags": [
+            "beach"
+          ]
+        },
+        {
+          "id": 39,
+          "product": "Frill Bikini Top",
+          "clothing": "Women",
+          "type": "swimwear",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 8,
+          "sizes": [8, 10, 12, 14, 16, 18, 20],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "pink",
+          "image": "/images/women/frill-bikini-top.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Super comfy and feminine, this beautiful frill bikini top will have you turning heads this season. Whether you’re heading to the beach or relaxing by the pool, this lovely piece will have you oozing confidence.",
+          "materials": "Fabric composition: 83% Polyamide, 17% Elastane",
+          "productcode": "4812328",
+          "backgroundColour": "#E91E63",
+          "tags": [
+            "beach"
+          ]
+        },
+        {
+          "id": 40,
+          "product": "Frill Bikini Bottoms",
+          "clothing": "Women",
+          "type": "swimwear",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 8,
+          "sizes": [8, 10, 12, 14, 16, 18, 20],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "pink",
+          "image": "/images/women/frill-bikini-bottoms.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Super comfy and feminine, these beautiful frill bikini bottoms will have you turning heads this season. Whether you’re heading to the beach or relaxing by the pool, you’re sure to feel amazing in these bottoms.",
+          "materials": "Fabric composition: 83% Polyamide, 17% Elastane",
+          "productcode": "4812330",
+          "backgroundColour": "#E91E63",
+          "tags": [
+            "beach"
+          ]
+        },
+        {
+          "id": 41,
+          "product": "Paisley Print Maxi Dress",
+          "clothing": "Women",
+          "type": "dress",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 5,
+          "sizes": ["XS", "S", "M", "L", "XL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/paisley-print-maxi-dress.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "You’ll be paying homage to the boho trend with this eye-catching paisley dress. The maxi design has been crafted from chiffon fabric and features lining to the knees, perfect for slipping-on when you get out of the pool to instantly bring you some fashion pizzazz.",
+          "materials": "Fabric composition: Body: 89% Polyester, 11% Metallic fibre ",
+          "productcode": "4585676",
+          "backgroundColour": "#212121",
+          "tags": [
+            "beach"
+          ]
+        },
+        {
+          "id": 42,
+          "product": "George Home Cocktails Beach Towel",
+          "clothing": "Women",
+          "type": "towel",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 5,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "pink",
+          "image": "/images/women/beach-towel.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Our fabulous range of George Home beach towels are ideal for beach or bathroom use. Made from 100% cotton, these printed beach towels come in a range of designs and are machine washable for your convenience.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "",
+          "backgroundColour": "#E91E63",
+          "tags": [
+            "beach"
+          ]
+        },
+        {
+          "id": 43,
+          "product": "Lace Layer Dress",
+          "clothing": "Women",
+          "type": "dress",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 35,
+          "sizes": [6, 8, 10, 12, 14, 16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "pink",
+          "image": "/images/women/lace-layer-dress.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Give your formal wardrobe a fresh update with this sensational lace layer dress. With a contemporary cut and lovely lace detailing, this fabulous piece will have all eyes on you at all occasions this season.",
+          "materials": "Fabric composition: Lace: 100% Cotton",
+          "productcode": "4862904",
+          "backgroundColour": "#E91E63",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 44,
+          "product": "Ankle Boots",
+          "clothing": "Women",
+          "type": "footwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": [3, 4, 5, 6, 7],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/ankle-boots.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "You’ll be working the rock chick look all season in these trendy ankle boots. With an easy to wear, side zip fastening, these timeworn boots will be a piece you’ll be adding to your outfits again and again.",
+          "materials": "Fabric composition: Other materials",
+          "productcode": "4693313",
+          "backgroundColour": "#212121",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 45,
+          "product": "Bow Front Wedge Shoes",
+          "clothing": "Women",
+          "type": "footwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 16,
+          "sizes": [3, 4, 5, 6, 7],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/bow-front-wedge-shoes.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Because every woman needs a pair of go-to heels, these bow front wedge shoes have been designed with all occasions in mind. Whether it’s work or a night out with friends, these comfy shoes have a wonderfully simple look so you can pop them on with any outfit.",
+          "materials": "Fabric composition: Other materials",
+          "productcode": "4818988",
+          "backgroundColour": "#212121",
+          "tags": [
+
+          ]
+        },
+        {
+          "id": 46,
+          "product": "Leopard Print Cardigan",
+          "clothing": "cardigan",
+          "type": "knitwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [6,8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/leopard-print-cardigan.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Transform your everyday wear with this bright leopard print cardigan. This fashionable piece is bound to become an indispensable cover-up that will add a warm touch to every look.",
+          "materials": "Fabric composition: 83% Viscose, 17% Nylon",
+          "productcode": "4899198",
+          "backgroundColour": "#0D47A1",
+          "tags": ["knitwear"]
+        },
+        {
+          "id": 47,
+          "product": "Crew Neck Cardigan",
+          "clothing": "Women",
+          "type": "cardigan",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": [6,8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "orange",
+          "image": "/images/women/crew-neck-cardigan.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Keep this great lightweight cardigan handy for those brisk mornings this winter. Crafted with soft fabric and with a versatile design, this year-round favourite is perfect for completing every look and adding a touch of warmth to your outfits.",
+          "materials": "Fabric composition: 80% Cotton, 20% Nylon",
+          "productcode": "4943175",
+          "backgroundColour": "#FF5722",
+          "tags": ["knitwear"]
+        },
+        {
+          "id": 48,
+          "product": "Mixed Stitch Jumper",
+          "clothing": "Women",
+          "type": "jumper",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 16,
+          "sizes": [6,8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/mixed-stitch-jumper.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Nestle into some stylish knitwear this winter with this wonderful mixed stitch jumper. Crafted with soft fabric, this on-trend piece is sure to become the key to your looks this season.",
+          "materials": "Fabric composition: 89% Acrylic, 11% Polyamide",
+          "productcode": "4971007",
+          "backgroundColour": "#9E9E9E",
+          "tags": ["knitwear"]
+        },
+        {
+          "id": 49,
+          "product": "Denim Look Maternity Leggings",
+          "clothing": "Women",
+          "type": "legging",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": [6,8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "grey",
+          "image": "/images/women/denim-look-maternity-leggings.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Maximum style with guaranteed comfort, these cool denim look maternity leggings are a must have. Crafted using stretch fabric, this are the ultimate comfy and versatile staple through your maternity months.",
+          "materials": "Fabric composition: 70% Cotton, 25% Polyester, 5% Elastane",
+          "productcode": "4844943",
+          "backgroundColour": "#212121",
+          "tags": ["maternity"]
+        },
+        {
+          "id": 50,
+          "product": "Elasticated Side Leggings",
+          "clothing": "Women",
+          "type": "legging",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": [6,8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/elasticated-side-leggings.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Incredibly comfy and versatile, these elasticated side leggings are a great addition to any wardrobe. Crafted with stretch fabric and with an eminently wearable design, these are guaranteed to become the key to your casual looks this season.",
+          "materials": "Fabric composition: 70% Cotton, 25% Polyester, 5% Elastane",
+          "productcode": "4924226",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 51,
+          "product": "Jacquard Balcony Bra",
+          "clothing": "Women",
+          "type": "bra",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["34E","34F","34G","36D","36DD","36E"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "white",
+          "image": "/images/women/jacquard-balcony-bra.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "For a fabulous foundation, invest in this stunning jacquard balcony bra. This sensational piece features pretty bow detailing and with padded and underwired cups, it will keep you comfy all day long.",
+          "materials": "Fabric composition: 63% Nylon, 29% Polyester, 8% Elastane",
+          "productcode": "4831300",
+          "backgroundColour": "#9E9E9E",
+          "tags": ["lingerie"]
+        },
+        {
+          "id": 52,
+          "product": "Lace T-shirt Bra",
+          "clothing": "Women",
+          "type": "bra",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["34E","34F","34G","36D","36DD","36E"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/lace-tshirt-bra.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Carry pretty style through to your everyday wear with this lace T-shirt bra. Featuring padded and underwired cups, it’s designed to shape and sculpt.",
+          "materials": "Fabric composition: 60% Polyamide, 28% Polyester, 12% Elastane",
+          "productcode": "4835502",
+          "backgroundColour": "#212121",
+          "tags": ["lingerie"]
+        },
+        {
+          "id": 53,
+          "product": "Pinstripe High Leg Briefs",
+          "clothing": "Women",
+          "type": "knickers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 2.5,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/pinstripe-high-leg-briefs.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Incredibly comfy and cute, these pinstripe high leg briefs are a great addition to your collection. Crafted with soft fabric and with pretty bow detailing, they are a fun foundation for your everyday outfits.",
+          "materials": "Fabric composition: Body: 95% Cotton, 5% Elastane",
+          "productcode": "4849729",
+          "backgroundColour": "#212121",
+          "tags": ["lingerie"]
+        },
+        {
+          "id": 54,
+          "product": "Lace Trim Briefs",
+          "clothing": "Women",
+          "type": "knickers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 2.5,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "white",
+          "image": "/images/women/lace-trim-briefs.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Add a pretty twist to your lingerie collection with these lace trim briefs. Featuring a sweet bow and lace adornment, they’re bound to become a firm favourite.",
+          "materials": "Fabric composition: 48% Polyester, 40% Polyamide, 12% Elastane",
+          "productcode": "4824653",
+          "backgroundColour": "#9E9E9E",
+          "tags": ["lingerie"]
+        },
+        {
+          "id": 55,
+          "product": "Hens on Tour Pyjamas",
+          "clothing": "Women",
+          "type": "nightwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 6,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/hens-on-tour-pyjamas.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Celebrate your friend's big day with these amazing pyjamas. Featuring a vest top with matching shorts and crafted from 100% cotton for your comfort. ",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4926390",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 56,
+          "product": "Little Miss Pyjamas",
+          "clothing": "Women",
+          "type": "nightwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 13,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/little-miss-pyjamas.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "A fun pair of pyjamas to inject personality into your nightwear. The top features all your favourite characters while the bottoms will keep you comfortable throughout the night with the elasticated waist and soft fabric.",
+          "materials": "Fabric composition: 95% Cotton, 5% Elastane",
+          "productcode": "4836443",
+          "backgroundColour": "#E91E63",
+          "tags": []
+        },
+        {
+          "id": 57,
+          "product": "Pleat Skirt",
+          "clothing": "Women",
+          "type": "skirt",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/pleat-skirt.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Equally flattering and stylish, this stunning pleat skirt is a wonderful addition to any wardrobe. With an elasticated waistband for comfort and an elegant design, this piece will have you radiating confidence at every event.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4924230",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 58,
+          "product": "Pencil Skirt",
+          "clothing": "Women",
+          "type": "skirt",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/women/pencil-skirt.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Give every look a touch of eye-catching colour with this stunning pencil skirt. This piece has been crafted with light fabric and features an elasticated waistband to ensure you’re kept comfy all day long.",
+          "materials": "Fabric composition: 96% Viscose, 4% Elastane",
+          "productcode": "4949206",
+          "backgroundColour": "#B71C1C",
+          "tags": []
+        },
+        {
+          "id": 59,
+          "product": "Floral Crochet Trim Top",
+          "clothing": "Women",
+          "type": "top",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/floral-crochet-trim-top.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Incredibly stylish and comfy, this beautiful floral crochet trim top is bound to become the key to your outfits this season. With a dipped hem and an intricate crochet trim, you’ll love completing your looks with this stunning piece.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4980265",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 60,
+          "product": "2 Pack Maternity Nursing Tops",
+          "clothing": "Women",
+          "type": "top",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 18,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/maternity-tops.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Go for a pretty and practical addition with this lovely 2 pack of maternity nursing tops. Crafted with light fabric and with a wrap front to make nursing easier, you’re sure to be wearing these time and again.",
+          "materials": "Fabric composition: 96% Viscose, 4% Elastane",
+          "productcode": "4958657",
+          "backgroundColour": "#4c46a8",
+          "tags": ["maternity"]
+        },
+        {
+          "id": 61,
+          "product": "Crochet Collar Top",
+          "clothing": "Women",
+          "type": "top",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/crochet-collar-top.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "For a daily dose of chic, look no further than this crochet collar top. This pretty pick is perfect for bringing a feminine touch to both formal and casual looks this season.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4958729",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 62,
+          "product": "Wide Leg Trousers",
+          "clothing": "Women",
+          "type": "trousers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "navy",
+          "image": "/images/women/wide-leg-trousers.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "A great foundation for both smart and casual looks, these wide leg trousers are a must-have this season. With an elasticated waistband for comfort and a versatile design, you’ll be able to mix and match with these fashionable bottoms in style.",
+          "materials": "Fabric composition: 95% Polyester, 5% Elastane",
+          "productcode": "4924292",
+          "backgroundColour": "#1A237E",
+          "tags": []
+        },
+        {
+          "id": 63,
+          "product": "Patterned Trousers",
+          "clothing": "Women",
+          "type": "trousers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/patterned-trousers.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "A little preppy, a little feminine and totally on-trend, these patterned trousers will transform your day to day looks. The ultimate wear-anywhere bottoms, these are sure to have all eyes on you this season.",
+          "materials": "Fabric composition: 78% Viscose, 19% Polyamide, 3% Elastane",
+          "productcode": "4889246",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 64,
+          "product": "Textured Trousers",
+          "clothing": "Women",
+          "type": "trousers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/textured-trousers.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Every street and corridor will become a catwalk with these sensational textured trousers. The epitome of sophistication, these bottoms are perfect for a work-to-weekend staple that will take you everywhere in style.",
+          "materials": "Fabric composition: 70% Polyester, 30% Viscose",
+          "productcode": "4904176",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 65,
+          "product": "Elasticated Waistband Shorts",
+          "clothing": "Women",
+          "type": "shorts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/women/elasticated-waistband-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Elegant and flattering, these versatile elasticated waistband shorts are a must-have. A great foundation, they are a sleek and stylish pick that we know you’ll love as much as we do.",
+          "materials": "Fabric composition: 97% Polyester, 3% Elastane",
+          "productcode": "4924229",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 66,
+          "product": "Leopard Print Shorts",
+          "clothing": "Women",
+          "type": "shorts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 6,
+          "sizes": [8,10,12,14,16],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "multi",
+          "image": "/images/women/leopard-print-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Take a walk on the wild side this season with these fabulous leopard print shorts. With a comfy elasticated waistband and light fabric, these statement shorts are perfect for bringing a ton of character to your looks.",
+          "materials": "Fabric composition: 96% Viscose, 4% Elastane",
+          "productcode": "4949201",
+          "backgroundColour": "#00BCD4",
+          "tags": []
         }
       ]
