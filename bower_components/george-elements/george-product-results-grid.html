@@ -729,11 +729,11 @@
             for(var j = 0; j < this.filteredItems.length-1; j++){
               var firstProduct = this.filteredItems[j];
               var secondProduct = this.filteredItems[j+1];
-              if(priceOrdering == 'Asc' && firstProduct.price > secondProduct.price){
+              if(priceOrdering == 'Asc' && parseFloat(firstProduct.price) > parseFloat(secondProduct.price)){
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
-              if(priceOrdering == 'Desc' && firstProduct.price < secondProduct.price){
+              if(priceOrdering == 'Desc' && parseFloat(firstProduct.price) < parseFloat(secondProduct.price)){
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
@@ -754,11 +754,11 @@
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
-              if(priceOrdering == 'Asc' && firstProduct.product == secondProduct.product && firstProduct.price > secondProduct.price){
+              if(priceOrdering == 'Asc' && firstProduct.product == secondProduct.product && parseFloat(firstProduct.price) > parseFloat(secondProduct.price)){
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
-              if(priceOrdering == 'Desc' && firstProduct.product == secondProduct.product && firstProduct.price < secondProduct.price){
+              if(priceOrdering == 'Desc' && firstProduct.product == secondProduct.product && parseFloat(firstProduct.price) < parseFloat(secondProduct.price)){
                 this.filteredItems[j] = secondProduct;
                 this.filteredItems[j+1] = firstProduct;
               }
