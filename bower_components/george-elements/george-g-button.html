@@ -498,7 +498,9 @@
           parsedTerm = parsedTerm.replace(regex, "");
           var regex = new RegExp(" " + word + " ", "i");
           parsedTerm = parsedTerm.replace(regex, " ");
-          
+          var regex = new RegExp("^" + word + "$", "i");
+          parsedTerm = parsedTerm.replace(regex, " ");
+
           parsedTerm = parsedTerm.replace("  ", " ");
         }
 
@@ -510,9 +512,12 @@
           parsedTerm = parsedTerm.replace(regex, "");
           var regex = new RegExp(" " + word + " ", "i");
           parsedTerm = parsedTerm.replace(regex, " ");
+          var regex = new RegExp("^" + word + "$", "i");
+          parsedTerm = parsedTerm.replace(regex, " ");
 
           parsedTerm = parsedTerm.replace("  ", " ");
         }
+
         return parsedTerm;
       },
 
