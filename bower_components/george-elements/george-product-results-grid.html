@@ -311,7 +311,7 @@
                 <div class="inputs">
                   <div class="input">
                   <span>Size:</span>
-                  <paper-dropdown-menu label="Select a Size">
+                  <paper-dropdown-menu id="sizeDropdownMenu" label="Select a Size">
                     <paper-dropdown id="sizeDropdown" class="dropdown">
                       <core-menu id="clothesSize" class="menu" selected="{{selectedProduct.recommendedSize}}" valueattr="value">
                         <template repeat="{{clothesSizeDropdown}}">
@@ -940,7 +940,14 @@
         if (this.page === 0 && e.target.templateInstance.model.item) {
           this.selectedProduct = e.target.templateInstance.model.item;
           this.$.clothesQuantity.selected = 0;
-          this.clothesSizeDropdown = e.target.templateInstance.model.item.sizes;
+          if(e.target.templateInstance.model.item.sizes.length != 0){
+            this.$.sizeDropdownMenu.label = "Select a Size";
+            this.$.sizeDropdownMenu.disabled = false;
+            this.clothesSizeDropdown = e.target.templateInstance.model.item.sizes;
+          } else {
+            this.$.sizeDropdownMenu.label = "N/A";
+            this.$.sizeDropdownMenu.disabled = true;
+          }
           this.clothesQuantityDropdown = e.target.templateInstance.model.item.quantities;
           this.$.sizeDropdown.$.scroller.style.height = "";
           this.$.quantityDropdown.$.scroller.style.height = "";
