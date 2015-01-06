@@ -303,7 +303,7 @@
       {"image":"/images/catalogues/men/shorts.png",
                     "href":"/#/productresultsgrid/?&colours=&categories=men&types=shorts&season=&tags="},
       {"image":"/images/catalogues/men/socks.png",
-                    "href":"/#/productresultsgrid/?&search=sock&colours=&categories=men&types=underwear&season=&tags="},
+                    "href":"/#/productresultsgrid/?&colours=&categories=men&types=socks&season=&tags="},
       {"image":"/images/catalogues/men/suits.png",
                     "href":"/#/productresultsgrid/?&colours=&categories=men&types=suit&season=&tags="},
       {"image":"/images/catalogues/men/swimwear.png",

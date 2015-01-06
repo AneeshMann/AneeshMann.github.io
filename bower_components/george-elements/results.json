@@ -1679,5 +1679,581 @@
           "productcode": "4949201",
           "backgroundColour": "#00BCD4",
           "tags": []
+        },
+        {
+          "id": 67,
+          "product": "Button Through Cardigan",
+          "clothing": "Men",
+          "type": "cardigan",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/button-through-cardigan.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Ace that layered look this winter with this button through cardigan. This versatile and soft piece is perfect for adding some warmth to your outfits and will ensure you look smart time and again.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4843408",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 68,
+          "product": "Fisherman Cardigan",
+          "clothing": "Men",
+          "type": "cardigan",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "brown",
+          "image": "/images/men/fisherman-cardigan.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "The perfect fusion of cosiness and style, this fisherman cardigan is a great addition to any wardrobe. Created using mixed yarn, this cool cardigan is sure to have you acing that laidback rugged style.",
+          "materials": "Fabric composition: 100% Acrylic",
+          "productcode": "4579287",
+          "backgroundColour": "#3E2723",
+          "tags": []
+        },
+        {
+          "id": 69,
+          "product": "Textured Coat",
+          "clothing": "Men",
+          "type": "coat",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 40,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/textured-coat.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Incredibly warm and versatile, this textured coat is a great addition to any wardrobe. Bound to become your key cover-up this winter, you’ll be kept cosy and on-trend whatever the weather.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4637968",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 70,
+          "product": "Wax Jacket",
+          "clothing": "Men",
+          "type": "coat",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 38,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/wax-coat.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "A cool cover-up for the cold weather, this wax jacket is a great addition to your wardrobe. With 4 front pockets and padding, this cosy and practical jacket is bound to become your go-to for some extra warmth this season.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4744572",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 71,
+          "product": "Spare Parts Hoody",
+          "clothing": "Men",
+          "type": "hoodies",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/men/spare-parts-hoody.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Keep it cosy and casual this winter with this great ‘Spare Parts’ hoody. A bright, colourful piece that will keep you warm and comfy all day long, you’ll be completing every look with this piece.",
+          "materials": "Fabric composition: 88% Cotton, 12% Polyester",
+          "productcode": "4901940",
+          "backgroundColour": "#B71C1C",
+          "tags": []
+        },
+        {
+          "id": 72,
+          "product": "Collegiate Hoody",
+          "clothing": "Men",
+          "type": "hoodies",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "burgundy",
+          "image": "/images/men/collegiate-hoody.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Add a cosy and cool cover-up to your winter wardrobe with this collegiate hoody. Created using soft fabric and with a bold slogan, this piece is bound to become a favourite.",
+          "materials": "Fabric composition: 88% Cotton, 12% Polyester",
+          "productcode": "4825117",
+          "backgroundColour": "#FF9800",
+          "tags": []
+        },
+        {
+          "id": 73,
+          "product": "Boston Crew Merino Jumper",
+          "clothing": "Men",
+          "type": "jumper",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/men/boston-jumper.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Invest in a smart new staple with this Boston Crew merino wool jumper. Ideal for adding an extra warm layer to both your casual and formal looks this season, you’ll be wearing this versatile piece time and again.",
+          "materials": "Fabric composition: 100% Merino wool",
+          "productcode": "4896224",
+          "backgroundColour": "#410c14",
+          "tags": []
+        },
+        {
+          "id": 74,
+          "product": "Polo Jumper",
+          "clothing": "Men",
+          "type": "jumper",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "grey",
+          "image": "/images/men/polo-jumper.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Add a smart and warm new staple to your wardrobe with this great polo jumper. Crafted with soft fabric to keep you cosy, this piece is perfect for completing your formal looks with an extra layer this winter.",
+          "materials": "Fabric composition: 100% Acrylic",
+          "productcode": "4843415",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 75,
+          "product": "Pyjama Set",
+          "clothing": "Men",
+          "type": "nightwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/men/pyjama-set.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Sleep the night away in comfort and style, dressed in this smart cotton-rich pyjama set. The button T-shirt complements the matching shorts.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4804604",
+          "backgroundColour": "#B71C1C",
+          "tags": []
+        },
+        {
+          "id": 76,
+          "product": "Fleece Dressing Gown",
+          "clothing": "Men",
+          "type": "nightwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/men/fleece-dressing-gown.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Super comfy and cosy, this fleece dressing gown is a great addition to your loungewear. With a waist tie fastening, you’ll be popping this on whenever you’re relaxing at home.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4800126 ",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 77,
+          "product": "Tailor & Cutter Long Sleeve Shirt",
+          "clothing": "Men",
+          "type": "shirts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 12,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "blue",
+          "image": "/images/men/tailor-shirt.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Refresh your formal wardrobe with this great Tailor & Cutter long sleeve shirt. The perfect pick for completing your smart looks, this versatile shirt can be worn from work to the weekend.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4835545 ",
+          "backgroundColour": "#7986CB",
+          "tags": []
+        },
+        {
+          "id": 78,
+          "product": "Tailor & Cutter 2 Pack Long Sleeve Slim Fit Shirts",
+          "clothing": "Men",
+          "type": "shirts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "grey",
+          "image": "/images/men/two-pack-shirt.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Smart and stylish, this 2 pack of long sleeve slim fit shirts is a cool addition to your wardrobe. Crafted using light fabric, you’ll look and feel great all day.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4737905 ",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 79,
+          "product": "Denim Cargo Shorts",
+          "clothing": "Men",
+          "type": "shorts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 15,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "grey",
+          "image": "/images/men/denim-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Ideal for spring, these soft, supple denim shorts are a great way to amp up your casual wardrobe. From the drawstring waist to the spacious side pockets, they exude sporty appeal.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4555835 ",
+          "backgroundColour": "#607D8B",
+          "tags": []
+        },
+        {
+          "id": 80,
+          "product": "Fashion Chino Shorts",
+          "clothing": "Men",
+          "type": "shorts",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 10,
+          "sizes": ["S","M","L","XL","XXL"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "grey",
+          "image": "/images/men/chino-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "For a fresh, summer look, ensure you're dressed in these on-trend shorts. Featuring printed lining, roll-up cuffs and pockets; they're made from 100% cotton for your comfort throughout the day.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4579850",
+          "backgroundColour": "#607D8B",
+          "tags": []
+        },
+        {
+          "id": 81,
+          "product": "7 Pack Socks",
+          "clothing": "Men",
+          "type": "socks",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 3,
+          "sizes": ["6-12"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/black-socks.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Bulk up your underwear drawer with this smart pack of basic ankle socks. Each stretch-fit pair comes complete with elasticated ankles and reinforced toes.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4540359",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 82,
+          "product": "7 Pack Coloured Heel and Toe Socks",
+          "clothing": "Men",
+          "type": "socks",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 3,
+          "sizes": ["6-12"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/coloured-socks.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Featuring 7 assorted colours and crafted from feel fresh fabric, you’ll have a colourful option that will keep your feet odour free everyday of the week.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4540358",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 83,
+          "product": "Slim Fit Suit Jacket & Trousers",
+          "clothing": "Men",
+          "type": "suit",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 30,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/slim-suit.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Suit up in this slim fit jacket and trousers, a simple way to elevate your office attire. Bring yourself back to basics with this slim fit timeless tailored look. • Front button fastening • Mock front pockets • Back vent • Button and zip fly fastening",
+          "materials": "",
+          "productcode": "4540354",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 84,
+          "product": "Charcoal Tailor & Cutter Slim Fit Suit",
+          "clothing": "Men",
+          "type": "suit",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 50,
+          "sizes": [],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/suit.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Transform your formal wardrobe with this super-smart charcoal Tailor & Cutter slim fit suit. With a classic tailored aesthetic, this piece is perfect for completing your polished looks with a dapper twist.",
+          "materials": "",
+          "productcode": "4540358",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 85,
+          "product": "Photographic Print Swim Shorts",
+          "clothing": "Men",
+          "type": "swimwear",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 10,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/black-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Surf's up with these cool, tropical print swim shorts. Their eye-catching design comes with an elasticated waistband and contrast drawstrings - it's all you need to look your best on the beach.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4583514",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 86,
+          "product": "Boston Crew Floral Swimming Trunks",
+          "clothing": "Men",
+          "type": "swimwear",
+          "categories": [
+
+          ],
+          "seasons": ["summer"],
+          "price": 12,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/pink-shorts.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Make a splash this season with these on-trend swimming trunks. Featuring an all over floral design, they're finished with an elastic waist for ease when getting dressed at the beach or pool.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4558831",
+          "backgroundColour": "#E91E63",
+          "tags": []
+        },
+        {
+          "id": 87,
+          "product": "Regular Fit Active Waistband Trousers",
+          "clothing": "Men",
+          "type": "trousers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 16,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/reg-fit-trousers.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "The ultimate work-to-weekend piece, these regular fit active waistband trousers are a great addition to your formal wardrobe. Created with an active waistband that will move with you to ensure comfort, these trousers are guaranteed to become a staple in your outfits.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4740500",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 88,
+          "product": "Boston Crew Straight Leg Belted Chinos",
+          "clothing": "Men",
+          "type": "trousers",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 14,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/chino-trousers.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Capture that cool style with these classic Boston Crew straight leg belted chinos. These versatile trousers are bound to become your go-to for a comfy and casual look.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4725371",
+          "backgroundColour": "#212121",
+          "tags": []
+        },
+        {
+          "id": 89,
+          "product": "3 Pack Jersey Boxers",
+          "clothing": "Men",
+          "type": "underwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "blue",
+          "image": "/images/men/blue-underwear.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "In a handy pack of 3, these classic boxers will lend a fresh feel to your underwear collection. The cool blue colours make the perfect foundation for any outfit.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4566119",
+          "backgroundColour": "#0D47A1",
+          "tags": []
+        },
+        {
+          "id": 90,
+          "product": "3+1 Pack A-Front Boxer Shorts",
+          "clothing": "Men",
+          "type": "underwear",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 8,
+          "sizes": ["S","M","L"],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "black",
+          "image": "/images/men/black-underwear.png",
+          "catalogue": {
+            "info_left": 25,
+            "fullbleed": "/images/809070.fullbleed.png"
+          },
+          "description": "Make a smart addition to your underwear drawer with this great 3+1 free pack of A-front boxer shorts. Crafted with cotton fabric to keep you comfy, this versatile pack is a great day to day pick.",
+          "materials": "Fabric composition: 100% Cotton",
+          "productcode": "4878331",
+          "backgroundColour": "#212121",
+          "tags": []
         }
       ]
