@@ -83,6 +83,19 @@
         this.setProfile(profileId);
         var selectedItem = this.$.availableProfiles.querySelector('#profile_' + profileId);
         selectedItem.classList.toggle('selected', detail.isSelected);
+
+        var url = window.location + "";
+        if (url.indexOf("#/productresults") > -1) {
+          if (url.indexOf("&profiles=") > -1) {
+            var regex = new RegExp("&profiles=([0-9]+[,]?)*", "i");
+            url = url.replace(regex, "&profiles=" + profileId);
+          } else {
+            url = url + "&profiles=" + profileId;
+          }
+          document.location.href = url;
+        } else {
+          location.reload();
+        }
       },
 
       selectedProfile: 1,
@@ -139,8 +152,9 @@
         this.profiles = this.$.ajax.response.slice(0);
         this.selectedProfile = this.getSelectedProfile();
         if (this.selectedProfile == -1) {
-          this.selectedProfileInfo = this.getProfileById(this.selectedProfile);
-          this.selectedProfile = this.selectedProfileInfo.id;
+          if (this.profiles.length > 0) {
+            this.setProfile(0);
+          }
         } else {
           this.selectedProfileInfo = this.getProfileById(this.selectedProfile);
         }

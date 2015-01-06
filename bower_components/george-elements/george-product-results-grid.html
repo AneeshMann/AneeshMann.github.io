@@ -224,6 +224,7 @@
       <section>
         <div style="float: right; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;">
           <paper-button raised on-click="{{filtersToggle}}" style="background: #FFEB3B;">Filter & Sort</paper-button>
+          <paper-button raised on-click="{{switchToCatalogue}}">Switch To Catalogue</paper-button>
         </div>
 
         <paper-action-dialog id="editableFilters" heading="Filter & Sort" transition="core-transition-top">
@@ -861,6 +862,13 @@
 
       },
 
+      switchToCatalogue: function() {
+        var url = window.location + "";
+        var regex = new RegExp("productresultsgrid", "i");
+        url = url.replace(regex, "productresultscatalogue");
+        document.location.href = url;
+      },
+
       calculateRecommendedSize: function(product, profile) {
         if (profile.measurements === null) {
           return;
@@ -898,7 +906,7 @@
             var measurementKey = measurements[i].measurements[l].key;
             var cM = measurements[i].measurements[l];
             var matchesSize = false;
-            for (var j = 0; j < profile.measurements.length; j++) {
+            for (var j = 0; profile.measurements !== null && j < profile.measurements.length; j++) {
               var pMm = profile.measurements[j];
               if (pMm.key == measurementKey) {
                 if (pMm.size >= cM.lower && pMm.size < cM.upper) {

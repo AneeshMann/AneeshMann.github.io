@@ -31,7 +31,7 @@
 
     <img src="{{categories[category].topImage}}" class="topImage"/>
     <h2>{{categories[category].cataloguesHeading}}</h2>
-    <george-catalogues-carousel></george-catalogues-carousel>
+    <george-catalogues-carousel id="catalogueCarousel"></george-catalogues-carousel>
     <template repeat="{{content in categories[category].content}}">
       <img src="{{content}}" class="content"/><br>
     </template>
