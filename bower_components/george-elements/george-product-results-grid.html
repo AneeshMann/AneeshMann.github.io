@@ -173,7 +173,7 @@
 
       /*hidef screen layout*/
       /*card tablet layout*/
-      @media screen and (min-width: 1200px) {
+      @media screen and (min-width: 1201px) {
         .card{
           min-height: 620px;
         }
@@ -181,9 +181,8 @@
           padding-top: 8%;
         }
       }
-
       /*card tablet layout*/
-      @media screen and (min-width: 481px) and (max-width: 1200px) {
+      @media screen and (min-width: 801px) and (max-width: 1200px) {
         .card-product-title {
           font-size: 2em !important;
 
@@ -193,21 +192,26 @@
           float:left;
         }
       }
-      /*card mobile layout*/
-      @media screen and (max-width: 481px) {
+
+      /*card tablet layout*/
+      @media screen and (max-width: 800px) {
         .card-product-title {
           font-size: 1em !important;
+
         }
         .card-price {
           font-size: 1em !important;
           float:left;
         }
-        .forward-fab{
-          display:none !important;
-        }
+      }
+      /*card mobile layout*/
+      @media screen and (max-width: 523px) {
         .card-description{
-          padding-top: 15%;
+          padding-top: 10%;
           margin-left: -60%;
+        }
+        .basket {
+          margin-bottom: 14%;
         }
       }
 
