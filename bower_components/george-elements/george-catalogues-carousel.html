@@ -1,6 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="/bower_components/core-signals/core-signals.html">
 
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/slick.js/slick/slick.js"></script>
@@ -28,11 +29,13 @@
     <core-ajax id="weather_ajax" handleAs="json" url="http://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lng}}" response="{{weather_response}}" on-core-response={{weatherReceived}}></core-ajax>
     <core-ajax id="ajax" auto url="/catalogues.json" on-core-response="{{cataloguesLoaded}}" handleAs="json"></core-ajax>
 
+
+
     <div id="carousel"></div>
   </template>
 
   <script>
-    Polymer({
+    Polymer('george-catalogues-carousel', {
       orderedCatalogues: [],
       lat: '',
       lng: '',
