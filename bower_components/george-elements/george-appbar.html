@@ -29,8 +29,8 @@
 
     <core-toolbar>
       <a href="/#/0"><paper-icon-button icon="home"></paper-icon-button></a>
-      <george-g-button id="gbutton" style="color: black" noink></george-g-button>
-      <span flex>{{categories[category].title}}</span>
+      <george-g-button id="gbutton" style="color: black" noink on-focus="{{toggleCategoryTitle}}" on-blur="{{toggleCategoryTitle}}"></george-g-button>
+      <span id="categoryTitle" flex>{{categories[category].title}}</span>
       <george-basket id="basket_holder"></george-basket>
       <george-profile-selection id="profileSelectionElement"></george-profile-selection>
     </core-toolbar>
@@ -41,6 +41,16 @@
     Polymer('george-appbar', {
       categorySignal: function(e, detail, sender) {
         this.category = detail;
+      },
+
+      toggleCategoryTitle: function() {
+
+        if(this.$.categoryTitle.innerHTML == "") {
+          this.injectBoundHTML('{{categories[category].title}}', this.$.categoryTitle);
+        }
+        else {
+          this.$.categoryTitle.innerHTML = "";
+        }
       }
     });
   </script>
