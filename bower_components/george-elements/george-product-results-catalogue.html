@@ -193,7 +193,7 @@
 
     </div>
 
-    <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json"></core-ajax>
+    <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json" on-core-response="{{resultsLoaded}}"></core-ajax>
     <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
   </template>
   <script>
@@ -301,9 +301,18 @@
         return "";
       },
 
+      actionNotPerformed: false,
+
+      resultsLoaded: function() {
+        if (this.actionNotPerformed) {
+          this.jsonLoaded();
+        }
+      },
+
       jsonLoaded: function() {
         if(this.$.resultsAjax.response === undefined || this.$.resultsAjax.response == null){
-          // this.jsonLoaded();
+          this.actionNotPerformed = true;
+          return;
         }
         else{
           this.items = this.$.resultsAjax.response.slice(0);
@@ -339,7 +348,7 @@
         for (var i = 0; i < this.filteredItems.length; i++) {
           var product = this.filteredItems[i];
           console.log(product);
-          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background-image: url('" + product.catalogue.fullbleed + "');\"><div style=\"float: right; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
+          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\"><div id=\"productImage\" style=\"width: 50%; height: 100%; float:left; background-image: url('" + product.catalogue.fullbleed + "');\"></div><div style=\"float: right; margin-top: 0px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B; float: left;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
         }
       },
 
