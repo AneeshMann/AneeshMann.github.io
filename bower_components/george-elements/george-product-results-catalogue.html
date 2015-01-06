@@ -347,8 +347,7 @@
 
         for (var i = 0; i < this.filteredItems.length; i++) {
           var product = this.filteredItems[i];
-          console.log(product);
-          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\"><div id=\"productImage\" style=\"width: 50%; height: 100%; float:left; background-image: url('" + product.catalogue.fullbleed + "');\"></div><div style=\"float: right; margin-top: 0px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B; float: left;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
+          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background: " + product.backgroundColour + "\"><div id=\"productImage\" style=\"width: 60%; height: 100%; float:left; background-image: url('" + product.catalogue.fullbleed + "');\"></div><div style=\"float: right; margin-top: 0px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B; float: left;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
         }
       },
 
