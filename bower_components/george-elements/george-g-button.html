@@ -335,13 +335,13 @@
         {
           "key": "men",
           "keywords": [
-            "male", "men", "man", "males"
+            "male", "men", "man", "males", "mens"
           ]
         },
         {
           "key": "women",
           "keywords": [
-            "female", "women", "females", "woman"
+            "female", "women", "females", "woman", "womens"
           ]
         },
         {
@@ -443,7 +443,7 @@
       nonSearchTerms: [
         "and", "for", "with", "my", "your",
         "me", "clothes", "or", "buy", "i", "want", "to",
-        "view", "see"
+        "view", "see", "search"
       ],
 
       matchingRelations: [],
@@ -690,6 +690,8 @@
         });
         recog.addEventListener('result', function(event) {
           that.clearResult = true;
+          var search = that.$.georgeSearch;
+          search.value = event.detail.result;
         });
       },
     });
