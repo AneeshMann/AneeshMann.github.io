@@ -83,6 +83,17 @@
         this.setProfile(profileId);
         var selectedItem = this.$.availableProfiles.querySelector('#profile_' + profileId);
         selectedItem.classList.toggle('selected', detail.isSelected);
+
+        var url = window.location + "";
+        if (url.indexOf("#/productresults") > -1) {
+          if (url.indexOf("&profiles=") > -1) {
+            var regex = new RegExp("&profiles=([0-9]+[,]?)*", "i");
+            url = url.replace(regex, "&profiles=" + profileId);
+          } else {
+            url = url + "&profiles=" + profileId;
+          }
+          document.location.href = url;
+        }
       },
 
       selectedProfile: 1,
