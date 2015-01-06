@@ -224,6 +224,7 @@
       <section>
         <div style="float: right; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;">
           <paper-button raised on-click="{{filtersToggle}}" style="background: #FFEB3B;">Filter & Sort</paper-button>
+          <paper-button raised on-click="{{switchToCatalogue}}">Switch To Catalogue</paper-button>
         </div>
 
         <paper-action-dialog id="editableFilters" heading="Filter & Sort" transition="core-transition-top">
@@ -859,6 +860,13 @@
 
       created: function(){
 
+      },
+
+      switchToCatalogue: function() {
+        var url = window.location + "";
+        var regex = new RegExp("productresultsgrid", "i");
+        url = url.replace(regex, "productresultscatalogue");
+        document.location.href = url;
       },
 
       calculateRecommendedSize: function(product, profile) {

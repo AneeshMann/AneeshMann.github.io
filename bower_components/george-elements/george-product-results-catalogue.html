@@ -2,6 +2,7 @@
 <link rel="import" href="/bower_components/font-roboto/roboto.html">
 <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/core-icons/image-icons.html">
 <link rel="import" href="/bower_components/core-ajax/core-ajax.html">
 
@@ -171,6 +172,7 @@
 
       .product_information {
         height: 100%;
+        width: 50%;
       }
 
       .product_info {
@@ -187,71 +189,9 @@
 
     <link rel="stylesheet" href="/bower_components/slick.js/slick/slick-catalogue.css"/>
 
-    <div>
-      <core-icon-button icon="image:grid-on" role="img"></core-icon-button>
-    </div>
     <div id="catalogue_results" flex layout vertical>
+
     </div>
-
-
-    <!--<div flex layout vertical>
-      <paper-tabs selected="{{page}}">
-        <template repeat="{{filteredItems as selectedProduct}}">
-        <paper-tab>{{selectedProduct.product}}</paper-tab>
-        </template>
-      </paper-tabs>
-      <swipe-pages selected="{{page}}">
-        <template repeat="{{filteredItems as selectedProduct}}">
-          <swipe-page layout vertical center center-justified>
-            <div class="card" layout horizontal hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}" hero>
-              <paper-icon-button icon="clear" class="paper-icon-close" on-tap="{{transition}}"></paper-icon-button>
-              <div class="card-left" hero-id="{{selectedProduct.product}}-{{selectedProduct.clothing}}-art" hero>
-                <img class="card-image" src="{{selectedProduct.image}}"/>
-              </div>
-              <div class="card-right" flex two>
-                <div class="card-top-right">
-                  <paper-fab mini icon="arrow-forward" title="arrow-forward" role="button" tabindex="0" aria-label="arrow-forward" class="forward-fab" on-tap={{forward}}></paper-fab>
-                  <paper-fab mini icon="arrow-back" title="arrow-back" role="button" tabindex="0" aria-label="arrow-back" class="back-fab" on-tap={{back}}></paper-fab>
-                  <div class="card-product-title">{{selectedProduct.product}}</div>
-                  <div class="card-clothing">{{selectedProduct.clothing}}</div>
-                  <div class="card-price">£{{selectedProduct.price}}</div>
-                  <div class="inputs">
-                    <div class="input">
-                    <span>Size:</span>
-                    <paper-dropdown-menu label="Select a Size">
-                      <paper-dropdown id="sizeDropdown" class="dropdown">
-                        <core-menu id="clothesSize" class="menu">
-                          <template repeat="{{clothesSizeDropdown}}">
-                            <paper-item value="{{}}">{{}}</paper-item>
-                          </template>
-                        </core-menu>
-                      </paper-dropdown>
-                    </paper-dropdown-menu>
-                    </div>
-                    <div class="input">
-                    <span>Quantity:</span>
-                    <paper-dropdown-menu label="Select Quantity">
-                      <paper-dropdown id="quantityDropdown" class="dropdown">
-                        <core-menu id="clothesQuantity" class="menu">
-                          <template repeat="{{clothesQuantityDropdown}}">
-                            <paper-item value="{{}}">{{}}</paper-item>
-                          </template>
-                        </core-menu>
-                      </paper-dropdown>
-                    </paper-dropdown-menu>
-                    </div>
-                  </div>
-                  <div>
-                    <paper-button class="basket" on-click='{{addToBasket}}'>Add to Basket</paper-button>
-                  </div>
-                </div>
-                <div flex two class="card-description">{{selectedProduct.description}} </br></br> {{selectedProduct.materials}} </br></br>Product Code: {{selectedProduct.productcode}}</div>
-              </div>
-            </div>
-          </swipe-page>
-        </template>
-      </swipe-pages>
-    </div>-->
 
     <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json"></core-ajax>
     <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
@@ -293,6 +233,13 @@
 
       created: function(){
 
+      },
+
+      switchToGrid: function() {
+        var url = window.location + "";
+        var regex = new RegExp("productresultscatalogue", "i");
+        url = url.replace(regex, "productresultsgrid");
+        document.location.href = url;
       },
 
       // Get the selected profile data from the cookie
@@ -392,7 +339,7 @@
         for (var i = 0; i < this.filteredItems.length; i++) {
           var product = this.filteredItems[i];
           console.log(product);
-          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background-image: url('" + product.catalogue.fullbleed + "');\"><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
+          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background-image: url('" + product.catalogue.fullbleed + "');\"><div style=\"float: right; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
         }
       },
 
