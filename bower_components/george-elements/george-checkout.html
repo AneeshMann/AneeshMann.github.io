@@ -71,6 +71,15 @@
       paper-radio-button::shadow #onRadio {
         background-color: #000;
       }
+      paper-fab{      
+        width: 100px;
+        height: 100px;
+        background-color: #ffeb3b;
+      }
+      paper-fab::shadow #icon {      
+        width: 70px;
+        height: 70px;
+      }
     </style>
 
     <div id="container">
@@ -112,7 +121,7 @@
       <div id="deliveryOptionsContainer">
         <div id="homeDeliveryContainer">
           <div class="deliveryOptionHeader" on-click="{{toggleHomeDelivery}}">
-            <img src="/images/home-delivery.png" alt="Home Delivery" />
+            <paper-fab src="/images/home-delivery.png" alt="Home Delivery"></paper-fab>
             <h3>Home Delivery</h3>
           </div>
           <core-collapse id="homeDeliveryCollapse">
@@ -126,7 +135,7 @@
 
         <div id="collectInStoreContainer">
           <div class="deliveryOptionHeader" on-click={{toggleCollectInStore}}>
-            <img src="/images/collect-in-store.png" alt="Collect In Store" />
+            <paper-fab src="/images/collect-in-store.png" alt="Collect In Store"></paper-fab>
             <h3>Collect In Store</h3>
           </div>
           <core-collapse id="collectInStoreCollapse">
@@ -140,7 +149,7 @@
 
         <div id="internationalDeliveryContainer">
           <div class="deliveryOptionHeader" on-click={{toggleInternationalDelivery}}>
-            <img src="/images/international-delivery.png" alt="International Delivery" />
+            <paper-fab src="/images/international-delivery.png" alt="International Delivery"></paper-fab>
             <h3>International Delivery</h3>
           </div>
           <core-collapse id="internationalDeliveryCollapse">
