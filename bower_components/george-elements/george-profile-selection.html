@@ -20,7 +20,7 @@
     <paper-icon-button id="selectedProfile"
       src="{{selectedProfileInfo.image}}" on-click="{{openProfileSelection}}">
     </paper-icon-button>
-    <paper-action-dialog id="profile_selection" heading="Shopping for" transition="core-transition-center">
+    <paper-action-dialog id="profile_selection" heading="Shopping for" transition="core-transition-top">
       <content>
         <ul on-tap="{{itemTapAction}}" id="availableProfiles">
           <template repeat="{{profiles as profile}}">
@@ -62,8 +62,8 @@
         <div style="clear: both;"><br /></div>
 
         <div style="float: right;">
-          <paper-button style="background: #FFEB3B;" on-click="{{modifyProfiles}}" affirmative>Modify Profiles</paper-button>
           <paper-button dismissive>Close</paper-button>
+          <paper-button affirmative>Add</paper-button>
         </div>
       </content>
     </paper-action-dialog>
@@ -142,10 +142,6 @@
           }
         }
         return -1;
-      },
-
-      modifyProfiles: function() {
-
       },
 
       jsonLoaded: function() {
