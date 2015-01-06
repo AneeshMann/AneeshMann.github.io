@@ -716,7 +716,7 @@
           "color": "yellow",
           "image": "/images/women/formal-jacket.png",
           "catalogue": {
-            "info_left": 55,
+            "info_left": 62,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.jpeg"
           },
@@ -743,7 +743,7 @@
           "color": "blue",
           "image": "/images/women/formal-belted-coat.png",
           "catalogue": {
-            "info_left": 25,
+            "info_left": 62,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.2.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.2.jpeg"
           },
@@ -770,7 +770,7 @@
           "color": "red",
           "image": "/images/women/tailored-coat.png",
           "catalogue": {
-            "info_left": 55,
+            "info_left": 62,
             "fullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg",
             "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
           },
