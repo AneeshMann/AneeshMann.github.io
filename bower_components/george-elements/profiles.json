@@ -1,10 +1,10 @@
 [
     {
         "id": "1",
-        "name": "Martin",
+        "name": "Tom",
         "default": true,
-        "image": "/images/profile-martin.png",
-        "relation": "You",
+        "image": "/images/tom.png",
+        "relation": "me",
         "gender": "m",
         "measurements": [
           {
@@ -24,9 +24,9 @@
 
     {
         "id": "2",
-        "name": "Aneesh",
+        "name": "Sarah",
         "default": false,
-        "image": "/images/profile-aneesh.png",
+        "image": "/images/sarah.png",
         "relation": "Mum",
         "gender": "f",
         "measurements": [

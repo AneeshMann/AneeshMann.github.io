@@ -40,11 +40,8 @@
           [
             {
               "tag":["raining",""],
-              "carousel":[{"image":"/images/catalogues/boys/coats.png",
-                            "href":""},
+              "carousel":[
                           {"image":"/images/catalogues/women/footwear.png",
-                                      "href":""},
-                          {"image":"/images/catalogues/boys/footwear.png",
                                       "href":""},
                           {"image":"/images/catalogues/rainy-days-catalogue.png",
                                       "href":""},
@@ -60,8 +57,6 @@
                           {"image":"/images/catalogues/women/knitwear.png",
                                       "href":""},
                           {"image":"/images/catalogues/women/winter-coats.png",
-                                      "href":""},
-                          {"image":"/images/catalogues/boys/coats.png",
                                       "href":""}]
             },
             {
@@ -75,10 +70,8 @@
             },
             {
               "tag":["raining","male"],
-              "carousel":[{"image":"/images/catalogues/boys/coats.png",
+              "carousel":[{"image":"/images/catalogues/men/coats-jackets.png",
                             "href":""},
-                          {"image":"/images/catalogues/boys/footwear.png",
-                                      "href":""},
                           {"image":"/images/catalogues/rainy-days-catalogue.png",
                                       "href":""}]
             },
@@ -86,13 +79,15 @@
               "tag":["snowing","male"],
               "carousel":[{"image":"/images/catalogues/winter-catalogue.png",
                               "href":""},
-                          {"image":"/images/catalogues/boys/coats.png",
+                          {"image":"/images/catalogues/men/jumpers.png",
                                       "href":""}]
             },
             {
               "tag":["sun","male"],
               "carousel":[{"image":"/images/catalogues/summer-catalogue.png",
-                                      "href":""}]
+                                      "href":""},
+                          {"image":"/images/catalogues/men/swimwear.png",
+                                                              "href":""}]
             },
             {
               "tag":["raining","female"],
@@ -143,7 +138,7 @@
                 {"image":"/images/catalogues/women/rain-coats.png",
                             "href":"/#/productresultsgrid/?&colours=&categories=women&types=coat&season=&tags="},
                 {"image":"/images/catalogues/women/beachwear.png",
-                            "href":"/#/productresultsgrid/?&colours=&categories=women&types=swinwear&season=&tags="},
+                            "href":"/#/productresultsgrid/?&colours=&categories=women&types=swimwear&season=&tags="},
                 {"image":"/images/catalogues/women/summer-dresses.png",
                             "href":"/#/productresultsgrid/?&colours=&categories=women&types=dress&season=summer&season=&tags="},
                 {"image":"/images/catalogues/women/umbrellas.png",
@@ -153,30 +148,15 @@
             },
             {
               "tag":["male"],
-              "carousel":[{"image":"/images/catalogues/men/accessories.png",
-                            "href":""},
-                          {"image":"/images/catalogues/men/cardigans.png",
-                                        "href":""},
+              "carousel":[
                           {"image":"/images/catalogues/men/coats-jackets.png",
                                         "href":"/#/productresultsgrid/?&colours=&categories=men&types=coat&season=&tags="},
-                          {"image":"/images/catalogues/men/hoodies.png",
-                                        "href":""},
                           {"image":"/images/catalogues/men/jeans.png",
                                         "href":"/#/productresultsgrid/?&colours=&categories=men&types=jeans&season=&tags="},
-                          {"image":"/images/catalogues/men/jumpers.png",
-                                        "href":""},
-                          {"image":"/images/catalogues/men/nightwear.png",
-                                        "href":""},
-                          {"image":"/images/catalogues/men/shirts.png",
-                                        "href":""},
-                          {"image":"/images/catalogues/men/shorts.png",
-                                        "href":"/#/productresultsgrid/?&colours=&categories=men&types=shorts&season=&tags="},
                           {"image":"/images/catalogues/men/socks.png",
-                                        "href":""},
+                                        "href":"/#/productresultsgrid/?&colours=&categories=men&types=socks&season=&tags="},
                           {"image":"/images/catalogues/men/suits.png",
                                         "href":"/#/productresultsgrid/?&colours=&categories=men&types=suit&season=&tags="},
-                          {"image":"/images/catalogues/men/swimwear.png",
-                                        "href":"/#/productresultsgrid/?&colours=&categories=men&types=swimwear&season=&tags="},
                           {"image":"/images/catalogues/men/trousers.png",
                                         "href":"/#/productresultsgrid/?&colours=&categories=men&types=trousers&season=&tags="},
                           {"image":"/images/catalogues/men/tshirt-polo.png",
@@ -190,25 +170,7 @@
       {
         "tag":"remainder",
         "options":
-          [
-            {
-              "tag":["remainder"],
-              "carousel":[{"image":"/images/catalogues/women/jeans.png",
-                            "href":""},
-                {"image":"/images/catalogues/women/dresses.png",
-                            "href":""},
-                {"image":"/images/catalogues/women/knitwear.png",
-                            "href":""},
-                {"image":"/images/catalogues/women/footwear.png",
-                            "href":""},
-                {"image":"/images/catalogues/boys/coats.png",
-                            "href":"/#/productresultscatalogue/?&colours=&profiles=2&types=coat&season="},
-                {"image":"/images/catalogues/boys/nightwear.png",
-                            "href":""},
-                {"image":"/images/catalogues/boys/footwear.png",
-                            "href":""}]
-            }
-          ]
+          [  ]
       }
     ]
   },
