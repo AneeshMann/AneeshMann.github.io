@@ -198,7 +198,7 @@
     <div id="container">
       <img src="/images/g-logo.png" />
       <div id="content" class="{{showOrHide}}">
-        <paper-input id="georgeSearch" on-click="{{clearSearchBox}}" label="Search"></paper-input>
+        <paper-input id="georgeSearch" on-click="{{clearSearchBox}}" label="Search" on-change="{{analyseSearch}}"></paper-input>
         <paper-button on-click="{{analyseSearch}}" style="min-width:10px;"><core-icon icon="search" style="color:black;"></core-icon></paper-button>
         <voice-recognition id="georgeRecognition"></voice-recognition>
         <section>
@@ -228,6 +228,8 @@
 
         CoreStyle.g.paperInput.focusedColor = 'black';
       },
+
+      lastVoiceResultTime: 0,
 
       profileRelations: [
         {
@@ -571,6 +573,21 @@
         this.$.georgeSearch.value = "";
       },
 
+      searchByVoice: function() {
+        if (this.lastVoiceResultTime == 0) {
+          this.lastVoiceResultTime = (new Date).getTime();
+          return;
+        } else if ((new Date).getTime() - this.lastVoiceResultTime < 500) {
+          console.log((new Date).getTime() - this.lastVoiceResultTime);
+          this.lastVoiceResultTime = (new Date).getTime();
+          return;
+        }
+        console.log((new Date).getTime() - this.lastVoiceResultTime);
+        this.lastVoiceResultTime = (new Date).getTime();
+
+        this.analyseSearch();
+      },
+
       analyseSearch: function() {
         var searchInput = this.$.georgeSearch;
         var searchTerm = searchInput.value.replace("/", "");
@@ -803,7 +820,7 @@
           }
           that.showContent();
           search.value = event.detail.result;
-          that.analyseSearch();
+          that.searchByVoice();
         });
         recog.addEventListener('result', function(event) {
           that.clearResult = true;
