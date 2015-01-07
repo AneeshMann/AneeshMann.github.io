@@ -2255,5 +2255,63 @@
           "productcode": "4878331",
           "backgroundColour": "#212121",
           "tags": []
+        },
+        {
+          "id": 91,
+          "product": "Blue Winter Coat",
+          "clothing": "Women",
+          "type": "coat",
+          "categories": [
+
+          ],
+          "seasons": [
+            "winter"
+          ],
+          "price": 32,
+          "sizes": [6, 8, 10 , 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/women/tailored-coat.png",
+          "catalogue": {
+            "info_left": 62,
+            "fullbleed": "/images/catalogues/women/winter/5-Outer-Wear-Coats-for-Women-2014-15-5.jpg",
+            "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
+          },
+          "description": "Bright and brilliant, this gorgeous tailored coat is a fabulous investment. Cut in a sophisticated style, this stunning piece is guaranteed to become your favourite cover-up and is sure to be making a yearly appearance during the colder months.",
+          "materials": "Fabric composition: 62% Polyester, 25% Acrylic, 8% Cotton, 3% Viscose, 2% ",
+          "productcode": "4805361",
+          "backgroundColour": "#B71C1C",
+          "tags": [
+            "sale"
+          ]
+        },
+        {
+          "id": 91,
+          "product": "Black Winter Coat (Gold Trims)",
+          "clothing": "Women",
+          "type": "coat",
+          "categories": [
+
+          ],
+          "seasons": [
+            "winter"
+          ],
+          "price": 32,
+          "sizes": [6, 8, 10 , 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "red",
+          "image": "/images/women/tailored-coat.png",
+          "catalogue": {
+            "info_left": 62,
+            "fullbleed": "/images/catalogues/women/winter/4-HM-Winter-Outer-Wear-Coats-for-Women-2014-15-4.jpg",
+            "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
+          },
+          "description": "Bright and brilliant, this gorgeous tailored coat is a fabulous investment. Cut in a sophisticated style, this stunning piece is guaranteed to become your favourite cover-up and is sure to be making a yearly appearance during the colder months.",
+          "materials": "Fabric composition: 62% Polyester, 25% Acrylic, 8% Cotton, 3% Viscose, 2% ",
+          "productcode": "4805361",
+          "backgroundColour": "#B71C1C",
+          "tags": [
+            "sale"
+          ]
         }
       ]
