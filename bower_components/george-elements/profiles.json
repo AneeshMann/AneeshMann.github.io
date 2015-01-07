@@ -18,6 +18,10 @@
           {
             "key": "chest",
             "size": 35
+          },
+          {
+            "key": "shoe",
+            "size": 11
           }
         ]
     },
@@ -37,6 +41,10 @@
           {
             "key": "inside_leg",
             "size": 28
+          },
+          {
+            "key": "shoe",
+            "size": 8
           }
         ]
     }
