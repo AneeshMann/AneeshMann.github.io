@@ -86,6 +86,7 @@
       }
       .basket {
         background: #FFEB3B;
+        color: #000;
       }
       .inputs{
         display: inline-block;
@@ -185,13 +186,47 @@
         padding: 5px;
       }
 
+
+      #bgimage {
+        background-repeat: no-repeat;
+        background-position: left center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+      #details {
+        float: right;
+        width: 40%;
+        height: 100%;
+        position: relative;
+        padding: 16px;
+        color: #ffffff;
+      }
+
+      @media (max-width: 800px) {
+        #details {
+          float: none;
+          width: 100%;
+          height: 60%;
+          top: 60%;
+        }
+      }
+
+
+      .basket {
+        background: #FFEB3B;
+      }
+
+
     </style>
 
     <link rel="stylesheet" href="/bower_components/slick.js/slick/slick-catalogue.css"/>
 
-    <div id="catalogue_results" flex layout vertical>
-
-    </div>
+    <div id="catalogue_results"></div>
 
     <core-ajax id="resultsAjax" auto url="/bower_components/george-elements/results.json" handleAs="json" on-core-response="{{resultsLoaded}}"></core-ajax>
     <core-ajax id="ajax" auto url="/bower_components/george-elements/profiles.json" on-core-response="{{jsonLoaded}}" handleAs="json"></core-ajax>
@@ -347,7 +382,8 @@
 
         for (var i = 0; i < this.filteredItems.length; i++) {
           var product = this.filteredItems[i];
-          $(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background: " + product.backgroundColour + "\"><div id=\"productImage\" style=\"width: 60%; height: 100%; float:left;\"><img src=\"" + product.catalogue.fullbleed + "\" /></div><div style=\"float: right; margin-top: 0px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B; float: left;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
+          //$(this.$.catalogue_results).slickAdd("<div class=\"product_information\" style=\"background: " + product.backgroundColour + "\"><div id=\"productImage\" style=\"width: 60%; height: 100%; float:left;\"><img src=\"" + product.catalogue.fullbleed + "\" /></div><div style=\"float: right; margin-top: 0px; margin-right: 20px; margin-bottom: 20px;\"><paper-button raised on-click=\"{{switchToGrid}}\" style=\"background: #FFEB3B; float: left;\">Switch To Grid</paper-button></div><div class=\"product_info\" style=\"margin-left: " + product.catalogue.info_left + "%;\"><h1 style=\"font-size: 20pt; font-weight: bold;\">" + product.product + " <span class=\"product_price\">£" + product.price + "</span></h1><paper-button on-click=\"{{addToBasket}}\" affirmative autofocus style=\"background: #FFEB3B;\">Add To Basket</paper-button><p>" + product.description + "</p></div></div>");
+          $(this.$.catalogue_results).slickAdd("<div id='bgimage' style='background-image: url(" + product.catalogue.fullbleed + ");'><div id='details' style='background-color: "+ product.backgroundColour +"'><h1>" + product.product + "</h1><h2>£"+ product.price +"</h2><paper-button class='basket'>Add to Basket</paper-button><p>"+ product.description +"</p></div></div>");
         }
       },
 

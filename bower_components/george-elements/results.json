@@ -2258,60 +2258,80 @@
         },
         {
           "id": 91,
-          "product": "Blue Winter Coat",
+          "product": "Bardot Lace Dress",
           "clothing": "Women",
-          "type": "coat",
+          "type": "dress",
           "categories": [
 
           ],
-          "seasons": [
-            "winter"
-          ],
-          "price": 32,
+          "seasons": "all",
+          "price": 20,
           "sizes": [6, 8, 10 , 12, 14],
           "quantities": [1, 2, 3, 4, 5],
-          "color": "red",
-          "image": "/images/women/tailored-coat.png",
+          "color": "blue",
+          "image": "/images/women/bardot-lace-dress.png",
           "catalogue": {
             "info_left": 62,
-            "fullbleed": "/images/catalogues/women/winter/5-Outer-Wear-Coats-for-Women-2014-15-5.jpg",
-            "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
+            "fullbleed": "/images/women-cat-blue-dress.png"
           },
-          "description": "Bright and brilliant, this gorgeous tailored coat is a fabulous investment. Cut in a sophisticated style, this stunning piece is guaranteed to become your favourite cover-up and is sure to be making a yearly appearance during the colder months.",
-          "materials": "Fabric composition: 62% Polyester, 25% Acrylic, 8% Cotton, 3% Viscose, 2% ",
-          "productcode": "4805361",
-          "backgroundColour": "#B71C1C",
+          "description": "Equally elegant and striking, this fabulous Bardot lace dress will have you turning heads this season. Created using stretch fabric, this piece will hug your curves in all the right places to ensure you look amazing at all occasions.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4862845",
+          "backgroundColour": "#0D47A1",
           "tags": [
-            "sale"
+            "party"
           ]
         },
         {
           "id": 91,
-          "product": "Black Winter Coat (Gold Trims)",
+          "product": "Strapless Jumpsuit",
           "clothing": "Women",
-          "type": "coat",
+          "type": "jumpsuit",
           "categories": [
 
           ],
-          "seasons": [
-            "winter"
-          ],
-          "price": 32,
+          "seasons": "all",
+          "price": 20,
           "sizes": [6, 8, 10 , 12, 14],
           "quantities": [1, 2, 3, 4, 5],
           "color": "red",
-          "image": "/images/women/tailored-coat.png",
+          "image": "/images/women/red-jumpsuit.png",
           "catalogue": {
             "info_left": 62,
-            "fullbleed": "/images/catalogues/women/winter/4-HM-Winter-Outer-Wear-Coats-for-Women-2014-15-4.jpg",
-            "mobfullbleed": "/images/women/cq5dam.web.1920.1280.3.jpeg"
+            "fullbleed": "/images/women-cat-red-jumpsuit.png"
           },
-          "description": "Bright and brilliant, this gorgeous tailored coat is a fabulous investment. Cut in a sophisticated style, this stunning piece is guaranteed to become your favourite cover-up and is sure to be making a yearly appearance during the colder months.",
-          "materials": "Fabric composition: 62% Polyester, 25% Acrylic, 8% Cotton, 3% Viscose, 2% ",
-          "productcode": "4805361",
+          "description": "Rock the hottest trend this season with this stunning strapless bow detailed jumpsuit. You’ll be wearing it to every occasion and transforming your formal wardrobe with this loud and proud sophisticated piece.",
+          "materials": "Fabric composition: 100% Polyester",
+          "productcode": "4865161",
           "backgroundColour": "#B71C1C",
           "tags": [
-            "sale"
+            "party"
+          ]
+        },
+        {
+          "id": 92,
+          "product": "All Over Sequin Dress",
+          "clothing": "Women",
+          "type": "dress",
+          "categories": [
+
+          ],
+          "seasons": "all",
+          "price": 15,
+          "sizes": [6, 8, 10 , 12, 14],
+          "quantities": [1, 2, 3, 4, 5],
+          "color": "blue",
+          "image": "/images/women/blue-seq-dress.png",
+          "catalogue": {
+            "info_left": 62,
+            "fullbleed": "/images/women-cat-seq-dress.png"
+          },
+          "description": "With the party season fast approaching, why not invest in this stunning all-over sequin dress? You’ll be turning heads in this sensational piece and are guaranteed to be oozing confidence in this figure-friendly, flawless dress.",
+          "materials": "Fabric composition: 100% Polyamide",
+          "productcode": "4842413",
+          "backgroundColour": "#3F51B5",
+          "tags": [
+            "party"
           ]
         }
       ]

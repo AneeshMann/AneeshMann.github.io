@@ -1,15 +1,16 @@
 @charset "UTF-8";
 /* Slider */
-.slick-slider { position: relative; display: block; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+.slick-slider { position: fixed; height:100%; display: block; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
 
-.slick-list { position: relative; overflow: hidden; display: block; margin-left: 65px; padding: 0; }
+.slick-list { position: relative; height: 100%; overflow: hidden; display: block; padding: 0; }
 .slick-list:focus { outline: none; }
 .slick-loading .slick-list { background: #fff url("./ajax-loader.gif") center center no-repeat; }
 .slick-list.dragging { cursor: pointer; cursor: hand; }
 
 .slick-slider .slick-track { -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 
-.slick-track { position: fixed; left: 0; top: 7.9%; display: block; height: 100%; width: 100%; }
+/*.slick-track { position: fixed; left: 0; top: 7.9%; display: block; height: 100%; width: 100%; }*/
+.slick-track { position: relative; left: 0; top: 0; display: block;height: 100%; }
 .slick-track:before, .slick-track:after { content: ""; display: table; }
 .slick-track:after { clear: both; }
 .slick-loading .slick-track { visibility: hidden; }
@@ -33,12 +34,12 @@
 
 .slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 20px; line-height: 1; color: white; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-.slick-prev { position: fixed; left: 1%; top: 50%; }
+.slick-prev { left: 1%; }
 [dir="rtl"] .slick-prev { left: auto; right: 1%; }
 /*.slick-prev:before { content: "←"; }
 [dir="rtl"] .slick-prev:before { content: "→"; }*/
 
-.slick-next { position: fixed; top: 50%; right: 1%; }
+.slick-next { right: 1%; }
 [dir="rtl"] .slick-next { left: 1%; right: auto; }
 /*.slick-next:before { content: "→"; }
 [dir="rtl"] .slick-next:before { content: "←"; }*/
